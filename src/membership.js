@@ -102,27 +102,25 @@ if(members && members.length !== 0)
             {negativeNumber&&<p className = "error">Negative number detected.</p>}
             <form onSubmit = {handleSubmit}>                
                 <fieldset className = "field-set">
-                    <legend className = "label-style">Applicants Name</legend>
+                    <legend className = "header-2">Applicant</legend>
+                    <label className = "label-style">Applicants Name</label>
                     <input type = "text" value = {applicantName} onChange = {(e)=>setApplicantName(e.target.value)} required/>
-                </fieldset>
-                <fieldset className = "field-set">
-                    <legend className = "label-style">Staff Number</legend>
+                    <label className = "label-style">Staff Number</label>
                     <input type = "text" value = {staffNumber} onChange = {(e)=>setStaffNumber(e.target.value)} required/>
 
-                </fieldset>
-                <fieldset className = "field-set">
-                    <legend className = "label-style">District/Station</legend>
+            
+                    <label className = "label-style">District/Station</label>
                     <input type = "text" value = {district} onChange = {(e)=>setDistrict(e.target.value)} required/>
-                </fieldset>
-                <fieldset className = "field-set">
-                    <legend className = "label-style">Telephone</legend>
+    
+                    <label className = "label-style">Telephone</label>
                     <input type = "text" value = {telephone} onChange = {(e)=>setTelephone(e.target.value)} required/>
-                </fieldset>
-                <fieldset className = "field-set">
-                    <legend className = "label-style">Monthly Savings Amount</legend>
+            
+                    <label className = "label-style">Monthly Savings Amount</label>
                     <input type = "number" value = {monthlySavings} onChange = {(e)=>setMonthlySavings(e.target.value)}/>
                 </fieldset>
-                <h2>Nominee</h2>
+                <fieldset className = "nominee-field">
+
+                <legend className = "header-2">Nominee</legend>
                 <table>
                     <thead>
                     <tr>
@@ -135,9 +133,9 @@ if(members && members.length !== 0)
                     <tbody>
                     <tr>
                         <td>1.</td>
-                        <td><input type = "text" value = {nomineeName1} onChange = {(e)=>setNomineeName1(e.target.value)}/></td>
-                        <td><input type = "text" value = {nRelationship1} onChange = {(e)=>setNRelationship1(e.target.value)}/></td>
-                        <td><input type = "number" value = {nPercentage1} onChange = {(e)=>setNPercentage1(e.target.value)}/></td>
+                        <td><input type = "text" value = {nomineeName1} onChange = {(e)=>setNomineeName1(e.target.value)} required/></td>
+                        <td><input type = "text" value = {nRelationship1} onChange = {(e)=>setNRelationship1(e.target.value)} required/></td>
+                        <td><input type = "number" value = {nPercentage1} onChange = {(e)=>setNPercentage1(e.target.value)} required/></td>
                     </tr>
                     <tr>
                     <td>2.</td>
@@ -154,16 +152,17 @@ if(members && members.length !== 0)
                     </tbody>
                 
                 </table>
-                <fieldset className = "field-set">
-                    <legend>Witnessed Name</legend>
+                
+                    <label>Witnessed Name</label>
                     <input type = "text" value = {witnessName} onChange = {(e)=>setWitnessName(e.target.value)} required/>
-                </fieldset>
-                <fieldset>
-                    <legend className = "label-style">Witness Contact</legend>
+                
+                    <label>Witness Contact</label>
                     <input type = "text" value = {witnessContact} onChange = {(e)=>setWitnessedContact(e.target.value)} required/>
 
                 </fieldset>
+                <div className = "button">
                 <button className = "register-button">Register Member</button>
+                </div>
             </form>
         </div>
     )
