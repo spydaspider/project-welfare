@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import useFetch from './useFetch.js';
 import CreateMember from './helpers/createMember.js';
+import Navigation from './nav';
+import SecondNavigation from './nav2.js';
 const Membership = () =>{
     const [applicantName,setApplicantName] = useState('');
     const [staffNumber,setStaffNumber] = useState('');
@@ -96,6 +98,8 @@ if(members && members.length !== 0)
     }
     return(
         <div className = "membership-form">
+            <SecondNavigation/>
+            <Navigation />
             <h1>Membership form.</h1>
             {error && <p className = "error">{error}</p>}
             {staffNumberExists&& <p className = "error">Staff number already exists.</p>}

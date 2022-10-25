@@ -11,7 +11,7 @@ body{
 }
 .membership-form{
     padding-bottom: 5%;
-    padding-top: 3%;
+    padding-top: 13%;
     max-width: 900px;
     margin: 0 auto;
 
@@ -66,7 +66,10 @@ h1{
     background-color:#c0ca33;
     color: #333;
     transition: background-color 0.5s ease-out;
-    
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -ms-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
 }
 .error{
     border: 2px solid red;
@@ -77,3 +80,229 @@ h1{
     font-weight: 580;
     font-size: 18px;
 }
+.nav-bar {
+    
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    background:#f6f6f3;
+    align-items: center;
+    height: auto;
+    
+    position: fixed;
+    top:33px;
+    right:0;
+    left:0;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  
+  }
+  .nav-bar h1 {
+    color: #c0ca33;
+    grid-column: 1/6;
+  }
+  .links {
+    grid-column: 6/13;
+    width: 25%;
+    display: flex;
+    justify-content: flex-start;
+
+  }
+  .links a {
+    color: #c0ca33;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 18px;
+    padding: 0.7em;
+  }
+  .links a:hover {
+    background: #c0ca33;
+    color: #333;
+    transition: background-color 1s ease-out;
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -ms-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+}
+  .second-navigation{
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+    position: fixed;
+    top:0;
+    right:0;
+    left:0;
+    background: #333;
+  }
+  .second-links{
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+    color: #fff;
+
+  }
+  .log-style{
+    padding: 0.3em;
+  }
+  .log-style:hover{
+    cursor: pointer;
+    color: #c0ca33;
+    border-radius: 7px;
+  
+}
+.log-message{
+    font-size: 40px;
+    text-align: center;
+    color: rgb(119, 119, 119);
+    
+  }
+  .login-container{
+    background: rgb(227, 225, 225);
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position: absolute;
+  }
+  .login-form{
+    max-width:500px;
+    height: auto;
+    border: 2px solid rgb(214, 212, 212);
+    margin:10% auto;
+    display: grid;
+    padding-bottom:1em;
+    grid-template-columns: repeat(12,1fr);
+    background: #fff;
+    border-radius:8px;
+   
+  }
+  .login-title{
+    text-align: center;
+    font-size: 35px;
+    grid-column: 1/13;
+  }
+  .login-form form{
+    grid-column: 1/13;
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    padding-bottom: 1em;
+  }
+  
+  .login-form input{
+    width: 100%;
+    height:40px;
+    margin-top: 1em;
+    font-size: 18px;
+    outline: none;
+  }
+  .login-form input:hover{
+    box-shadow: 3px 5px 5px rgba(0,0,0,0.1);
+    border: 1px solid #00695c;
+    
+  }
+  .login-form button{
+    margin-top: 1em;
+    color: #fff;
+    border:none;
+    cursor: pointer;
+  }
+  .login-button{
+    font-size: 18px;
+    padding: 0.5em;
+    background:#00695c;
+   
+    
+  }
+  .login-button:hover{
+    background:#004d40;
+  }
+  .signup-button{
+    font-size: 18px;
+    padding: 0.5em;
+    background: #6070ff;
+    
+    float: right;
+    border-radius:8px;
+    
+  }
+  .signup-button:hover{
+    background: #4f60f4;
+  }
+  .not-exist{
+    grid-column: 1/13;
+    background: #c62828;
+    color: #fff;
+    font-size: 17px;
+    padding: 0.5em;
+   text-align: center;
+  }
+  .create-account-wrapper{
+    background: rgb(226, 226, 226);
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+  .create-account{
+    max-width:500px;
+    height: auto;
+    border: 2px solid rgb(214, 212, 212);
+    margin:7% auto;
+    display: grid;
+    padding-bottom:1em;
+    grid-template-columns: repeat(12,1fr);
+    background: #fff;
+    border-radius:8px;
+  }
+  .create-account-title{
+    grid-column: 1/13;
+    text-align: center;
+    font-size: 35px;
+  }
+  .create-account form{
+    grid-column: 1/13;
+    padding-left: 1em;
+    padding-right: 1em;
+    display: grid;
+  
+  }
+  .create-account input{
+    width: 100%;
+    height:40px;
+    margin-top: 1em;
+    font-size: 18px;
+    outline: none;
+  }
+  .create-account input:hover{
+    box-shadow: 3px 5px 5px rgba(0,0,0,0.1);
+    border: 1px solid #00695c;
+    
+  } 
+  .create-account button{
+    margin-top: 1em;
+    padding: 0.5em;
+    font-size: 18px;
+    justify-self: center;
+    cursor: pointer;
+    background: #00695c;
+    color: #fff;
+    border:none;
+  }
+  .create-account button:hover{
+    background:#004d40;
+  }
+  .create-account-error{
+    grid-column: 1/13;
+    background: #c62828;
+    color: #fff;
+    font-size: 17px;
+    padding: 0.5em;
+   text-align: center;
+  }
+  @media screen and (max-width: 786px)
+  {
+    .nav-bar{
+        display: none;
+    }
+  }

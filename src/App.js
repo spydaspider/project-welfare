@@ -7,7 +7,7 @@ import Store from './helpers/storage';
 import Login from './login.js';
 import Membership from './membership.js';
 import { BrowserRouter as Router,Route,Switch} from 'react-router-dom'; 
-import Navigation from './nav';
+
 
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
@@ -37,7 +37,6 @@ function App() {
 
   return (
     <Router>
-      <Navigation />
     <div className="App">
     <div className = "content">
         <Switch>
@@ -50,10 +49,10 @@ function App() {
             <CreateAccount />
           </Route>
              <Route path = "/search">
-              <HomePage />
+              {loggedIn && <HomePage />}
              </Route>
              <Route path = "/membership">
-              <Membership />
+              {loggedIn && <Membership />}
              </Route>
         </Switch>
     </div>

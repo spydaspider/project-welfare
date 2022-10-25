@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "username": "Dickson",
+      "password": "filament",
+      "id": 1
+    }
+  ],
   "Members": [
     {
       "membershipNumber": 1,
