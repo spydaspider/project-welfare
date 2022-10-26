@@ -6,10 +6,10 @@
       "id": 1
     }
   ],
-  "Members": [
+  "members": [
     {
       "membershipNumber": 1,
-      "appName": "sfsdfd",
+      "appName": "Richmond",
       "staffNumber": "gra3234",
       "district": "ssdfsdfs",
       "telephone": "21321321",
@@ -23,15 +23,14 @@
       "nRelationship2": "",
       "nRelationship3": "",
       "nPercentage1": "234",
-      "nPercentage2": "",
       "nPercentage3": "",
-      "date": "2022-10-25",
-      "time": "12:46:01.636Z",
+      "date": "2022-10-26",
+      "time": "23:41:29.427Z",
       "id": 1
     },
     {
       "membershipNumber": 2,
-      "appName": "Dickson",
+      "appName": "Gerald",
       "staffNumber": "gra323467",
       "district": "lkjkdljdf",
       "telephone": "213423423",
@@ -39,16 +38,16 @@
       "witnessName": "bhfffdb",
       "witnessContact": "fdgdfgfdg",
       "nomineeName1": "dfghfdgfd",
-      "nomineeName2": "",
+      "nomineeName2": "Pricilla",
       "nomineeName3": "",
       "nRelationship1": "sfsdfsd",
-      "nRelationship2": "",
+      "nRelationship2": "wife",
       "nRelationship3": "",
       "nPercentage1": "342",
-      "nPercentage2": "",
+      "nPercentage2": "12",
       "nPercentage3": "",
-      "date": "2022-10-25",
-      "time": "12:47:08.229Z",
+      "date": "2022-10-26",
+      "time": "23:50:01.868Z",
       "id": 2
     }
   ]

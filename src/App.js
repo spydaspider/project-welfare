@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Store from './helpers/storage';
 import Login from './login.js';
+import MemberDetails from './memberDetails.js';
 import Membership from './membership.js';
 import { BrowserRouter as Router,Route,Switch} from 'react-router-dom'; 
 
@@ -12,7 +13,6 @@ import { BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
  
-  const {data: items, isPending: isLoading, error} = useFetch('http://localhost:8050/items');
   let log = Store.getLocalStorage('log');
 
     const useLogin =()=>{
@@ -53,6 +53,9 @@ function App() {
              </Route>
              <Route path = "/membership">
               {loggedIn && <Membership />}
+             </Route>
+             <Route path = "/members/:id">
+              {loggedIn && <MemberDetails/>}
              </Route>
         </Switch>
     </div>

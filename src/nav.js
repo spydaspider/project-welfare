@@ -7,7 +7,7 @@ const Navigation = () =>{
     <div className = "nav-bar">
         <h1>Project Welfare</h1>
         <div className = "links">
-        <Link to = "membership">Membership</Link>
+        <Link to = "/membership">Membership</Link>
         <Link to = "/search">Search</Link>
         <Link to = "/add">Beneficiaries</Link>
         <Link to = "/store">Savings</Link>
