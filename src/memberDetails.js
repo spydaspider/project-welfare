@@ -1,6 +1,6 @@
 import Navigation from "./nav.js";
 import SecondNavigation from "./nav2.js";
-import {useParams} from 'react-router-dom';
+import {useHistory, useParams} from 'react-router-dom';
 import useFetch from './useFetch.js';
 import {useState,useEffect} from 'react';
 import CreateMember from './helpers/createMember.js';
@@ -28,6 +28,7 @@ const MemberDetails = () =>{
     const [negativeNumber,setNegativeNumber] = useState(null);
     const [error,setError] = useState(null);
     const [membershipNumber,setMembershipNumber] = useState('');
+    const history = useHistory();
     useEffect(
         ()=>{
              if(member)
@@ -58,6 +59,13 @@ const MemberDetails = () =>{
              }
         },[member]
     )
+    const handleRemove = () =>{
+          fetch('http://localhost:8050/Members/'+id,{
+            method: 'DELETE'
+          }).then(()=>{
+            history.push('/search');
+          })
+    }
     const handleSubmit = (e) =>{
         e.preventDefault();
         let dateTime = new Date();
@@ -198,8 +206,12 @@ const MemberDetails = () =>{
                 </fieldset>
                 <div className = "button">
                 <button className = "register-button">Edit</button>
+                <button className = "register-button" onClick = {handleRemove}>Remove</button>
                 </div>
             </form>
+            <div className = "transactions">
+                <h1>Transactions</h1>
+            </div>
         </div>
    )
 }
