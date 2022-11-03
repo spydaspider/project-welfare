@@ -302,7 +302,7 @@ h1{
   }
   .home-content{
 
-    margin-top: 20%;
+    margin-top: 30%;
     margin-left: auto;
     margin-right: auto;
     max-width: 900px;
@@ -313,7 +313,66 @@ h1{
   .details{
     margin-top: 20%;
   }
+  .new-savings-bg{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    position:fixed;
+    background:#333;
+    opacity: 0.9;
+  }
+  .close{
+    float: right;
+    margin-top: 4%;
+    margin-right:4%;
+    cursor: pointer;
+  }
+  .bar:nth-child(2){
+    opacity: 0;
+  }
+  .bar:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+    
+}
+.bar:nth-child(3){
+  transform: translateY(-8px) rotate(-45deg);
+}
+  .bar{
+    width: 25px;
+    background: white;
+    margin: 5px 6px;
+    display: block;
+    height: 3px;
+  }
 
+  .new-savings{
+    max-width: 500px;
+    margin: 10% auto;
+    background: white;
+    padding: 3em;
+  }
+  .new-savings h2{
+    text-align: center;
+  }
+  .new-savings-button{
+    display: flex;
+    justify-content: center;
+
+  }
+  .new-savings button{
+      padding: 0.5em;
+      font-size: 18px;
+      font-weight: 550;
+      background:#a6af29;
+      border: none;
+      cursor: pointer;
+  }
+  .new-savings button:hover{
+    background: #8f9723;
+  }
+
+    
   @media screen and (max-width: 786px)
   {
     .nav-bar{

@@ -28,6 +28,10 @@ const MemberDetails = () =>{
     const [negativeNumber,setNegativeNumber] = useState(null);
     const [error,setError] = useState(null);
     const [membershipNumber,setMembershipNumber] = useState('');
+    const [showNewSavings, setShowNewSavings] = useState(null);
+    const [savingsAmount,setSavingsAmount] = useState('');
+    const [newSavingsPopup,setNewSavingsPopup] = useState(false);
+    const [SAError,setSAError] = useState(false);
     const history = useHistory();
     useEffect(
         ()=>{
@@ -137,6 +141,38 @@ const MemberDetails = () =>{
             }
               
             }
+            const handleNewSavings = () =>{
+                setNewSavingsPopup(true);
+            }
+            const handleNewSavingsSubmit = (e) =>{
+                let dateTime = new Date();
+                let time = dateTime.toISOString().split('T')[1];
+                let date = dateTime.toISOString().split('T')[0];
+                e.preventDefault();
+                if(savingsAmount === '' || savingsAmount < 0)
+                {
+                    setSAError(true);
+                }
+                else
+                {
+                    setNewSavingsPopup(false);
+                    const member = new CreateMember(membershipNumber,applicantName,staffNumber,district,telephone,Number(monthlySavings)+savingsAmount,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,date,time);
+                    fetch('http://localhost:8050/Members/'+id,{
+                        method: 'PUT',
+                        headers: {'Content-type': 'Application/json'},
+                        body: JSON.stringify(member)
+                    }).then(()=>{
+                        window.location.reload();
+                        setSavingsAmount('');
+                        setSAError(false);
+                    })
+                  
+                }
+
+            }
+            const handleClose = () =>{
+                setNewSavingsPopup(false);
+            }
    return (
     <div className = "membership-form">
             <SecondNavigation/>
@@ -211,7 +247,41 @@ const MemberDetails = () =>{
             </form>
             <div className = "transactions">
                 <h1>Transactions</h1>
+                <button onClick = {handleNewSavings}>New Savings</button>
+                <button>Withdraw</button>
+                <button>View Savings</button>
+                <button>Request Loan</button>
+                <button>View Requested loans</button>
+                <button>Hire Purchase</button>
+                <button>View Hire Purchase</button>
+                <button>Beneficiaries</button>
             </div>
+            {
+                newSavingsPopup &&
+            <div className = "new-savings-bg">
+            <div onClick = {handleClose} className = "close">
+                        <span className = "bar"></span>
+                        <span className = "bar"></span>
+                        <span className = "bar"></span>
+                    </div>
+                <div className = "new-savings">
+                   
+                <h2>New Savings</h2>
+                {SAError && <p className = "error">Please enter a valid amount</p>}
+                <form onSubmit = {handleNewSavingsSubmit}>
+                   <input type = "text" value = {applicantName}/>
+                   <input type = "text" value = {staffNumber}/>
+                   <input type = "text" value = {district}/>
+                   <input type = "text" value = {telephone}/>
+                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)} placeholder = "Enter amount"/>
+                   <div className = "new-savings-button">
+                   <button>Save</button>
+
+                   </div>
+                </form>
+                </div>
+            </div>
+            }
         </div>
    )
 }
