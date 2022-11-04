@@ -41,6 +41,7 @@ const MemberDetails = () =>{
     const [payLoanPopup, setPayLoanPopup] = useState(null);
     const [loanPayment,setLoanPayment] = useState('');
     const [loanPaymentAmountError,setLoanPaymentAmountError] = useState(null);
+    const [pendingLoan,setPendingLoan] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -153,7 +154,22 @@ const MemberDetails = () =>{
               
             }
             const handleNewSavings = () =>{
-                setNewSavingsPopup(true);
+                if(memberLoan)
+                {
+                    if(Number(memberLoan.loanAmount) !== 0.0)
+                    {
+                        
+                         setPendingLoan(true);
+                    }
+                    else{
+                       
+                        setNewSavingsPopup(true);
+                    }
+                }
+                else{
+                    setNewSavingsPopup(true);
+                }
+                
             }
             const handleNewSavingsSubmit = (e) =>{
                 let dateTime = new Date();
@@ -197,17 +213,14 @@ const MemberDetails = () =>{
                     }
                     else if(Number(loanPayment) > Number(memberLoan.loanAmount))
                     {
-                        console.log("Change and owes zero");
                         setLoanPaymentAmountError(null);
                     }
                     else if(Number(loanPayment)<Number(memberLoan.loanAmount))
                     {
-                        console.log("Substract and save");
                         setLoanPaymentAmountError(null);
                     }
                     else if(Number(loanPayment) === Number(memberLoan.loanAmount))
                     {
-                        console.log("Owes zero");
                         setLoanPaymentAmountError(null);
                     }
                 }
@@ -215,6 +228,9 @@ const MemberDetails = () =>{
             const handleClose = () =>{
                 setNewSavingsPopup(false);
                 setPayLoanPopup(false);
+            }
+            const handleCloseErrorDialog =()=>{
+                setPendingLoan(null);
             }
    return (
     <div className = "membership-form">
@@ -298,6 +314,19 @@ const MemberDetails = () =>{
                 <button>View Hire Purchase</button>
                 <button>Beneficiaries</button>
             </div>
+            {pendingLoan && <div className = "pending-loan">
+                        
+                            <div className = "top-bar">
+                    <div onClick = {handleCloseErrorDialog}className = "close-error-dialog">
+                        <span className = "bar-l"></span>
+                        <span className = "bar-l"></span>
+                        <span className = "bar-l"></span>
+                     </div>
+                            </div>
+                            <div className = "error-message">
+                       <p>Sorry, applicant has a loan arrears to pay and therefore cannot request for new loan.</p>
+                       </div>
+                    </div>}
             {
                 newSavingsPopup &&
             <div className = "new-savings-bg">
@@ -360,6 +389,7 @@ const MemberDetails = () =>{
                    <input type = "number" value = {loanPayment} onChange = {(e)=>setLoanPayment(e.target.value)} placeholder = "Enter amount"/>
                    <div className = "new-savings-button">
                    <button>pay loan</button>
+                  
 
                    </div>
                 </form>

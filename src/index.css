@@ -350,7 +350,29 @@ h1{
     display: block;
     height: 3px;
   }
+  .bar-l:nth-child(2){
+    opacity: 0;
+  }
+  .bar-l:nth-child(1){
+    transform: translateY(8px) rotate(45deg);
+    
+}
+.bar-l:nth-child(3){
+  transform: translateY(-7px) rotate(-45deg);
+ 
+}
+  .bar-l{
+    width: 18px;
+    background: white;
+    margin: 5px 6px;
+    display: block;
+    height: 2px;
+  }
 
+  .close-error-dialog{
+    float: right;
+    cursor: pointer;
+  }
   .new-savings{
     max-width: 800px;
     margin: 6% auto;
@@ -376,7 +398,38 @@ h1{
   .new-savings button:hover{
     background: #8f9723;
   }
-
+  .pending-loan{
+    max-width: 800px;
+    height: 500px;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    right: 300px;
+ 
+    border: 1px solid rgb(199, 197, 197);
+    bottom:0;
+    background: rgb(248, 248, 248);
+    
+}
+.error-message{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.error-message p{
+  margin-top: 30%;
+  color: red;
+  font-weight: 500;
+}
+.top-bar{
+  display: block;
+  background: #333;
+  height: 30px;
+  width: 100%;
+   margin-top: -0.5em;
+  
+}
     
   @media screen and (max-width: 786px)
   {
