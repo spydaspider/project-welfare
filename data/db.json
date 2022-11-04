@@ -1,4 +1,18 @@
 {
+  "requestedLoans": [
+    {
+      "appName": "Richmond",
+      "staffNumber": "gra3234",
+      "district": "ssdfsdfs",
+      "telephone": "21321321",
+      "loanAmount": 7700,
+      "installment": "1000",
+      "duration": "7",
+      "date": "2022-11-04",
+      "time": "10:47:18.742Z",
+      "id": 1
+    }
+  ],
   "users": [
     {
       "username": "Dickson",

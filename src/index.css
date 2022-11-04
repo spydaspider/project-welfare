@@ -9,6 +9,10 @@ body{
     padding:0;
     color: #4d5666;
 }
+label{
+  font-weight: 700;
+  color: #8f9723;
+}
 .membership-form{
     padding-bottom: 5%;
     padding-top: 13%;
@@ -321,12 +325,13 @@ h1{
     position:fixed;
     background:#333;
     opacity: 0.9;
+    overflow: auto;
   }
   .close{
     float: right;
     margin-top: 4%;
     margin-right:4%;
-    cursor: pointer;
+    cursor: pointer; 
   }
   .bar:nth-child(2){
     opacity: 0;
@@ -347,8 +352,8 @@ h1{
   }
 
   .new-savings{
-    max-width: 500px;
-    margin: 10% auto;
+    max-width: 800px;
+    margin: 6% auto;
     background: white;
     padding: 3em;
   }

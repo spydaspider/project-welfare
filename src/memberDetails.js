@@ -4,11 +4,14 @@ import {useHistory, useParams} from 'react-router-dom';
 import useFetch from './useFetch.js';
 import {useState,useEffect} from 'react';
 import CreateMember from './helpers/createMember.js';
+import CreateRequestedLoan from './helpers/createRequestedLoan.js';
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
 
     const {data:member} = useFetch('http://localhost:8050/members/'+id);
+    const {data:memberLoan} = useFetch('http://localhost:8050/requestedLoans/'+id);
+
     const [applicantName,setApplicantName] = useState('');
     const [staffNumber,setStaffNumber] = useState('');
     const [district,setDistrict] = useState('');
@@ -32,7 +35,12 @@ const MemberDetails = () =>{
     const [savingsAmount,setSavingsAmount] = useState('');
     const [newSavingsPopup,setNewSavingsPopup] = useState(false);
     const [SAError,setSAError] = useState(false);
+    const [installment,setInstallment] = useState('');
+    const [duration, setDuration] = useState('');
     const history = useHistory();
+    const [payLoanPopup, setPayLoanPopup] = useState(null);
+    const [loanPayment,setLoanPayment] = useState('');
+    const [loanPaymentAmountError,setLoanPaymentAmountError] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -63,6 +71,9 @@ const MemberDetails = () =>{
              }
         },[member]
     )
+    const handlePayLoan = () =>{
+        setPayLoanPopup(true);
+    }
     const handleRemove = () =>{
           fetch('http://localhost:8050/Members/'+id,{
             method: 'DELETE'
@@ -153,25 +164,57 @@ const MemberDetails = () =>{
                 {
                     setSAError(true);
                 }
+                else if(installment === '' || installment < 0 || duration === '' || duration < 0)
+                {
+                    setSAError(true);
+                }
                 else
                 {
+                
                     setNewSavingsPopup(false);
-                    const member = new CreateMember(membershipNumber,applicantName,staffNumber,district,telephone,Number(monthlySavings)+savingsAmount,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,date,time);
-                    fetch('http://localhost:8050/Members/'+id,{
-                        method: 'PUT',
+                    const memberLoan = new CreateRequestedLoan(applicantName,staffNumber,district,telephone,Number(savingsAmount)+(Number(savingsAmount)*(10/100)),installment,duration,date,time);
+                    fetch(' http://localhost:8050/requestedLoans',{
+                        method: 'POST',
                         headers: {'Content-type': 'Application/json'},
-                        body: JSON.stringify(member)
+                        body: JSON.stringify(memberLoan)
                     }).then(()=>{
-                        window.location.reload();
+                        /* window.location.reload();
                         setSavingsAmount('');
-                        setSAError(false);
-                    })
+                        setSAError(false); */
+                    })  
+                
                   
                 }
 
             }
+            const handlePayLoanSubmit = (e) =>{
+                e.preventDefault();
+                if(memberLoan)
+                {
+                    if(loanPayment === '' || Number(loanPayment)< 0)
+                    {
+                         setLoanPaymentAmountError(true);
+                    }
+                    else if(Number(loanPayment) > Number(memberLoan.loanAmount))
+                    {
+                        console.log("Change and owes zero");
+                        setLoanPaymentAmountError(null);
+                    }
+                    else if(Number(loanPayment)<Number(memberLoan.loanAmount))
+                    {
+                        console.log("Substract and save");
+                        setLoanPaymentAmountError(null);
+                    }
+                    else if(Number(loanPayment) === Number(memberLoan.loanAmount))
+                    {
+                        console.log("Owes zero");
+                        setLoanPaymentAmountError(null);
+                    }
+                }
+            }
             const handleClose = () =>{
                 setNewSavingsPopup(false);
+                setPayLoanPopup(false);
             }
    return (
     <div className = "membership-form">
@@ -247,10 +290,9 @@ const MemberDetails = () =>{
             </form>
             <div className = "transactions">
                 <h1>Transactions</h1>
-                <button onClick = {handleNewSavings}>New Savings</button>
-                <button>Withdraw</button>
+                <button onClick = {handleNewSavings}>Request Loan</button>
+                <button onClick = {handlePayLoan}>Pay Loan</button>
                 <button>View Savings</button>
-                <button>Request Loan</button>
                 <button>View Requested loans</button>
                 <button>Hire Purchase</button>
                 <button>View Hire Purchase</button>
@@ -266,16 +308,58 @@ const MemberDetails = () =>{
                     </div>
                 <div className = "new-savings">
                    
-                <h2>New Savings</h2>
-                {SAError && <p className = "error">Please enter a valid amount</p>}
+                <h2>Request Loan</h2>
+                {SAError && <p className = "error">Enter valid values for all fields.</p>}
                 <form onSubmit = {handleNewSavingsSubmit}>
+                    <label>Applicant Name</label>
                    <input type = "text" value = {applicantName}/>
+                   <label>Staff Number</label>
                    <input type = "text" value = {staffNumber}/>
+                   <label>District</label>
                    <input type = "text" value = {district}/>
+                   <label>Telephone</label>
                    <input type = "text" value = {telephone}/>
-                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)} placeholder = "Enter amount"/>
+                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)} placeholder = "loan amount"/>
+                   <input type = "number" value = {installment} onChange = {(e)=> setInstallment(e.target.value)} placeholder = "installment amount"/>
+                   <input type = "number" value = {duration} onChange = {(e)=>setDuration(e.target.value)} placeholder = "duration in months"/>
                    <div className = "new-savings-button">
                    <button>Save</button>
+
+                   </div>
+                </form>
+                </div>
+            </div>
+            }
+             {
+                payLoanPopup &&
+            <div className = "new-savings-bg">
+            <div onClick = {handleClose} className = "close">
+                        <span className = "bar"></span>
+                        <span className = "bar"></span>
+                        <span className = "bar"></span>
+                    </div>
+                <div className = "new-savings">
+                   
+                <h2>Pay Loan</h2>
+                {loanPaymentAmountError && <p className = "error">Enter a valid loan amount.</p>}
+                <form onSubmit = {handlePayLoanSubmit}>
+                    <label>Applicant's Name</label>
+                   <input type = "text" value = {applicantName}/>
+                   <label>Staff Number</label>
+                   <input type = "text" value = {staffNumber}/>
+                   <label>District</label>
+                   <input type = "text" value = {district}/>
+                   <label>Telephone</label>
+                   <input type = "text" value = {telephone}/>
+                   <label>Amount Owed</label>
+                   <input type = "number" value = {memberLoan && memberLoan.loanAmount}/>
+                   <label>Installment</label>
+                   <input type = "number" value = {memberLoan && memberLoan.installment} />
+                   <label>Duration</label>
+                   <input type = "number" value = {memberLoan && memberLoan.duration}/>
+                   <input type = "number" value = {loanPayment} onChange = {(e)=>setLoanPayment(e.target.value)} placeholder = "Enter amount"/>
+                   <div className = "new-savings-button">
+                   <button>pay loan</button>
 
                    </div>
                 </form>
