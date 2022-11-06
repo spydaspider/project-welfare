@@ -430,6 +430,40 @@ h1{
    margin-top: -0.5em;
   
 }
+.loans{
+  margin-top: 15%;
+}
+.loans table{
+  max-width: 1100px;
+  margin: auto;
+  
+
+}
+.loans table th{
+  padding: 1em;
+  background: #a6af29;
+}
+.loans table td{
+  text-align:center;
+  padding: 0.5em;
+  background: rgb(228, 225, 225);
+}
+.print-loans{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 8.5%;
+  
+}
+.print-loans button{
+    padding: 0.5em 1em;
+    font-size: 15px;
+    background: #a6af29;
+    border: none;
+
+}
+.print-loans button:hover{
+  background: #8e9623;
+}
     
   @media screen and (max-width: 786px)
   {

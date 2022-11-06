@@ -11,7 +11,7 @@ const Navigation = () =>{
         <Link to = "/search">Search</Link>
         <Link to = "/add">Beneficiaries</Link>
         <Link to = "/store">Savings</Link>
-        <Link to = "/records">Loans</Link>
+        <Link to = "/loans">Loans</Link>
         <Link to = "/income">Income</Link>
         <Link to = "/deductions">Deductions</Link>
       

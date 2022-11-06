@@ -7,6 +7,7 @@ import Store from './helpers/storage';
 import Login from './login.js';
 import MemberDetails from './memberDetails.js';
 import Membership from './membership.js';
+import Loans from './loans.js';
 import { BrowserRouter as Router,Route,Switch} from 'react-router-dom'; 
 
 
@@ -56,6 +57,9 @@ function App() {
              </Route>
              <Route path = "/members/:id">
               {loggedIn && <MemberDetails/>}
+             </Route>
+             <Route path = "/loans">
+              {loggedIn && <Loans/>}
              </Route>
         </Switch>
     </div>
