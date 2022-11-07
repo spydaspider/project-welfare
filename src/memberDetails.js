@@ -186,18 +186,47 @@ const MemberDetails = () =>{
                 }
                 else
                 {
-                
+                    let year;
+                    let month;
+                    let day;
                     setNewSavingsPopup(false);
-                    const memberLoan = new CreateRequestedLoan(applicantName,staffNumber,district,telephone,Number(savingsAmount)+(Number(savingsAmount)*(10/100)),installment,duration,date,time);
+                    year = Number(date.substring(0,4));
+                    month = Number(date.substring(5,7));
+                    day = Number(date.substring(8,10));
+                    let endDate;
+                    for(let i = 0; i < Number(duration); i++)
+                    {
+                        if(month === 12)
+                        {
+                            year = year+1
+                            month = 1;
+                        }
+                        else
+                        {
+                            month = month+1;
+                        }
+
+                    }
+                    let strMonth;
+                    if((month < 10)&&(day < 10))
+                    {
+                        endDate = year+"-"+"0"+month+"-"+"0"+day;
+                    }
+                    else
+                    {
+                        endDate = year+"-"+month+"-"+day;
+                    }
+                
+                    const memberLoan = new CreateRequestedLoan(applicantName,staffNumber,district,telephone,Number(savingsAmount)+(Number(savingsAmount)*(10/100)),installment,duration,date,endDate);
                     fetch(' http://localhost:8050/requestedLoans',{
                         method: 'POST',
                         headers: {'Content-type': 'Application/json'},
                         body: JSON.stringify(memberLoan)
                     }).then(()=>{
-                        /* window.location.reload();
+                         window.location.reload();
                         setSavingsAmount('');
-                        setSAError(false); */
-                    })  
+                        setSAError(false); 
+                    })   
                 
                   
                 }
@@ -207,13 +236,14 @@ const MemberDetails = () =>{
                 e.preventDefault();
                 if(memberLoan)
                 {
-                    if(loanPayment === '' || Number(loanPayment)< 0)
+                    if(loanPayment === '' || Number(loanPayment) < 0)
                     {
                          setLoanPaymentAmountError(true);
                     }
                     else if(Number(loanPayment) > Number(memberLoan.loanAmount))
                     {
                         setLoanPaymentAmountError(null);
+                        
                     }
                     else if(Number(loanPayment)<Number(memberLoan.loanAmount))
                     {

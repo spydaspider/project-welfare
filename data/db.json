@@ -5,24 +5,12 @@
       "staffNumber": "gra3234",
       "district": "ssdfsdfs",
       "telephone": "21321321",
-      "loanAmount": 7700,
-      "installment": "1000",
-      "duration": "7",
-      "date": "2022-11-04",
-      "time": "10:47:18.742Z",
+      "loanAmount": 2200,
+      "installment": "500",
+      "duration": "4",
+      "date": "2022-11-07",
+      "time": "2023-03-07",
       "id": 1
-    },
-    {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "loanAmount": 660,
-      "installment": "100",
-      "duration": "6",
-      "date": "2022-11-06",
-      "time": "13:31:32.497Z",
-      "id": 2
     }
   ],
   "users": [

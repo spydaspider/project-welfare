@@ -464,6 +464,20 @@ h1{
 .print-loans button:hover{
   background: #8e9623;
 }
+.print-loan-page table{
+  border: 1px solid #333;
+  max-width: 1100px;
+  margin: auto;
+  border-collapse: collapse;
+
+}
+.print-loan-page th,.print-loan-page td{
+  border: 1px solid #333;
+}
+td{
+  text-align: center;
+}
+
     
   @media screen and (max-width: 786px)
   {

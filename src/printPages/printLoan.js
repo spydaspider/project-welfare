@@ -1,21 +1,17 @@
-import Navigation from "./nav";
-import SecondNavigation from "./nav2";
-import useFetch from "./useFetch";
-import {useHistory} from 'react-router-dom';
-const Loans = () =>{
+import { useEffect } from "react";
+import useFetch from "../useFetch.js";
+const PrintLoan = () =>{
     const {data: requestedLoans, isPending: isLoading, error} = useFetch('http://localhost:8050/requestedLoans');
-    const history = useHistory();
-    const handlePrintLoan = () =>{
-           history.push('/printLoan');
-    }
-    return(
-        <div className = "loan-wrapper">
-             <SecondNavigation/>
-            <Navigation />
-        <div className = "loans">
-        <div className = "print-loans">
-            <button onClick = {handlePrintLoan}>print</button>
-            </div>
+     useEffect(()=>{
+        if(requestedLoans)
+        {
+        window.print();
+        }
+     },[requestedLoans])
+    return (
+        <div className = "print-table">
+             <div className = "print-loan-page">
+      
             <h1>All requested loans.</h1>
             
             <table>
@@ -49,6 +45,7 @@ const Loans = () =>{
 
         </div>
         </div>
+
     )
 }
-export default Loans;
+export default PrintLoan;
