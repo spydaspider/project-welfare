@@ -1,5 +1,7 @@
 import HomePage from './HomePage';
 import useFetch from './useFetch';
+import LoanDeductions from './deductionPages/loanDeduction';
+import SavingsDeductions from './deductionPages/savingsDeduction';
 import CreateAccount from './createAccount.js';
 import { useState,useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -10,6 +12,7 @@ import Membership from './membership.js';
 import Loans from './loans.js';
 import { BrowserRouter as Router,Route,Switch} from 'react-router-dom'; 
 import PrintLoan from './printPages/printLoan.js';
+import Deductions from './deductions';
 
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
@@ -64,6 +67,17 @@ function App() {
         
              <Route path = "/printLoan">
               {loggedIn && <PrintLoan/>}
+             </Route>
+             <Route path = "/deductions">
+              {loggedIn && <Deductions/>}
+             </Route>
+             <Route path = "/loanDeductions">
+             {loggedIn && <LoanDeductions/>}
+
+             </Route>
+             <Route path = "/savingsDeductions">
+             {loggedIn && <SavingsDeductions/>}
+
              </Route>
         </Switch>
     </div>

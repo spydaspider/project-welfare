@@ -477,7 +477,27 @@ h1{
 td{
   text-align: center;
 }
-
+.deductions{
+  max-width: 900px;
+  margin: 15% auto;
+}
+.deduction-buttons{
+  display: flex;
+  flex-flow: column;
+}
+.deduction-buttons button{
+  font-size: 40px;
+  padding: 1em;
+  margin-bottom: 1em;
+  background: #fff;
+  border: 2px solid #c0ca33;
+  color: #c0ca33;
+}
+.deduction-buttons button:hover{
+  background: #c0ca33;
+  color: #333;
+  transition: background-color 0.5s ease-out;
+}
     
   @media screen and (max-width: 786px)
   {

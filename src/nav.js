@@ -10,7 +10,6 @@ const Navigation = () =>{
         <Link to = "/membership">Membership</Link>
         <Link to = "/search">Search</Link>
         <Link to = "/add">Beneficiaries</Link>
-        <Link to = "/store">Savings</Link>
         <Link to = "/loans">Loans</Link>
         <Link to = "/income">Income</Link>
         <Link to = "/deductions">Deductions</Link>

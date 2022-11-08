@@ -263,9 +263,11 @@ const MemberDetails = () =>{
                 setPendingLoan(null);
             }
    return (
-    <div className = "membership-form">
-            <SecondNavigation/>
+    <div className = "membership-form-wrapper">
+        <SecondNavigation/>
             <Navigation />
+    <div className = "membership-form">
+            
             <h1>Member file.</h1>
             {error && <p className = "error">{error}</p>}
             {negativeNumber&&<p className = "error">Negative number detected.</p>}
@@ -426,6 +428,7 @@ const MemberDetails = () =>{
                 </div>
             </div>
             }
+        </div>
         </div>
    )
 }
