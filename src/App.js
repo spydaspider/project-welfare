@@ -14,6 +14,7 @@ import { BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import PrintLoan from './printPages/printLoan.js';
 import Deductions from './deductions';
 import PrintSavings from './printPages/printSavings';
+import PrintLoanDeductions from './printPages/printLoanDeductions';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
  
@@ -81,6 +82,10 @@ function App() {
              </Route>
              <Route path = "/printSavings">
              {loggedIn && <PrintSavings/>}
+
+             </Route>
+             <Route path = "/printLoanDeductions">
+             {loggedIn && <PrintLoanDeductions/>}
 
              </Route>
         </Switch>

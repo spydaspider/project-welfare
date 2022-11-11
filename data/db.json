@@ -1,7 +1,13 @@
 {
-  "incomes": [
-    
+  "loanIncomes": [
+    {
+      "date": "2022-11-11",
+      "amount": 600,
+      "time": "14:38:00.368Z",
+      "id": 1
+    }
   ],
+  "incomes": [],
   "requestedLoans": [
     {
       "appName": "Richmond",
@@ -14,6 +20,18 @@
       "date": "2022-11-07",
       "time": "2023-03-07",
       "id": 1
+    },
+    {
+      "appName": "Ruth",
+      "staffNumber": "gra234564",
+      "district": "Achimota",
+      "telephone": "0547231966",
+      "loanAmount": 5500,
+      "installment": "100",
+      "duration": "10",
+      "date": "2022-11-11",
+      "time": "2023-9-11",
+      "id": 2
     }
   ],
   "users": [
