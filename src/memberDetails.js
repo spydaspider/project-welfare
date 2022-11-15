@@ -42,6 +42,8 @@ const MemberDetails = () =>{
     const [loanPayment,setLoanPayment] = useState('');
     const [loanPaymentAmountError,setLoanPaymentAmountError] = useState(null);
     const [pendingLoan,setPendingLoan] = useState(null);
+    const [showBen,setShowBen] = useState(null);
+    const [rank,setRank] = useState('');
     useEffect(
         ()=>{
              if(member)
@@ -257,10 +259,13 @@ const MemberDetails = () =>{
             }
             const handleClose = () =>{
                 setNewSavingsPopup(false);
-                setPayLoanPopup(false);
+                setShowBen(false);
             }
-            const handleCloseErrorDialog =()=>{
+            const handleCloseErrorDialog = () =>{
                 setPendingLoan(null);
+            }
+            const showBeneficiaries = () =>{
+               setShowBen(true);
             }
    return (
     <div className = "membership-form-wrapper">
@@ -278,8 +283,6 @@ const MemberDetails = () =>{
                     <input type = "text" value = {applicantName} onChange = {(e)=>setApplicantName(e.target.value)} required/>
                     <label className = "label-style">Staff Number</label>
                     <input type = "text" value = {staffNumber} onChange = {(e)=>setStaffNumber(e.target.value)} required/>
-
-            
                     <label className = "label-style">District/Station</label>
                     <input type = "text" value = {district} onChange = {(e)=>setDistrict(e.target.value)} required/>
     
@@ -339,12 +342,8 @@ const MemberDetails = () =>{
             <div className = "transactions">
                 <h1>Transactions</h1>
                 <button onClick = {handleNewSavings}>Request Loan</button>
-                <button onClick = {handlePayLoan}>Pay Loan</button>
-                <button>View Savings</button>
-                <button>View Requested loans</button>
                 <button>Hire Purchase</button>
-                <button>View Hire Purchase</button>
-                <button>Beneficiaries</button>
+                <button onClick ={showBeneficiaries}>Beneficiaries</button>
             </div>
             {pendingLoan && <div className = "pending-loan">
                         
@@ -392,7 +391,7 @@ const MemberDetails = () =>{
             </div>
             }
              {
-                payLoanPopup &&
+                showBen &&
             <div className = "new-savings-bg">
             <div onClick = {handleClose} className = "close">
                         <span className = "bar"></span>
@@ -401,7 +400,7 @@ const MemberDetails = () =>{
                     </div>
                 <div className = "new-savings">
                    
-                <h2>Pay Loan</h2>
+                <h2>Benefit Form</h2>
                 {loanPaymentAmountError && <p className = "error">Enter a valid loan amount.</p>}
                 <form onSubmit = {handlePayLoanSubmit}>
                     <label>Applicant's Name</label>
@@ -412,15 +411,59 @@ const MemberDetails = () =>{
                    <input type = "text" value = {district}/>
                    <label>Telephone</label>
                    <input type = "text" value = {telephone}/>
-                   <label>Amount Owed</label>
-                   <input type = "number" value = {memberLoan && memberLoan.loanAmount}/>
-                   <label>Installment</label>
-                   <input type = "number" value = {memberLoan && memberLoan.installment} />
-                   <label>Duration</label>
-                   <input type = "number" value = {memberLoan && memberLoan.duration}/>
-                   <input type = "number" value = {loanPayment} onChange = {(e)=>setLoanPayment(e.target.value)} placeholder = "Enter amount"/>
+                   <label>Rank</label>
+                   <input type = "text" value = {rank} onChange = {(e)=>setRank(e.target.value)}/>
+                   <h3>Section B</h3>
+                   <p>CATEGORIES OF ENTILMENTS/BENEFITS</p>
+                   <div className = "categories">
+                    <div className = "cat">
+                   <label>DEATH OF SPOUSE</label>
+                   <input type = "checkbox" value = "death of spouse"/>
+                   </div>
+                   <div className = "cat-right">
+                   <label>PROTRACTED ILLNESS</label>
+                   <input type = "checkbox" value = "protracted illness"/>
+                   </div>
+                   <div className = "cat">
+                   <label>DEATH OF PARENT</label>
+                   <input type = "checkbox" value = "death of parent"/>
+                   </div>
+                   <div className = "cat-right">
+                   <label>DEATH OF CHILD</label>
+                   <input type = "checkbox" value = "death of child"/>
+                   </div>
+                   <div className = "cat">
+                   <label>MARRIAGE OF MEMBER</label>
+                   <input type = "checkbox" value = "marriage of member"/>
+                   </div>
+                   <div className = "cat-right">
+                   <label>HOSPITALIZATION</label>
+                   <input type = "checkbox" value = "hospitalization"/>
+                   </div>
+                   <div className = "cat">
+                   <label>RESIGNATION</label>
+                   <input type = "checkbox" value = "resignation"/>
+                   </div>
+                   <div className = "cat-right">
+                   <label>ACCIDENT</label>
+                   <input type = "checkbox" value = "accident"/>
+                   </div>
+                   <div className = "cat">
+                   <label>CHILD BIRTH</label>
+                   <input type = "checkbox" value = "child birth"/>
+                   </div>
+                   <div className = "cat-right">
+                   <label>NATURAL DISASTER</label>
+                   <input type = "checkbox" value ="natural disaster"/>
+                   </div>
+
+
+
+                   </div>
+                  
                    <div className = "new-savings-button">
-                   <button>pay loan</button>
+            
+                   <button>submit</button>
                   
 
                    </div>

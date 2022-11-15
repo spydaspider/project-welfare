@@ -600,6 +600,25 @@ td{
 .success-prompt-close{
   float: right;
 }
+.categories input{
+  width: 18px;
+}
+.categories{
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+}
+.cat-right{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-column: 7/13;
+}
+.cat{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-column: 1/6;
+}
 
   @media screen and (max-width: 786px)
   {
