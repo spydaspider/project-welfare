@@ -5,6 +5,24 @@
       "amount": 600,
       "time": "14:38:00.368Z",
       "id": 1
+    },
+    {
+      "date": "2022-11-14",
+      "amount": 600,
+      "time": "23:56:13.338Z",
+      "id": 2
+    },
+    {
+      "date": "2022-11-15",
+      "amount": 600,
+      "time": "00:07:49.474Z",
+      "id": 3
+    },
+    {
+      "date": "2022-11-15",
+      "amount": 600,
+      "time": "00:10:29.881Z",
+      "id": 4
     }
   ],
   "incomes": [],
@@ -14,7 +32,7 @@
       "staffNumber": "gra3234",
       "district": "ssdfsdfs",
       "telephone": "21321321",
-      "loanAmount": 2200,
+      "loanAmount": 1200,
       "installment": "500",
       "duration": "4",
       "date": "2022-11-07",
@@ -26,7 +44,7 @@
       "staffNumber": "gra234564",
       "district": "Achimota",
       "telephone": "0547231966",
-      "loanAmount": 5500,
+      "loanAmount": 5300,
       "installment": "100",
       "duration": "10",
       "date": "2022-11-11",

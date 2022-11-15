@@ -39,9 +39,23 @@ const SavingsDeductions = () =>{
           let cumulativeSavings = 0;
           if(members)
           {
+            let id = 1;
+              for(let i = 0; i < members.length; i++)
+              {
+              members[i].loanAmount = Number(members[i].loanAmount)-Number(members[i].installment);
+              fetch('http://localhost:8050/requestedLoans/'+id,{
+                method: "PATCH",
+                headers: {"Content-type": "Application/json"},
+                body: JSON.stringify({
+                  loanAmount: members[i].loanAmount
+                })
+              })
+              id = id+1;
+            }
+            
             members.forEach((member)=>{      
               cumulativeSavings = cumulativeSavings + Number(member.installment);
-
+              
             })
             let income = new CreateIncomes(date,cumulativeSavings,time);
             fetch('http://localhost:8050/loanIncomes',{
