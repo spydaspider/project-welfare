@@ -5,6 +5,7 @@ import useFetch from './useFetch.js';
 import {useState,useEffect} from 'react';
 import CreateMember from './helpers/createMember.js';
 import CreateRequestedLoan from './helpers/createRequestedLoan.js';
+import CreateBeneficiaries from "./helpers/createBeneficiaries.js";
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -44,6 +45,7 @@ const MemberDetails = () =>{
     const [pendingLoan,setPendingLoan] = useState(null);
     const [showBen,setShowBen] = useState(null);
     const [rank,setRank] = useState('');
+    const [tickOne,setTickOne] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -164,13 +166,12 @@ const MemberDetails = () =>{
                          setPendingLoan(true);
                     }
                     else{
-                       
-                        setNewSavingsPopup(true);
-                    }
+                       setNewSavingsPopup(true);
+                        }
                 }
                 else{
                     setNewSavingsPopup(true);
-                }
+                    }
                 
             }
             const handleNewSavingsSubmit = (e) =>{
@@ -234,28 +235,82 @@ const MemberDetails = () =>{
                 }
 
             }
-            const handlePayLoanSubmit = (e) =>{
+            const handleBeneficiariesSubmit = (e) =>{
                 e.preventDefault();
-                if(memberLoan)
+                let dateTime = new Date();
+                let time = dateTime.toISOString().split('T')[1];
+                let date = dateTime.toISOString().split('T')[0];
+                let dos = document.getElementById('dos');
+                let pi = document.getElementById('pi');
+                let dop = document.getElementById('dop');
+                let doc = document.getElementById('doc');
+                let mom = document.getElementById('mom');
+                let hos = document.getElementById('hos');
+                let res = document.getElementById('res');
+                let acc = document.getElementById('acc');
+                let chb = document.getElementById('chb');
+                let nat = document.getElementById('nat');
+                let benefit;
+              
+                if(!dos.checked && !pi.checked && !dop.checked && !doc.checked && !mom.checked && !hos.checked && !res.checked && !acc.checked && !chb.checked && !nat.checked)
                 {
-                    if(loanPayment === '' || Number(loanPayment) < 0)
-                    {
-                         setLoanPaymentAmountError(true);
-                    }
-                    else if(Number(loanPayment) > Number(memberLoan.loanAmount))
-                    {
-                        setLoanPaymentAmountError(null);
-                        
-                    }
-                    else if(Number(loanPayment)<Number(memberLoan.loanAmount))
-                    {
-                        setLoanPaymentAmountError(null);
-                    }
-                    else if(Number(loanPayment) === Number(memberLoan.loanAmount))
-                    {
-                        setLoanPaymentAmountError(null);
-                    }
+                        setTickOne(true);
                 }
+                else{
+                    setTickOne(null);
+                    if(dos.checked)
+                    {
+                        benefit = dos.value;
+                    }
+                    else if(pi.checked)
+                    {
+                        benefit = pi.value;
+                    }
+                    else if(dop.checked)
+                    {
+                        benefit = dop.value;
+                    }
+                    else if(doc.checked)
+                    {
+                        benefit = doc.value;
+                    }
+                    else if(mom.checked)
+                    {
+                        benefit = mom.value;
+                    }
+                    else if(hos.checked)
+                    {
+                        benefit = hos.value;
+                    }
+                    else if(res.checked)
+                    {
+                        benefit = res.value;
+                    }
+                    else if(acc.checked)
+                    {
+                        benefit = acc.value;
+                    }
+                    else if(chb.checked)
+                    {
+                        benefit = chb.value;
+                    }
+                    else if(nat.checked)
+                    {
+                        benefit = nat.value;
+                    }
+                    console.log(benefit);
+
+                }
+
+                
+    let benefitedMember = new CreateBeneficiaries(applicantName,staffNumber,district,telephone,rank,benefit,date,time);
+        fetch('http://localhost:8050/beneficiaries',{
+            method: "POST",
+            headers: {"Content-type": "Application/json"},
+            body: JSON.stringify(benefitedMember)
+        }).then(()=>{
+            setShowBen(null);
+        })
             }
             const handleClose = () =>{
                 setNewSavingsPopup(false);
@@ -402,7 +457,7 @@ const MemberDetails = () =>{
                    
                 <h2>Benefit Form</h2>
                 {loanPaymentAmountError && <p className = "error">Enter a valid loan amount.</p>}
-                <form onSubmit = {handlePayLoanSubmit}>
+                <form onSubmit = {handleBeneficiariesSubmit}>
                     <label>Applicant's Name</label>
                    <input type = "text" value = {applicantName}/>
                    <label>Staff Number</label>
@@ -412,49 +467,50 @@ const MemberDetails = () =>{
                    <label>Telephone</label>
                    <input type = "text" value = {telephone}/>
                    <label>Rank</label>
-                   <input type = "text" value = {rank} onChange = {(e)=>setRank(e.target.value)}/>
+                   <input type = "text" value = {rank} onChange = {(e)=>setRank(e.target.value)} required/>
                    <h3>Section B</h3>
+                   {tickOne && <p className = "error">Please select one</p>}
                    <p>CATEGORIES OF ENTILMENTS/BENEFITS</p>
                    <div className = "categories">
                     <div className = "cat">
                    <label>DEATH OF SPOUSE</label>
-                   <input type = "checkbox" value = "death of spouse"/>
+                   <input type = "checkbox" value = "death of spouse" id = "dos"/>
                    </div>
                    <div className = "cat-right">
                    <label>PROTRACTED ILLNESS</label>
-                   <input type = "checkbox" value = "protracted illness"/>
+                   <input type = "checkbox" value = "protracted illness" id = "pi"/>
                    </div>
                    <div className = "cat">
                    <label>DEATH OF PARENT</label>
-                   <input type = "checkbox" value = "death of parent"/>
+                   <input type = "checkbox" value = "death of parent" id = "dop"/>
                    </div>
                    <div className = "cat-right">
                    <label>DEATH OF CHILD</label>
-                   <input type = "checkbox" value = "death of child"/>
+                   <input type = "checkbox" value = "death of child" id = "doc"/>
                    </div>
                    <div className = "cat">
                    <label>MARRIAGE OF MEMBER</label>
-                   <input type = "checkbox" value = "marriage of member"/>
+                   <input type = "checkbox" value = "marriage of member" id = "mom"/>
                    </div>
                    <div className = "cat-right">
                    <label>HOSPITALIZATION</label>
-                   <input type = "checkbox" value = "hospitalization"/>
+                   <input type = "checkbox" value = "hospitalization" id = "hos"/>
                    </div>
                    <div className = "cat">
                    <label>RESIGNATION</label>
-                   <input type = "checkbox" value = "resignation"/>
+                   <input type = "checkbox" value = "resignation" id = "res"/>
                    </div>
                    <div className = "cat-right">
                    <label>ACCIDENT</label>
-                   <input type = "checkbox" value = "accident"/>
+                   <input type = "checkbox" value = "accident" id = "acc"/>
                    </div>
                    <div className = "cat">
                    <label>CHILD BIRTH</label>
-                   <input type = "checkbox" value = "child birth"/>
+                   <input type = "checkbox" value = "child birth" id = "chb"/>
                    </div>
                    <div className = "cat-right">
                    <label>NATURAL DISASTER</label>
-                   <input type = "checkbox" value ="natural disaster"/>
+                   <input type = "checkbox" value ="natural disaster" id = "nat"/>
                    </div>
 
 

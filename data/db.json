@@ -1,4 +1,17 @@
 {
+  "beneficiaries": [
+    {
+      "appName": "Richmond",
+      "staffNumber": "gra3234",
+      "district": "ssdfsdfs",
+      "telephone": "21321321",
+      "rank": "sdfsdfsdf",
+      "benefit": "marriage of member",
+      "date": "2022-11-17",
+      "time": "13:23:53.426Z",
+      "id": 1
+    }
+  ],
   "loanIncomes": [
     {
       "date": "2022-11-11",
