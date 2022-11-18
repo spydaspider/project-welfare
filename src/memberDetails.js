@@ -1,5 +1,3 @@
-import Navigation from "./nav.js";
-import SecondNavigation from "./nav2.js";
 import {useHistory, useParams} from 'react-router-dom';
 import useFetch from './useFetch.js';
 import {useState,useEffect} from 'react';
@@ -7,6 +5,8 @@ import CreateMember from './helpers/createMember.js';
 import CreateRequestedLoan from './helpers/createRequestedLoan.js';
 import CreateBeneficiaries from "./helpers/createBeneficiaries.js";
 import CreateHirePurchase from "./helpers/createHirePurchase.js";
+import SecondNavigation from './nav2.js';
+import Navigation from './nav.js';
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -368,10 +368,10 @@ const MemberDetails = () =>{
    return (
     <div className = "membership-form-wrapper">
         <SecondNavigation/>
-            <Navigation />
+        <Navigation/>
     <div className = "membership-form">
             
-            <h1>Member file.</h1>
+            <h1>M<span>em</span>be<span>r fi</span>le.</h1>
             {error && <p className = "error">{error}</p>}
             {negativeNumber&&<p className = "error">Negative number detected.</p>}
             <form onSubmit = {handleSubmit}>                
@@ -433,15 +433,17 @@ const MemberDetails = () =>{
 
                 </fieldset>
                 <div className = "button">
-                <button className = "register-button">Edit</button>
+                <button className = "register-button r-b-left">Edit</button>
                 <button className = "register-button" onClick = {handleRemove}>Remove</button>
                 </div>
             </form>
             <div className = "transactions">
-                <h1>Transactions</h1>
-                <button onClick = {handleNewSavings}>Request Loan</button>
-                <button onClick = {handleHirePurchase}>Hire Purchase</button>
-                <button onClick ={showBeneficiaries}>Beneficiaries</button>
+                <h1>Tr<span>a</span>ns<span>a</span>ct<span>io</span>ns</h1>
+                <div className = "file-buttons">
+                <button onClick = {handleNewSavings} className = "file-button">Request Loan</button>
+                <button onClick = {handleHirePurchase} className = "file-button">Hire Purchase</button>
+                <button onClick ={showBeneficiaries} className = "file-button">Beneficiaries</button>
+                </div>
             </div>
             {pendingLoan && <div className = "pending-loan">
                         

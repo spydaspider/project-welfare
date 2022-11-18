@@ -15,6 +15,10 @@ import PrintLoan from './printPages/printLoan.js';
 import Deductions from './deductions';
 import PrintSavings from './printPages/printSavings';
 import PrintLoanDeductions from './printPages/printLoanDeductions';
+
+import Beneficiaries from './beneficiaries.js';
+import Income from './helpers/income';
+import HirePurchases from './hirePurchase';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
  
@@ -44,6 +48,7 @@ function App() {
     <Router>
     <div className="App">
     <div className = "content">
+    
         <Switch>
           <Route exact path = "/">
             <Login />
@@ -87,6 +92,15 @@ function App() {
              <Route path = "/printLoanDeductions">
              {loggedIn && <PrintLoanDeductions/>}
 
+             </Route>
+             <Route path = "/beneficiaries">
+              {loggedIn && <Beneficiaries/>}
+             </Route>
+             <Route path = "/income">
+              {loggedIn && <Income/>}
+             </Route>
+             <Route path = "/hirePurchase">
+              {loggedIn && <HirePurchases/>}
              </Route>
         </Switch>
     </div>

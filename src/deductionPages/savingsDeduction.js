@@ -1,9 +1,9 @@
-import Navigation from "../nav";
-import SecondNavigation from "../nav2";
 import useFetch from '../useFetch.js';
 import { useHistory } from "react-router-dom";
 import {useState} from 'react';
 import CreateIncomes from "../helpers/createIncomes";
+import Navigation from '../nav.js';
+import SecondNavigation from '../nav2.js';
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [checkboxError,setCheckboxError] = useState(null);
@@ -39,7 +39,7 @@ const SavingsDeductions = () =>{
           let cumulativeSavings = 0;
           if(members)
           {
-            members.forEach((member)=>{
+            members.forEach((member)=>{      
               cumulativeSavings = cumulativeSavings + Number(member.monthlySavings);
 
             })
@@ -73,8 +73,8 @@ const SavingsDeductions = () =>{
    
     return (
         <div className = "loan-deductions-wrapper">
-        <SecondNavigation/>
-        <Navigation/>
+             <SecondNavigation/>
+             <Navigation/>
 {/*         {successPrompt && <SuccessPrompt message = "Monthly savings have been successfully deducted." handleSuccessClose = {handleSuccessClose}/>}
  */}        {prompt && <div className = "prompt-dialog-background">
           <div onClick = {handleClose} className = "prompt-dialog-close">

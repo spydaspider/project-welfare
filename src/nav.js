@@ -9,10 +9,11 @@ const Navigation = () =>{
         <div className = "links">
         <Link to = "/membership">Membership</Link>
         <Link to = "/search">Search</Link>
-        <Link to = "/add">Beneficiaries</Link>
+        <Link to = "/beneficiaries">Beneficiaries</Link>
         <Link to = "/loans">Loans</Link>
         <Link to = "/income">Income</Link>
         <Link to = "/deductions">Deductions</Link>
+        <Link to = "/hirePurchase">Purchase</Link>
       
         </div>
         </div>

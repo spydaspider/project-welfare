@@ -1,6 +1,6 @@
-import Navigation from "./nav";
-import SecondNavigation from "./nav2";
 import {useHistory} from 'react-router-dom';
+import Navigation from './nav';
+import SecondNavigation from './nav2';
 const Deductions =()=>{
     const history = useHistory();
     const handleSavingsDeduction = () =>{
@@ -11,8 +11,8 @@ const Deductions =()=>{
     }
    return(
     <div className = "deductions-wrapper">
-        <Navigation/>
         <SecondNavigation/>
+        <Navigation/>
     <div className = "deductions">
         <div className = "deduction-buttons">
         <button onClick = {handleLoanDedution}>Loan Deduction</button>

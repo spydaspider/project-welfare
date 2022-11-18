@@ -1,8 +1,9 @@
-import Navigation from "./nav";
-import SecondNavigation from "./nav2";
 import {useState} from 'react';
 import useFetch from './useFetch.js';
 import {Link} from 'react-router-dom';
+import SecondNavigation from './nav2.js';
+import Navigation from './nav.js';
+
 
 const HomePage = () =>{
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -25,11 +26,11 @@ const HomePage = () =>{
 
     
     return(
-        <div className = "home">
-            <SecondNavigation/>
-            <Navigation/>
-            <div className = "home-content">
-            <input type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
+        <div className = "home-content">
+           <SecondNavigation/>
+           <Navigation/>
+            <div className = "loans">
+            <input className = "search" type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
             {
                 showMembers &&
             <table>
@@ -52,7 +53,7 @@ const HomePage = () =>{
                         <td>{Number(filteredMember.monthlySavings).toFixed(2)}cedis</td>
                         <td>{filteredMember.telephone}</td>
                         <Link to = {`/members/${filteredMember.id}`}>
-                        <button className = "details-button">details</button>
+                        <button className = "details-button">Member File</button>
                         </Link>
                        </tr>
 

@@ -1,7 +1,7 @@
-import Navigation from "./nav";
-import SecondNavigation from "./nav2";
 import useFetch from "./useFetch";
 import {useHistory} from 'react-router-dom';
+import SecondNavigation from "./nav2";
+import Navigation from "./nav";
 const Loans = () =>{
     const {data: requestedLoans, isPending: isLoading, error} = useFetch('http://localhost:8050/requestedLoans');
     const history = useHistory();
@@ -10,13 +10,13 @@ const Loans = () =>{
     }
     return(
         <div className = "loan-wrapper">
-             <SecondNavigation/>
-            <Navigation />
+            <SecondNavigation/>
+            <Navigation/>
         <div className = "loans">
         <div className = "print-loans">
             <button onClick = {handlePrintLoan}>print</button>
             </div>
-            <h1>All requested loans.</h1>
+            <h1>Al<span>l re</span>qu<span>est</span>e<span>d l</span>o<span>an</span>s.</h1>
             
             <table>
                 <thead>
