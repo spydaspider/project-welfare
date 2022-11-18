@@ -6,6 +6,7 @@ import {useState,useEffect} from 'react';
 import CreateMember from './helpers/createMember.js';
 import CreateRequestedLoan from './helpers/createRequestedLoan.js';
 import CreateBeneficiaries from "./helpers/createBeneficiaries.js";
+import CreateHirePurchase from "./helpers/createHirePurchase.js";
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -46,6 +47,15 @@ const MemberDetails = () =>{
     const [showBen,setShowBen] = useState(null);
     const [rank,setRank] = useState('');
     const [tickOne,setTickOne] = useState(null);
+    const [showHirePurchase, setShowHirePurchase] = useState(null);
+    const [nameOfItem, setNameOfItem] = useState('');
+    const [itemBrand,setItemBrand] = useState('');
+    const [unitPrice, setUnitPrice] = useState('');
+    const [interest,setInterest] = useState('');
+    const [totalAmount,setTotalAmount] = useState('');
+    const [quantity,setQuantity] = useState('');
+    const [itemDuration, setItemDuration] = useState('');
+    const [lessThanZero,setLessThanZero] = useState('');
     useEffect(
         ()=>{
              if(member)
@@ -298,7 +308,6 @@ const MemberDetails = () =>{
                     {
                         benefit = nat.value;
                     }
-                    console.log(benefit);
 
                 }
 
@@ -310,6 +319,7 @@ const MemberDetails = () =>{
             body: JSON.stringify(benefitedMember)
         }).then(()=>{
             setShowBen(null);
+            setRank('');
         })
             }
             const handleClose = () =>{
@@ -321,6 +331,39 @@ const MemberDetails = () =>{
             }
             const showBeneficiaries = () =>{
                setShowBen(true);
+            }
+            const handleHirePurchase = () =>{
+                setShowHirePurchase(true);
+            }
+            const handleHirePurchaseSubmit = (e) =>{
+                e.preventDefault();
+                if(unitPrice < 0 || interest < 0 || quantity < 0 || duration < 0 ||totalAmount < 0)
+                {
+                    setLessThanZero(true);
+
+                }
+                else
+                {
+                    setLessThanZero(null);
+                    let dateTime = new Date();
+                    let time = dateTime.toISOString().split('T')[1];
+                    let date = dateTime.toISOString().split('T')[0];
+                    let hirePurchase = new CreateHirePurchase(applicantName,staffNumber,district,telephone,nameOfItem,itemBrand,unitPrice,interest,totalAmount,quantity,itemDuration,date,time);
+                    fetch('http://localhost:8050/hirePurchases',{
+                        method: "POST",
+                        headers: {"Content-type": "Application/json"},
+                        body: JSON.stringify(hirePurchase)
+                    }).then(()=>{
+                        setShowHirePurchase(null);
+                        setItemBrand('');
+                        setNameOfItem('');
+                        setQuantity('');
+                        setItemDuration('');
+                        setInterest('');
+                        setUnitPrice('');
+                    })
+                }
+
             }
    return (
     <div className = "membership-form-wrapper">
@@ -397,7 +440,7 @@ const MemberDetails = () =>{
             <div className = "transactions">
                 <h1>Transactions</h1>
                 <button onClick = {handleNewSavings}>Request Loan</button>
-                <button>Hire Purchase</button>
+                <button onClick = {handleHirePurchase}>Hire Purchase</button>
                 <button onClick ={showBeneficiaries}>Beneficiaries</button>
             </div>
             {pendingLoan && <div className = "pending-loan">
@@ -444,6 +487,53 @@ const MemberDetails = () =>{
                 </form>
                 </div>
             </div>
+            }
+            {
+                  showHirePurchase &&
+                  <div className = "new-savings-bg">
+                  <div onClick = {handleClose} className = "close">
+                              <span className = "bar"></span>
+                              <span className = "bar"></span>
+                              <span className = "bar"></span>
+                          </div>
+                      <div className = "new-savings">
+                         
+                      <h2>Goods Received Form</h2>
+                      {loanPaymentAmountError && <p className = "error">Enter a valid loan amount.</p>}
+                      <form onSubmit = {handleHirePurchaseSubmit}>
+                          <label>Applicant's Name</label>
+                         <input type = "text" value = {applicantName}/>
+                         <label>Staff Number</label>
+                         <input type = "text" value = {staffNumber}/>
+                         <label>District</label>
+                         <input type = "text" value = {district}/>
+                         <label>Telephone</label>
+                         <input type = "text" value = {telephone}/>
+                         <label>Name Of Item</label>
+                         <input type = "text" value = {nameOfItem} onChange = {(e)=>setNameOfItem(e.target.value)} required/>
+                         <label>Brand</label>
+                         <input type = "text" value = {itemBrand} onChange = {(e)=>setItemBrand(e.target.value)} required/>
+                         <label>Unit Price</label>
+                         <input type = "number" value = {unitPrice} onChange = {(e)=>setUnitPrice(e.target.value)} required/>
+                         <label>Interest On Item</label>
+                         <input type = "number" value = {interest} onChange = {(e)=>setInterest(e.target.value)} required/>
+                         <label>Total Amount</label>
+                         <input type = "number" value = {totalAmount} onChange = {(e)=>setTotalAmount(e.target.value)} required/>
+                         <label>Quantity</label>
+                         <input type = "number" value = {quantity} onChange = {(e)=>setQuantity(e.target.value)} required/>
+                         <label>Duration</label>
+                         <input type = "text" value = {itemDuration} onChange = {(e)=>setItemDuration(e.target.value)}required/>
+
+                         {lessThanZero && <p className = "error">Please enter a valid number in the number fields</p>}
+
+                         <div className = "new-savings-button">
+                         <button>submit</button>
+                        
+      
+                         </div>
+                      </form>
+                      </div>
+                  </div>
             }
              {
                 showBen &&
