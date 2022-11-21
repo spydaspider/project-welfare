@@ -48,20 +48,110 @@
       "amount": 600,
       "time": "00:10:29.881Z",
       "id": 4
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 600,
+      "time": "11:05:36.348Z",
+      "id": 5
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 600,
+      "time": "11:06:11.628Z",
+      "id": 6
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 600,
+      "time": "11:07:20.292Z",
+      "id": 7
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 1500,
+      "time": "11:29:38.923Z",
+      "id": 8
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 500,
+      "time": "11:30:31.466Z",
+      "id": 9
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 500,
+      "time": "11:40:49.890Z",
+      "id": 10
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 2000,
+      "time": "13:36:41.407Z",
+      "id": 11
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 2000,
+      "time": "13:37:13.625Z",
+      "id": 12
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 1100,
+      "time": "13:38:00.327Z",
+      "id": 13
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 1100,
+      "time": "13:39:07.721Z",
+      "id": 14
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 3000,
+      "time": "13:46:30.151Z",
+      "id": 15
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 300,
+      "time": "13:47:32.047Z",
+      "id": 16
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 4000,
+      "time": "13:55:32.047Z",
+      "id": 17
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 3100,
+      "time": "15:32:18.263Z",
+      "id": 18
+    },
+    {
+      "date": "2022-11-21",
+      "amount": 200,
+      "time": "15:33:50.678Z",
+      "id": 19
     }
   ],
   "incomes": [],
   "requestedLoans": [
     {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "loanAmount": 1200,
-      "installment": "500",
-      "duration": "4",
-      "date": "2022-11-07",
-      "time": "2023-03-07",
+      "appName": "Gifty",
+      "staffNumber": "gra45354",
+      "district": "Accra",
+      "telephone": "0547231966",
+      "loanAmount": 4400,
+      "installment": "4000",
+      "duration": "3",
+      "date": "2022-11-21",
+      "time": "2023-2-21",
       "id": 1
     },
     {
@@ -69,12 +159,24 @@
       "staffNumber": "gra234564",
       "district": "Achimota",
       "telephone": "0547231966",
-      "loanAmount": 5300,
-      "installment": "100",
-      "duration": "10",
-      "date": "2022-11-11",
-      "time": "2023-9-11",
+      "loanAmount": 9419.3,
+      "installment": "4000",
+      "duration": "2",
+      "date": "2022-11-21",
+      "time": "2023-1-21",
       "id": 2
+    },
+    {
+      "appName": "Richmond",
+      "staffNumber": "gra3234",
+      "district": "ssdfsdfs",
+      "telephone": "21321321",
+      "loanAmount": 5500,
+      "installment": "1000",
+      "duration": "2",
+      "date": "2022-11-21",
+      "time": "2023-1-21",
+      "id": 3
     }
   ],
   "users": [
@@ -127,6 +229,28 @@
       "date": "2022-10-27",
       "time": "00:00:44.017Z",
       "id": 2
+    },
+    {
+      "membershipNumber": 3,
+      "appName": "Gifty",
+      "staffNumber": "gra45354",
+      "district": "Accra",
+      "telephone": "0547231966",
+      "monthlySavings": "2000",
+      "witnessName": "gbnmnbmbn",
+      "witnessContact": "gfngfgf",
+      "nomineeName1": "ghfdgfdg",
+      "nomineeName2": "",
+      "nomineeName3": "",
+      "nRelationship1": "erghgfdg",
+      "nRelationship2": "",
+      "nRelationship3": "",
+      "nPercentage1": "10",
+      "nPercentage2": "",
+      "nPercentage3": "",
+      "date": "2022-11-21",
+      "time": "15:36:02.397Z",
+      "id": 3
     }
   ]
 }

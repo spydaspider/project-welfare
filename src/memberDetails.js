@@ -13,6 +13,8 @@ const MemberDetails = () =>{
 
     const {data:member} = useFetch('http://localhost:8050/members/'+id);
     const {data:memberLoan} = useFetch('http://localhost:8050/requestedLoans/'+id);
+    const {data:memberLoans} = useFetch('http://localhost:8050/requestedLoans');
+
 
     const [applicantName,setApplicantName] = useState('');
     const [staffNumber,setStaffNumber] = useState('');
@@ -168,15 +170,27 @@ const MemberDetails = () =>{
               
             }
             const handleNewSavings = () =>{
-                if(memberLoan)
+                let mlFound = 0;
+                if(memberLoans)
                 {
-                    if(Number(memberLoan.loanAmount) !== 0.0)
+                    memberLoans.forEach((ml)=>{
+                        if(ml.staffNumber===staffNumber)
+                        {
+                            mlFound = 1;
+                            
+                           
+                        }
+                    })
+                    if(mlFound === 1)
                     {
-                        
-                         setPendingLoan(true);
+                        setPendingLoan(true);
+
+                      
+
                     }
                     else{
                        setNewSavingsPopup(true);
+                       console.log("No loan");
                         }
                 }
                 else{

@@ -4,6 +4,7 @@ import LoanDeductions from './deductionPages/loanDeduction';
 import SavingsDeductions from './deductionPages/savingsDeduction';
 import CreateAccount from './createAccount.js';
 import { useState,useEffect } from 'react';
+import PrintOnlyLoan from './printPages/printOnlyLoan.js';
 import { useHistory } from 'react-router-dom';
 import Store from './helpers/storage';
 import Login from './login.js';
@@ -101,6 +102,9 @@ function App() {
              </Route>
              <Route path = "/hirePurchase">
               {loggedIn && <HirePurchases/>}
+             </Route>
+             <Route path = "/printOnlyLoan">
+              {loggedIn && <PrintOnlyLoan/>}
              </Route>
         </Switch>
     </div>

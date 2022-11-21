@@ -1,15 +1,35 @@
 import useFetch from '../useFetch.js';
 import { useHistory } from "react-router-dom";
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import CreateIncomes from "../helpers/createIncomes";
 import SecondNavigation from '../nav2.js';
 import Navigation from '../nav.js';
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
+  const [newInstallment,setNewInstallment] = useState('');
   const [checkboxError,setCheckboxError] = useState(null);
     const history = useHistory();
     const {data: members} = useFetch('http://localhost:8050/requestedLoans');
-
+      useEffect(()=>{
+      if(members)
+      {
+       
+         
+      
+        members.forEach((rl)=>{
+             if(Number(rl.installment) >= Number(rl.loanAmount))
+            {
+              rl.installment = rl.loanAmount;
+              setNewInstallment(rl.installment);
+            }
+            else
+            {
+              setNewInstallment(rl.installment);
+            } 
+            
+        })
+      }
+     },[members])  
     const handlePrintDeductions = () =>{
         setPrompt(true);
 
@@ -42,6 +62,7 @@ const SavingsDeductions = () =>{
             let id = 1;
               for(let i = 0; i < members.length; i++)
               {
+                
               members[i].loanAmount = Number(members[i].loanAmount)-Number(members[i].installment);
               fetch('http://localhost:8050/requestedLoans/'+id,{
                 method: "PATCH",
@@ -50,8 +71,11 @@ const SavingsDeductions = () =>{
                   loanAmount: members[i].loanAmount
                 })
               })
-              id = id+1;
+
+              id = id + 1;
+             
             }
+            
             
             members.forEach((member)=>{      
               cumulativeSavings = cumulativeSavings + Number(member.installment);
@@ -65,10 +89,13 @@ const SavingsDeductions = () =>{
             }).then(()=>{
                 setPrompt(null);
                 
-                history.push('/printLoanDeductions'); 
+                history.push('/printLoanDeductions');
+              
+              
 
                
             })
+           
             
             
           }
@@ -79,8 +106,7 @@ const SavingsDeductions = () =>{
         }
         else
         {
-          history.push('/printLoanDeductions'); 
-
+          history.push('/printOnlyLoan'); 
         }
       }
     }
@@ -91,11 +117,11 @@ const SavingsDeductions = () =>{
          <Navigation/>
 {/*         {successPrompt && <SuccessPrompt message = "Monthly savings have been successfully deducted." handleSuccessClose = {handleSuccessClose}/>}
  */}        {prompt && <div className = "prompt-dialog-background">
-          <div onClick = {handleClose} className = "prompt-dialog-close">
+            <div onClick = {handleClose} className = "prompt-dialog-close">
             <span className = "bar"></span>
             <span className = "bar"></span>
             <span className = "bar"></span>
-
+                
             </div>
           <form onSubmit = {handleSubmit} className = "prompt-dialog">
             {checkboxError && <p className = "error">Please select one.</p>}
@@ -134,7 +160,8 @@ const SavingsDeductions = () =>{
                             <tr>
                             <td>{member.staffNumber}</td>
                             <td>{member.appName}</td>
-                            <td>{member.installment}cedis</td>
+                           <td>{member.installment}cedis</td>
+                           
                            </tr>
                         ))}
                        

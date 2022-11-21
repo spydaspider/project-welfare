@@ -1,29 +1,16 @@
 import { useEffect,useState } from "react";
-import useFetch from "../useFetch";
-const PrintLoanDeductions = () =>{
+import useFetch from "../useFetch"
+const PrintOnlyLoan = () =>{
     const {data: members, isPending: isLoading, error} = useFetch('http://localhost:8050/requestedLoans');
-    const [newInstallment,setNewInstallment] = useState('');
 
     useEffect(()=>{
         if(members)
         {
          
             window.print();
-
-        
-          members.forEach((rl)=>{
-              if(Number(rl.installment) >= Number(rl.loanAmount))
-              {
-                rl.installment = rl.loanAmount;
-                setNewInstallment(rl.installment);
-              }
-              else
-              {
-                setNewInstallment(rl.installment);
-              }
-              
-          })
         }
+        
+        
        },[members]) 
     return(
         <div className = "savings-deductions">
@@ -42,7 +29,7 @@ const PrintLoanDeductions = () =>{
                             <tr>
                             <td>{member.staffNumber}</td>
                             <td>{member.appName}</td>
-                            <td>{newInstallment && newInstallment}</td>
+                            <td>{member.installment}</td>
                            </tr>
                         ))}
                        
@@ -52,4 +39,4 @@ const PrintLoanDeductions = () =>{
       </div>
     )
 }
-export default PrintLoanDeductions;
+export default PrintOnlyLoan;
