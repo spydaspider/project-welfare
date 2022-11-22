@@ -10,6 +10,7 @@ const SavingsDeductions = () =>{
   const [checkboxError,setCheckboxError] = useState(null);
     const history = useHistory();
     const {data: members} = useFetch('http://localhost:8050/requestedLoans');
+    const {data: incomes} = useFetch('http://localhost:8050/incomes');
       useEffect(()=>{
       if(members)
       {
@@ -82,19 +83,25 @@ const SavingsDeductions = () =>{
               
             })
             let income = new CreateIncomes(date,cumulativeSavings,time);
-            fetch('http://localhost:8050/loanIncomes',{
-              method: "POST",
-              headers: {"Content-type": "Application/json"},
-              body: JSON.stringify(income)
-            }).then(()=>{
-                setPrompt(null);
+          
+                
+                let newIncome = Number(incomes[0].income)+Number(cumulativeSavings);
+                fetch('http://localhost:8050/incomes/'+1,{
+                   method: "PATCH",
+                   headers: {"Content-type": "Application/json"},
+                   body: JSON.stringify({
+                   income: newIncome,
+                   })
+                }).then(()=>{
+                  setPrompt(null);
                 
                 history.push('/printLoanDeductions');
+                })
               
               
 
                
-            })
+            
            
             
             
