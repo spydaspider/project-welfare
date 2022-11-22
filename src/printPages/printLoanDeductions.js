@@ -3,27 +3,34 @@ import useFetch from "../useFetch";
 const PrintLoanDeductions = () =>{
     const {data: members, isPending: isLoading, error} = useFetch('http://localhost:8050/requestedLoans');
     const [newInstallment,setNewInstallment] = useState('');
+    const [loanedMembers, setLoanedMembers] = useState([]);
 
     useEffect(()=>{
         if(members)
         {
-         
-            window.print();
-
-        
+            
           members.forEach((rl)=>{
               if(Number(rl.installment) >= Number(rl.loanAmount))
               {
                 rl.installment = rl.loanAmount;
-                setNewInstallment(rl.installment);
-              }
-              else
-              {
-                setNewInstallment(rl.installment);
+                
+                
               }
               
           })
+          setLoanedMembers(members);
+          members.forEach((rl)=>{
+            if(Number(rl.loanAmount) <= 0)
+            {
+               fetch('http://localhost:8050/requestedLoans/'+rl.id,{
+                 method: "DELETE",                  
+               }).then(()=>{
+                window.location.reload();
+               })
+            }
+           })
         }
+         
        },[members]) 
     return(
         <div className = "savings-deductions">
@@ -42,13 +49,15 @@ const PrintLoanDeductions = () =>{
                             <tr>
                             <td>{member.staffNumber}</td>
                             <td>{member.appName}</td>
-                            <td>{newInstallment && newInstallment}</td>
+                            <td>{member.installment}</td>
                            </tr>
                         ))}
                        
                     </tbody>
             </table>
+            
           }
+          
       </div>
     )
 }

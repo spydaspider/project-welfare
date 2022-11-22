@@ -4,11 +4,13 @@ import {useState} from 'react';
 import CreateIncomes from "../helpers/createIncomes";
 import Navigation from '../nav.js';
 import SecondNavigation from '../nav2.js';
+import CreateStepIncomes from '../helpers/createStepIncomes.js';
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [checkboxError,setCheckboxError] = useState(null);
     const history = useHistory();
     const {data: members} = useFetch('http://localhost:8050/members');
+    const {data: incomes} = useFetch('http://localhost:8050/incomes');
 
     const handlePrintDeductions = () =>{
         setPrompt(true);
@@ -43,9 +45,32 @@ const SavingsDeductions = () =>{
               cumulativeSavings = cumulativeSavings + Number(member.monthlySavings);
 
             })
-            let income = new CreateIncomes(date,cumulativeSavings,time);
-            fetch('http://localhost:8050/incomes',{
-              method: "POST",
+           if(incomes.length === 0)
+           {
+            let income = new CreateIncomes(cumulativeSavings);
+              fetch('http://localhost:8050/incomes',{
+               method: "POST",
+               headers: {"Content-type": "Application/json"},
+               body: JSON.stringify(income)
+             }).then(()=>{
+                 setPrompt(null);
+                  history.push('/printSavings');  
+                 
+ 
+                
+             }) 
+           }
+           else
+           {
+                  let existingIncome = 0;
+                  incomes.forEach((income)=>{
+                    existingIncome = existingIncome + Number(income.income);
+                  })
+                  let overallIncome = cumulativeSavings + existingIncome;
+                  let income = new CreateIncomes(overallIncome);
+
+                   fetch('http://localhost:8050/incomes/'+1,{
+              method: "PUT",
               headers: {"Content-type": "Application/json"},
               body: JSON.stringify(income)
             }).then(()=>{
@@ -54,7 +79,14 @@ const SavingsDeductions = () =>{
                 history.push('/printSavings'); 
 
                
-            })
+            }) 
+           }
+           let stepIncome = new CreateStepIncomes(date,time,cumulativeSavings);
+           fetch('http://localhost:8050/stepIncomes',{
+            method: "POST",
+            headers: {"Content-type": "Application/json"},
+            body: JSON.stringify(stepIncome)
+           }) 
             
             
           }

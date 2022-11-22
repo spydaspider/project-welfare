@@ -22,6 +22,8 @@ import Income from './helpers/income';
 import HirePurchases from './hirePurchase';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
+
+  
  
   let log = Store.getLocalStorage('log');
 

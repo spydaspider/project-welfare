@@ -1,8 +1,7 @@
+
 export default class CreateIncomes{
-    constructor(date,amount,time)
+    constructor(income)
     {
-        this.date = date;
-        this.amount = amount;
-        this.time = time;
+      this.income = income;
     }
 }

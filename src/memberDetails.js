@@ -7,6 +7,7 @@ import CreateBeneficiaries from "./helpers/createBeneficiaries.js";
 import CreateHirePurchase from "./helpers/createHirePurchase.js";
 import SecondNavigation from './nav2.js';
 import Navigation from './nav.js';
+import CreateIncomes from './helpers/createIncomes.js';
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -14,6 +15,7 @@ const MemberDetails = () =>{
     const {data:member} = useFetch('http://localhost:8050/members/'+id);
     const {data:memberLoan} = useFetch('http://localhost:8050/requestedLoans/'+id);
     const {data:memberLoans} = useFetch('http://localhost:8050/requestedLoans');
+    const {data: incomes} = useFetch('http://localhost:8050/incomes'); 
 
 
     const [applicantName,setApplicantName] = useState('');
@@ -58,6 +60,8 @@ const MemberDetails = () =>{
     const [quantity,setQuantity] = useState('');
     const [itemDuration, setItemDuration] = useState('');
     const [lessThanZero,setLessThanZero] = useState('');
+    const [noIncome,setNoIncome] = useState(null);
+    const [lowIncome,setLowIncome] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -107,12 +111,7 @@ const MemberDetails = () =>{
         console.log(members.length);
         if(members && members.length !== 0)
         {
-           /*  members.forEach((member)=>{
-                if(member.staffNumber.toLowerCase() === staffNumber.toLowerCase())
-                {
-                     searchCounter = searchCounter + 1;
-                }
-            }) */
+          
             
                 if(nPercentage1 < 0 || nPercentage2 < 0 || nPercentage3 < 0 || monthlySavings < 0)
                 {
@@ -136,12 +135,7 @@ const MemberDetails = () =>{
                 })
                 }
         
-           /*  else
-            {
-                setStaffNumberExists(true);
-                setNegativeNumber(null);
-                setError(null);
-            } */
+           
             }
             else{
                 if(nPercentage1 < 0 || nPercentage2 < 0 || nPercentage3 < 0 || monthlySavings < 0)
@@ -216,7 +210,6 @@ const MemberDetails = () =>{
                     let year;
                     let month;
                     let day;
-                    setNewSavingsPopup(false);
                     year = Number(date.substring(0,4));
                     month = Number(date.substring(5,7));
                     day = Number(date.substring(8,10));
@@ -243,7 +236,22 @@ const MemberDetails = () =>{
                     {
                         endDate = year+"-"+month+"-"+day;
                     }
-                
+                    if(incomes && incomes.length === 0)
+                    {
+                        setNoIncome(true);
+                        setLowIncome(null);
+                        setSAError(null);
+
+                    }
+                    else if(Number(incomes[0].income) < Number(savingsAmount))
+                    {
+                        setLowIncome(true);
+                        setNoIncome(null);
+                        setSAError(null);
+                    }
+                    else{
+                        setLowIncome(null);
+                        setNoIncome(null);
                     const memberLoan = new CreateRequestedLoan(applicantName,staffNumber,district,telephone,Number(savingsAmount)+(Number(savingsAmount)*(10/100)),installment,duration,date,endDate);
                     fetch(' http://localhost:8050/requestedLoans',{
                         method: 'POST',
@@ -252,9 +260,20 @@ const MemberDetails = () =>{
                     }).then(()=>{
                          window.location.reload();
                         setSavingsAmount('');
-                        setSAError(false); 
+                        setSAError(false);
+                        setNewSavingsPopup(false);
+
+                        //subtract it from the income.
+                        let newIncome = Number(incomes[0].income)-Number(savingsAmount);
+                        
+                         let income = new CreateIncomes(newIncome);
+                        fetch('http://localhost:8050/incomes/'+1,{
+                            method: "PUT",
+                            headers: {"Content-type": "Application/json"},
+                            body: JSON.stringify(income)
+                        })  
                     })   
-                
+                    }
                   
                 }
 
@@ -483,6 +502,8 @@ const MemberDetails = () =>{
                 <div className = "new-savings">
                    
                 <h2>Request Loan</h2>
+                {lowIncome && <p className = "error">The loan amount is greater than the income.</p>}
+                {noIncome && <p className = "error">There is no income yet.</p>}
                 {SAError && <p className = "error">Enter valid values for all fields.</p>}
                 <form onSubmit = {handleNewSavingsSubmit}>
                     <label>Applicant Name</label>
