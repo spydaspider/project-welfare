@@ -1,107 +1,114 @@
 import useFetch from '../useFetch.js';
 import { useHistory } from "react-router-dom";
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import CreateIncomes from "../helpers/createIncomes";
 import Navigation from '../nav.js';
 import SecondNavigation from '../nav2.js';
 import CreateStepIncomes from '../helpers/createStepIncomes.js';
+import jsPDF from 'jspdf';
+
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [checkboxError,setCheckboxError] = useState(null);
+  const [date,setDate] = useState('');
     const history = useHistory();
     const {data: members} = useFetch('http://localhost:8050/members');
     const {data: incomes} = useFetch('http://localhost:8050/incomes');
+     useEffect(()=>{
+      let dateTime = new Date();
+      let time = dateTime.toISOString().split('T')[1];
+      let date = dateTime.toISOString().split('T')[0];
+      setDate(date);
+     },[members])
+     const handlePrompt = () =>{
+         setPrompt(true);
+     }
+    const handlePrintDeductionsOnly = () =>{
+      const doc = new jsPDF("p","pt","a4");
+      doc.html(document.querySelector('.savings-deductions'),{
+        callback: function(pdf){
+          pdf.save("loanDeductions.pdf");
+        }
+      }
+      );
 
+    }
     const handlePrintDeductions = () =>{
-        setPrompt(true);
+      const doc = new jsPDF("p","pt","a4");
+      doc.html(document.querySelector('.savings-deductions'),{
+        callback: function(pdf){
+          pdf.save("SavingsDeductions.pdf");
+        }
+      }
+      ); 
+      let dateTime = new Date();
+      let time = dateTime.toISOString().split('T')[1];
+      let date = dateTime.toISOString().split('T')[0];
+      //After deduction there will be an income.
+      let cumulativeSavings = 0;
+      if(members)
+      {
 
+        members.forEach((member)=>{      
+          cumulativeSavings = cumulativeSavings + Number(member.monthlySavings);
 
+        })
+       if(incomes.length === 0)
+       {
+        let income = new CreateIncomes(cumulativeSavings);
+          fetch('http://localhost:8050/incomes',{
+           method: "POST",
+           headers: {"Content-type": "Application/json"},
+           body: JSON.stringify(income)
+         }).then(()=>{
+            setPrompt(null);
+         }) 
+          let stepIncome = new CreateStepIncomes(date,time,cumulativeSavings);
+       fetch('http://localhost:8050/stepIncomes',{
+        method: "POST",
+        headers: {"Content-type": "Application/json"},
+        body: JSON.stringify(stepIncome)
+       }) 
+       }
+       else
+       {
+             console.log("Length is not 0");
+              let existingIncome = 0;
+              incomes.forEach((income)=>{
+                existingIncome = existingIncome + Number(income.income);
+              })
+              let overallIncome = cumulativeSavings + existingIncome;
+              let income = new CreateIncomes(overallIncome);
+
+                fetch('http://localhost:8050/incomes/'+1,{
+          method: "PUT",
+          headers: {"Content-type": "Application/json"},
+          body: JSON.stringify(income)
+        }).then(()=>{
+            setPrompt(null);
+
+           
+        }) 
+         let stepIncome = new CreateStepIncomes(date,time,cumulativeSavings);
+       fetch('http://localhost:8050/stepIncomes',{
+        method: "POST",
+        headers: {"Content-type": "Application/json"},
+        body: JSON.stringify(stepIncome)
+       })   
+       }
+       
+        
+        
+      }
+    
+      
+
+    
     }
     const handleClose = () =>{
       setPrompt(null);
     }
-    const handleSubmit = (e) =>{
-      e.preventDefault();
-      const check1 = document.getElementById('dP');
-      const check2 = document.getElementById('p');
-      if((check1.checked && check2.checked)||(!check1.checked && !check2.checked))
-      {
-        setCheckboxError(true);
-
-      }
-      else
-      {
-        setCheckboxError(null);
-        if(check1.checked)
-        {
-          let dateTime = new Date();
-          let time = dateTime.toISOString().split('T')[1];
-          let date = dateTime.toISOString().split('T')[0];
-          //After deduction there will be an income.
-          let cumulativeSavings = 0;
-          if(members)
-          {
-            members.forEach((member)=>{      
-              cumulativeSavings = cumulativeSavings + Number(member.monthlySavings);
-
-            })
-           if(incomes.length === 0)
-           {
-            let income = new CreateIncomes(cumulativeSavings);
-              fetch('http://localhost:8050/incomes',{
-               method: "POST",
-               headers: {"Content-type": "Application/json"},
-               body: JSON.stringify(income)
-             }).then(()=>{
-                 setPrompt(null);
-                  history.push('/printSavings');  
-                 
- 
-                
-             }) 
-           }
-           else
-           {
-                  let existingIncome = 0;
-                  incomes.forEach((income)=>{
-                    existingIncome = existingIncome + Number(income.income);
-                  })
-                  let overallIncome = cumulativeSavings + existingIncome;
-                  let income = new CreateIncomes(overallIncome);
-
-                   fetch('http://localhost:8050/incomes/'+1,{
-              method: "PUT",
-              headers: {"Content-type": "Application/json"},
-              body: JSON.stringify(income)
-            }).then(()=>{
-                setPrompt(null);
-                
-                history.push('/printSavings'); 
-
-               
-            }) 
-           }
-           let stepIncome = new CreateStepIncomes(date,time,cumulativeSavings);
-           fetch('http://localhost:8050/stepIncomes',{
-            method: "POST",
-            headers: {"Content-type": "Application/json"},
-            body: JSON.stringify(stepIncome)
-           }) 
-            
-            
-          }
-        
-          
-
-        
-        }
-        else
-        {
-          history.push('/printSavings'); 
-
-        }
-      }
-    }
+    
    
     return (
         <div className = "loan-deductions-wrapper">
@@ -115,28 +122,24 @@ const SavingsDeductions = () =>{
             <span className = "bar"></span>
 
             </div>
-          <form onSubmit = {handleSubmit} className = "prompt-dialog">
+           <form className = "prompt-dialog">
             {checkboxError && <p className = "error">Please select one.</p>}
-            <p className = "prompt-message">These operations cannot be reversed.</p>
-            <div className = "c-box">
-            <label>Deduct and Print</label>
-             
-            <input type = "checkbox" id = "dP"/>
-            </div>
-             <div className = "c-box">
-             <label>Print-Only</label>
-
-            <input type = "checkbox" id = "p"/>
-
-            </div>
+            <p className = "prompt-message">This operation can be hardly reversed. However, quickly contact developer if reversal is needed.</p>
+            
              <div class = "ok-flex">
-            <button className = "ok">Ok</button>
+          
+            <button onClick = {handlePrintDeductions}className = "ok">Ok</button>
             </div>
-            </form>
+            </form>  
         </div>
 }
+<button onClick = {handlePrompt} className = "print-deductions">Generate PDF and Deduct</button>
+<button onClick = {handlePrintDeductionsOnly} className = "print-deductions">Generate PDF Only</button>
+
+
       <div className = "savings-deductions">
-        <button onClick = {handlePrintDeductions} className = "print-deductions">Print Deductions</button>
+      <h2 className = "loan-deduction-header">CLEANERS WELFARE ASSOCIATION SAVINGS {date}</h2>
+
           {
             members && <table>
                 <thead> 

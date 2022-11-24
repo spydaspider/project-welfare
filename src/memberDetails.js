@@ -8,6 +8,8 @@ import CreateHirePurchase from "./helpers/createHirePurchase.js";
 import SecondNavigation from './nav2.js';
 import Navigation from './nav.js';
 import CreateIncomes from './helpers/createIncomes.js';
+import Store from './helpers/storage.js';
+import CreateMLLength from './helpers/createMLLength.js';
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -262,7 +264,12 @@ const MemberDetails = () =>{
                         setSavingsAmount('');
                         setSAError(false);
                         setNewSavingsPopup(false);
-
+                        //Send the size to the localStorage
+                        if(memberLoans)
+   {
+                        let mLLength = new CreateMLLength(memberLoans.length+1);
+       Store.addLocalStorage('requestedLoans',mLLength);
+   }
                         //subtract it from the income.
                         let newIncome = Number(incomes[0].income)-Number(savingsAmount);
                         

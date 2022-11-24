@@ -1,41 +1,28 @@
 import { useEffect,useState } from "react";
+import Store from "../helpers/storage";
 import useFetch from "../useFetch";
 const PrintLoanDeductions = () =>{
     const {data: members, isPending: isLoading, error} = useFetch('http://localhost:8050/requestedLoans');
-    const [newInstallment,setNewInstallment] = useState('');
-    const [loanedMembers, setLoanedMembers] = useState([]);
-
+    const [filteredMembers,setFilteredMembers] = useState([]);
     useEffect(()=>{
-        if(members)
-        {
-            
-          members.forEach((rl)=>{
-              if(Number(rl.installment) >= Number(rl.loanAmount))
-              {
-                rl.installment = rl.loanAmount;
-                
-                
-              }
-              
-          })
-          setLoanedMembers(members);
-          members.forEach((rl)=>{
-            if(Number(rl.loanAmount) <= 0)
-            {
-               fetch('http://localhost:8050/requestedLoans/'+rl.id,{
-                 method: "DELETE",                  
-               }).then(()=>{
-                window.location.reload();
-               })
-            }
-           })
-        }
-         
-       },[members]) 
+      if(members)
+      {
+        
+        
+        
+       
+        
+        let filtMembers = members.filter((member)=>member.loanAmount !== 0);
+        setFilteredMembers(filtMembers);
+       
+      }
+    
+    },[members])
+ 
     return(
         <div className = "savings-deductions">
           {
-            members && <table>
+            members && filteredMembers && <table>
                 <thead>
                     <tr>
                         <th>STAFF ID</th>
@@ -45,7 +32,7 @@ const PrintLoanDeductions = () =>{
                    
                 </thead>
                 <tbody>
-                        {members.map((member)=>(
+                        {filteredMembers.map((member)=>(
                             <tr>
                             <td>{member.staffNumber}</td>
                             <td>{member.appName}</td>

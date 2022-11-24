@@ -30,7 +30,6 @@ let dateTime = new Date();
 let time = dateTime.toISOString().split('T')[1];
 let date = dateTime.toISOString().split('T')[0];
 let searchCounter = 0;
-console.log(members.length);
 if(members && members.length !== 0)
 {
     members.forEach((member)=>{

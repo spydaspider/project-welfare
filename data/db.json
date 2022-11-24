@@ -1,16 +1,10 @@
 {
   "stepIncomes": [
     {
-      "date": "2022-11-22",
-      "time": "11:43:51.155Z",
-      "income": 323203034,
+      "date": "2022-11-24",
+      "time": "12:21:56.574Z",
+      "income": 5266,
       "id": 1
-    },
-    {
-      "date": "2022-11-22",
-      "time": "11:44:53.228Z",
-      "income": 323203034,
-      "id": 2
     }
   ],
   "hirePurchases": [],
@@ -38,11 +32,9 @@
       "id": 2
     }
   ],
-  
-     
   "incomes": [
     {
-      "income": 646411168,
+      "income": 11866,
       "id": 1
     }
   ],
@@ -52,36 +44,24 @@
       "staffNumber": "gra45354",
       "district": "Accra",
       "telephone": "0547231966",
-      "loanAmount": 4400,
-      "installment": "1000",
-      "duration": "4",
-      "date": "2022-11-22",
-      "time": "2023-3-22",
-      "id": 4
+      "loanAmount": 800,
+      "installment": "4000",
+      "duration": "12",
+      "date": "2022-11-23",
+      "time": "2023-11-23",
+      "id": 1
     },
     {
       "appName": "Ruth",
       "staffNumber": "gra234564",
       "district": "Achimota",
       "telephone": "0547231966",
-      "loanAmount": 660000000,
-      "installment": "100",
-      "duration": "5",
-      "date": "2022-11-22",
-      "time": "2023-4-22",
-      "id": 5
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "loanAmount": 44000000,
+      "loanAmount": 0,
       "installment": "4000",
-      "duration": "8",
-      "date": "2022-11-22",
-      "time": "2023-7-22",
-      "id": 6
+      "duration": "1",
+      "date": "2022-11-23",
+      "time": "2022-12-23",
+      "id": 2
     }
   ],
   "users": [
@@ -98,7 +78,7 @@
       "staffNumber": "gra3234",
       "district": "ssdfsdfs",
       "telephone": "21321321",
-      "monthlySavings": "323201000",
+      "monthlySavings": "3232",
       "witnessName": "ssdfsdf",
       "witnessContact": "gfdsfsdf",
       "nomineeName1": "gsdfgdfg",

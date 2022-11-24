@@ -4,19 +4,27 @@ import {useEffect, useState} from 'react';
 import CreateIncomes from "../helpers/createIncomes";
 import SecondNavigation from '../nav2.js';
 import Navigation from '../nav.js';
+import jsPDF from 'jspdf';
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [newInstallment,setNewInstallment] = useState('');
   const [checkboxError,setCheckboxError] = useState(null);
+  const [date,setDate] = useState('');
     const history = useHistory();
     const {data: members} = useFetch('http://localhost:8050/requestedLoans');
     const {data: incomes} = useFetch('http://localhost:8050/incomes');
+    const [filteredMembers,setFilteredMembers] = useState('');
       useEffect(()=>{
       if(members)
       {
        
          
-      
+        let dateTime = new Date();
+let time = dateTime.toISOString().split('T')[1];
+let date = dateTime.toISOString().split('T')[0];
+let filtMembers = members.filter((member)=>member.loanAmount !== 0);
+setFilteredMembers(filtMembers);
+setDate(date);
         members.forEach((rl)=>{
              if(Number(rl.installment) >= Number(rl.loanAmount))
             {
@@ -32,12 +40,91 @@ const SavingsDeductions = () =>{
       }
      },[members])  
     const handlePrintDeductions = () =>{
-        setPrompt(true);
+      /*   setPrompt(true); */
+      const doc = new jsPDF("p","pt","a4");
+      doc.html(document.querySelector('.savings-deductions'),{
+        callback: function(pdf){
+          pdf.save("loanDeductions.pdf");
+        }
+      }
+      );
+      let dateTime = new Date();
+      let time = dateTime.toISOString().split('T')[1];
+      let date = dateTime.toISOString().split('T')[0];
+      //After deduction there will be an income.
+      let cumulativeSavings = 0;
+      if(members)
+      {
+        let id = 1;
+        let length
+          for(let i = 0; i < members.length; i++)         
+          {
+          
+            members[i].loanAmount = Number(members[i].loanAmount)-Number(members[i].installment);
+            fetch('http://localhost:8050/requestedLoans/'+id,{
+            method: "PATCH",
+            headers: {"Content-type": "Application/json"},
+            body: JSON.stringify({
+              loanAmount: members[i].loanAmount
+            })
+          })
+
+        
+      
+        id = id+1;
+        }
+        
+        
+        members.forEach((member)=>{      
+          cumulativeSavings = cumulativeSavings + Number(member.installment);
+          
+        })
+        let income = new CreateIncomes(date,cumulativeSavings,time);
+      
+            
+            let newIncome = Number(incomes[0].income)+Number(cumulativeSavings);
+            fetch('http://localhost:8050/incomes/'+1,{
+               method: "PATCH",
+               headers: {"Content-type": "Application/json"},
+               body: JSON.stringify({
+               income: newIncome,
+               })
+            }).then(()=>{
+            
+              
+            })
+          
+          
+
+           
+        
+       
+        
+        
+      }
+    
+      
+
+    
+
+    }
+    const handlePrintDeductionsOnly = () =>{
+      /*   setPrompt(true); */
+      const doc = new jsPDF("p","pt","a4");
+      doc.html(document.querySelector('.savings-deductions'),{
+        callback: function(pdf){
+          pdf.save("loanDeductions.pdf");
+        }
+      }
+      );
 
 
     }
     const handleClose = () =>{
       setPrompt(null);
+    }
+    const handlePrompt = () =>{
+      setPrompt(true);
     }
     const handleSubmit = (e) =>{
       e.preventDefault();
@@ -53,64 +140,8 @@ const SavingsDeductions = () =>{
         setCheckboxError(null);
         if(check1.checked)
         {
-          let dateTime = new Date();
-          let time = dateTime.toISOString().split('T')[1];
-          let date = dateTime.toISOString().split('T')[0];
-          //After deduction there will be an income.
-          let cumulativeSavings = 0;
-          if(members)
-          {
-            let id = 1;
-              for(let i = 0; i < members.length; i++)
-              {
-                
-              members[i].loanAmount = Number(members[i].loanAmount)-Number(members[i].installment);
-              fetch('http://localhost:8050/requestedLoans/'+id,{
-                method: "PATCH",
-                headers: {"Content-type": "Application/json"},
-                body: JSON.stringify({
-                  loanAmount: members[i].loanAmount
-                })
-              })
-
-              id = id + 1;
-             
-            }
-            
-            
-            members.forEach((member)=>{      
-              cumulativeSavings = cumulativeSavings + Number(member.installment);
-              
-            })
-            let income = new CreateIncomes(date,cumulativeSavings,time);
           
-                
-                let newIncome = Number(incomes[0].income)+Number(cumulativeSavings);
-                fetch('http://localhost:8050/incomes/'+1,{
-                   method: "PATCH",
-                   headers: {"Content-type": "Application/json"},
-                   body: JSON.stringify({
-                   income: newIncome,
-                   })
-                }).then(()=>{
-                  setPrompt(null);
-                
-                history.push('/printLoanDeductions');
-                })
-              
-              
-
-               
-            
-           
-            
-            
-          }
-        
-          
-
-        
-        }
+        }//stop
         else
         {
           history.push('/printOnlyLoan'); 
@@ -132,28 +163,21 @@ const SavingsDeductions = () =>{
             </div>
           <form onSubmit = {handleSubmit} className = "prompt-dialog">
             {checkboxError && <p className = "error">Please select one.</p>}
-            <p className = "prompt-message">These operations cannot be reversed.</p>
-            <div className = "c-box">
-            <label>Deduct and Print</label>
-             
-            <input type = "checkbox" id = "dP"/>
-            </div>
-             <div className = "c-box">
-             <label>Print-Only</label>
-
-            <input type = "checkbox" id = "p"/>
-
-            </div>
+            <p className = "prompt-message">This operation can hardly be reversed, however contact the developer if reversal is needed.</p>
              <div class = "ok-flex">
-            <button className = "ok">Ok</button>
+            <button onClick = {handlePrintDeductions} className = "ok">Ok</button>
             </div>
             </form>
         </div>
 }
+
+      <button onClick = {handlePrompt} className = "print-deductions">Generate PDF and Deduct</button>
+      <button onClick = {handlePrintDeductionsOnly} className = "print-deductions">Generate PDF only</button>
+
       <div className = "savings-deductions">
-        <button onClick = {handlePrintDeductions} className = "print-deductions">Print Deductions</button>
-          {
-            members && <table>
+      
+          <h2 className = "loan-deduction-header">ALL COST CENTERS LOAN DEDUCTION DETAIL {date}</h2>
+     {           members && <table id = "loan-deduction-table">
                 <thead> 
                     <tr>
                         <th>STAFF ID</th>
@@ -163,7 +187,7 @@ const SavingsDeductions = () =>{
                    
                 </thead>
                 <tbody>
-                        {members.map((member)=>(
+                        {members && filteredMembers && filteredMembers.map((member)=>(
                             <tr>
                             <td>{member.staffNumber}</td>
                             <td>{member.appName}</td>

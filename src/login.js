@@ -23,13 +23,11 @@ const Login = () =>{
        {
          setLogged(true);
          setUserExists(false);
-         console.log("logged is true");
        }
        else
        {
          setLogged(false);
          setUserExists(false);
-         console.log("Logged is false");
          
        } 
        users.forEach((user)=>{
@@ -47,7 +45,7 @@ const Login = () =>{
  else
  {
    const log = new CreateLog(username,true);
-     
+   
      Store.addLocalStorage('log',log);  
      history.push("/search");
      window.location.reload();
