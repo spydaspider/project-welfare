@@ -2,9 +2,19 @@ import useFetch from "./useFetch";
 import {useHistory} from 'react-router-dom';
 import SecondNavigation from "./nav2";
 import Navigation from "./nav";
+import { useEffect } from "react";
+import {useState} from 'react';
 const Loans = () =>{
     const {data: requestedLoans, isPending: isLoading, error} = useFetch('http://localhost:8050/requestedLoans');
     const history = useHistory();
+    const [filteredRL,setFilteredRL] = useState('');
+    useEffect(()=>{
+        if(requestedLoans)
+        {
+         let filteredRL = requestedLoans.filter((rl)=>rl.loanAmount !== 0);
+         setFilteredRL(filteredRL);
+        } 
+    },[requestedLoans])
     const handlePrintLoan = () =>{
            history.push('/printLoan');
     }
@@ -31,7 +41,7 @@ const Loans = () =>{
                     </tr>
                 </thead>
                 <tbody>
-                {requestedLoans && requestedLoans.map((requestedLoan)=>(
+                {requestedLoans && filteredRL && filteredRL.map((requestedLoan)=>(
                     <tr>
                        
                             <td>{requestedLoan.appName}</td>
