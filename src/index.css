@@ -345,6 +345,11 @@ h1{
     border-radius: 12px;
     font-size: 18px;
     border: 2px solid #a6af29;
+    height: 50px;
+    border-radius:20px;
+    font-size: 20px;
+    padding: 0.5em;
+    
 }
 .home-content thead{
   background: #a6af29;
@@ -685,7 +690,61 @@ td{
 th{
   letter-spacing: 1px;
 }
+.row-flex{
+  width: 36%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 2.5em;
+}
+.loaners{
+  margin-right: 1em;
+}
+.incomes{
+  margin: 20% auto;
+  max-width: 800px;
+}
+.income-label{
+  font-weight: 700;
+}
+.incomes input{
+   height: 50px;
+   border-radius:20px;
+   border:1px solid rgb(189, 186, 186);
+   font-size: 20px;
+   padding: 0.5em;
+   
+}
+.incomes input:hover{
+  box-shadow: 3px 5px 5px rgba(0,0,0,0.1);
 
+}
+.income{
+  font-size: 18px;
+  background:#eef3a2;
+  padding: 0.7em;
+}
+.incomes table{
+  border-collapse: collapse;
+  border: 1px solid #333;
+}
+.incomes thead{
+  background: #eef3a2;
+
+}
+.incomes th{
+  border: 1px solid #333;
+  font-size: 18px;
+  padding: 0.3em;
+}
+.incomes td{
+   border:1px solid rgb(196, 195, 195);
+}
+.flex-two-row{
+   display: flex;
+   margin: auto;
+   justify-content: space-between;
+}
   @media screen and (max-width: 786px)
   {
     .nav-bar{

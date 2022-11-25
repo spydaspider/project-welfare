@@ -7,16 +7,7 @@ const PrintLoan = () =>{
         if(requestedLoans)
         {
         window.print();
-        requestedLoans.forEach((rl)=>{
-            if(Number(rl.loanAmount) <= 0)
-            {
-               fetch('http://localhost:8050/requestedLoans/'+rl.id,{
-                 method: "DELETE",                  
-               }).then(()=>{
-                window.location.reload();
-               })
-            }
-           })
+      
         }
      },[requestedLoans])
     return (

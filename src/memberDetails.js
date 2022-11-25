@@ -365,6 +365,7 @@ const MemberDetails = () =>{
             const handleClose = () =>{
                 setNewSavingsPopup(false);
                 setShowBen(false);
+                setShowHirePurchase(false);
             }
             const handleCloseErrorDialog = () =>{
                 setPendingLoan(null);

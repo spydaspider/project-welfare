@@ -1,13 +1,85 @@
 {
+  "individualSavings": [],
   "stepIncomes": [
     {
       "date": "2022-11-24",
       "time": "12:21:56.574Z",
       "income": 5266,
       "id": 1
+    },
+    {
+      "date": "2022-11-24",
+      "time": "14:16:09.014Z",
+      "income": 5266,
+      "id": 2
+    },
+    {
+      "date": "2022-11-24",
+      "time": "14:19:46.458Z",
+      "income": 5266,
+      "id": 3
+    },
+    {
+      "date": "2022-11-24",
+      "time": "14:20:17.898Z",
+      "income": 5266,
+      "id": 4
+    },
+    {
+      "date": "2022-11-24",
+      "time": "14:22:43.851Z",
+      "income": 5266,
+      "id": 5
+    },
+    {
+      "date": "2022-11-24",
+      "time": "23:43:33.164Z",
+      "income": 5266,
+      "id": 6
+    },
+    {
+      "date": "2022-11-24",
+      "time": "23:51:43.119Z",
+      "income": 5266,
+      "id": 7
+    },
+    {
+      "date": "2022-11-24",
+      "time": "23:52:08.564Z",
+      "income": 5266,
+      "id": 8
+    },
+    {
+      "date": "2022-11-24",
+      "time": "23:53:44.860Z",
+      "income": 5266,
+      "id": 9
+    },
+    {
+      "date": "2022-11-24",
+      "time": "23:54:02.123Z",
+      "income": 5266,
+      "id": 10
     }
   ],
-  "hirePurchases": [],
+  "hirePurchases": [
+    {
+      "appName": "Ruth",
+      "staffNumber": "gra234564",
+      "district": "Achimota",
+      "telephone": "0547231966",
+      "itemName": "dsfsfsd",
+      "itemBrand": "sdfsdfd",
+      "unitPrice": "345",
+      "interest": "10",
+      "totalAmount": "345",
+      "quantity": "5",
+      "duration": "4",
+      "date": "2022-11-25",
+      "time": "12:23:06.574Z",
+      "id": 1
+    }
+  ],
   "beneficiaries": [
     {
       "appName": "Richmond",
@@ -34,7 +106,7 @@
   ],
   "incomes": [
     {
-      "income": 11866,
+      "income": 80324,
       "id": 1
     }
   ],

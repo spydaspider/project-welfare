@@ -14,6 +14,8 @@ const SavingsDeductions = () =>{
     const {data: members} = useFetch('http://localhost:8050/requestedLoans');
     const {data: incomes} = useFetch('http://localhost:8050/incomes');
     const [filteredMembers,setFilteredMembers] = useState('');
+    const [numberLoaners,setNumberLoaners] = useState('');
+    const [totalLoanAmount,setTotalLoanAmount] = useState('');
       useEffect(()=>{
       if(members)
       {
@@ -24,6 +26,13 @@ let time = dateTime.toISOString().split('T')[1];
 let date = dateTime.toISOString().split('T')[0];
 let filtMembers = members.filter((member)=>member.loanAmount !== 0);
 setFilteredMembers(filtMembers);
+setNumberLoaners(filtMembers.length);
+let totalLoanAmount = 0;
+members.forEach((member)=>{
+  totalLoanAmount = totalLoanAmount + Number(member.loanAmount);
+}
+)
+setTotalLoanAmount(totalLoanAmount);
 setDate(date);
         members.forEach((rl)=>{
              if(Number(rl.installment) >= Number(rl.loanAmount))
@@ -122,6 +131,8 @@ setDate(date);
     }
     const handleClose = () =>{
       setPrompt(null);
+      window.location.reload();
+
     }
     const handlePrompt = () =>{
       setPrompt(true);
@@ -198,7 +209,14 @@ setDate(date);
                        
                     </tbody>
             </table>
+            
           }
+          <div className = "row-flex">
+          <strong>Total:</strong>
+          <p className = "loaners">{numberLoaners}</p>
+          <p className = "total-amount">{totalLoanAmount}cedis</p>
+          </div>
+
       </div>
       </div>
     )

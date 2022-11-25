@@ -6,6 +6,7 @@ import Navigation from '../nav.js';
 import SecondNavigation from '../nav2.js';
 import CreateStepIncomes from '../helpers/createStepIncomes.js';
 import jsPDF from 'jspdf';
+import CreateIndividualSavings from '../helpers/createIndividualSavings.js';
 
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
@@ -23,11 +24,25 @@ const SavingsDeductions = () =>{
      const handlePrompt = () =>{
          setPrompt(true);
      }
+   /*  const handleIndividualSavings = () =>{
+      if(members)
+      {
+        members.forEach((member)=>{
+          console.log(member);
+           fetch('http://localhost:8050/individualSavings',{
+            method: "POST",
+            headers: {"Content-type": "Application/json"},
+            body: JSON.stringify(member)
+           })   
+        })
+     
+      }
+    } */
     const handlePrintDeductionsOnly = () =>{
       const doc = new jsPDF("p","pt","a4");
       doc.html(document.querySelector('.savings-deductions'),{
         callback: function(pdf){
-          pdf.save("loanDeductions.pdf");
+          pdf.save("SavingsDeductions.pdf");
         }
       }
       );
@@ -48,7 +63,17 @@ const SavingsDeductions = () =>{
       let cumulativeSavings = 0;
       if(members)
       {
-
+      
+          members.forEach((member)=>{
+            console.log(member);
+             /* fetch('http://localhost:8050/individualSavings',{
+              method: "POST",
+              headers: {"Content-type": "Application/json"},
+              body: JSON.stringify(member)
+             })    */
+          })
+       
+        
         members.forEach((member)=>{      
           cumulativeSavings = cumulativeSavings + Number(member.monthlySavings);
 
@@ -62,7 +87,10 @@ const SavingsDeductions = () =>{
            body: JSON.stringify(income)
          }).then(()=>{
             setPrompt(null);
-         }) 
+        
+            
+             }) 
+           
           let stepIncome = new CreateStepIncomes(date,time,cumulativeSavings);
        fetch('http://localhost:8050/stepIncomes',{
         method: "POST",
@@ -72,7 +100,6 @@ const SavingsDeductions = () =>{
        }
        else
        {
-             console.log("Length is not 0");
               let existingIncome = 0;
               incomes.forEach((income)=>{
                 existingIncome = existingIncome + Number(income.income);
@@ -86,9 +113,14 @@ const SavingsDeductions = () =>{
           body: JSON.stringify(income)
         }).then(()=>{
             setPrompt(null);
-
+            //Set individual savings.
+            
+            
+                  
+          
            
-        }) 
+        })
+      
          let stepIncome = new CreateStepIncomes(date,time,cumulativeSavings);
        fetch('http://localhost:8050/stepIncomes',{
         method: "POST",
@@ -107,6 +139,7 @@ const SavingsDeductions = () =>{
     }
     const handleClose = () =>{
       setPrompt(null);
+      window.location.reload();
     }
     
    
