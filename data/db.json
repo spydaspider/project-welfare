@@ -78,6 +78,22 @@
       "date": "2022-11-25",
       "time": "12:23:06.574Z",
       "id": 1
+    },
+    {
+      "appName": "Richmond",
+      "staffNumber": "gra3234",
+      "district": "ssdfsdfs",
+      "telephone": "21321321",
+      "itemName": "fridge",
+      "itemBrand": "hisense",
+      "unitPrice": "300",
+      "interest": "10",
+      "totalAmount": "3000",
+      "quantity": "10",
+      "duration": "7",
+      "date": "2022-11-27",
+      "time": "12:20:06.988Z",
+      "id": 2
     }
   ],
   "beneficiaries": [

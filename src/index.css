@@ -745,6 +745,33 @@ th{
    margin: auto;
    justify-content: space-between;
 }
+.hire-purchase{
+  margin-top: 15%;
+}
+.hire-purchase table{
+  border-collapse: collapse;
+  border: 1px solid #333;
+}
+
+.hire-purchase thead{
+  background:#c0ca33;
+}
+.hire-purchase th{
+  border: 1px solid rgb(136, 136, 136);
+  padding: 0.5em;
+  font-size: 18px;
+  
+}
+.hire-purchase td{
+  padding: 0.5em;
+  font-size: 18px;
+  color: rgb(130, 130, 130);
+  border: 1px solid rgb(208, 206, 206);
+}
+.wider{
+  width: 100%;
+}
+
   @media screen and (max-width: 786px)
   {
     .nav-bar{
