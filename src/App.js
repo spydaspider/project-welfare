@@ -16,7 +16,6 @@ import PrintLoan from './printPages/printLoan.js';
 import Deductions from './deductions';
 import PrintSavings from './printPages/printSavings';
 import PrintLoanDeductions from './printPages/printLoanDeductions';
-
 import Beneficiaries from './beneficiaries.js';
 import Income from './helpers/income';
 import HirePurchases from './hirePurchase';
@@ -108,6 +107,7 @@ function App() {
              <Route path = "/printOnlyLoan">
               {loggedIn && <PrintOnlyLoan/>}
              </Route>
+            
         </Switch>
     </div>
     

@@ -10,6 +10,7 @@ import Navigation from './nav.js';
 import CreateIncomes from './helpers/createIncomes.js';
 import Store from './helpers/storage.js';
 import CreateMLLength from './helpers/createMLLength.js';
+import ShowIndividualSavings from './showIndividualSavings.js';
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -64,6 +65,7 @@ const MemberDetails = () =>{
     const [lessThanZero,setLessThanZero] = useState('');
     const [noIncome,setNoIncome] = useState(null);
     const [lowIncome,setLowIncome] = useState(null);
+    const [showIS, setShowIS] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -366,6 +368,10 @@ const MemberDetails = () =>{
                 setNewSavingsPopup(false);
                 setShowBen(false);
                 setShowHirePurchase(false);
+                setShowIS(null);
+            }
+            const showIndividualSaving = () =>{
+                setShowIS(true);
             }
             const handleCloseErrorDialog = () =>{
                 setPendingLoan(null);
@@ -484,6 +490,7 @@ const MemberDetails = () =>{
                 <button onClick = {handleNewSavings} className = "file-button">Request Loan</button>
                 <button onClick = {handleHirePurchase} className = "file-button">Hire Purchase</button>
                 <button onClick ={showBeneficiaries} className = "file-button">Beneficiaries</button>
+                <button onClick = {showIndividualSaving} className = "file-button">View Individual Savings</button>
                 </div>
             </div>
             {pendingLoan && <div className = "pending-loan">
@@ -579,6 +586,16 @@ const MemberDetails = () =>{
                       </form>
                       </div>
                   </div>
+            }
+            {
+                showIS && <div className = "show-individual-savings-bg">
+                      <div onClick = {handleClose}className = "close">
+                        <span className = "bar-l"></span>
+                        <span className = "bar-l"></span>
+                        <span className = "bar-l"></span>
+                     </div>
+                    <ShowIndividualSavings staffNumber = {staffNumber}/>
+                    </div>
             }
              {
                 showBen &&

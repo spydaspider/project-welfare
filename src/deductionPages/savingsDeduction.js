@@ -48,14 +48,15 @@ const SavingsDeductions = () =>{
       );
 
     }
-    const handlePrintDeductions = () =>{
-      const doc = new jsPDF("p","pt","a4");
+    const handlePrintDeductions = (e) =>{
+      e.preventDefault();
+       const doc = new jsPDF("p","pt","a4");
       doc.html(document.querySelector('.savings-deductions'),{
         callback: function(pdf){
           pdf.save("SavingsDeductions.pdf");
         }
       }
-      ); 
+      ) ; 
       let dateTime = new Date();
       let time = dateTime.toISOString().split('T')[1];
       let date = dateTime.toISOString().split('T')[0];
@@ -63,14 +64,15 @@ const SavingsDeductions = () =>{
       let cumulativeSavings = 0;
       if(members)
       {
-      
+         
           members.forEach((member)=>{
-            console.log(member);
-             /* fetch('http://localhost:8050/individualSavings',{
+              let is = new CreateIndividualSavings(member.appName,member.staffNumber,member.district,member.telephone,member.monthlySavings,date,time);
+             
+              fetch('http://localhost:8050/individualSavings',{
               method: "POST",
               headers: {"Content-type": "Application/json"},
-              body: JSON.stringify(member)
-             })    */
+              body: JSON.stringify(is)
+             })   
           })
        
         
@@ -86,8 +88,8 @@ const SavingsDeductions = () =>{
            headers: {"Content-type": "Application/json"},
            body: JSON.stringify(income)
          }).then(()=>{
-            setPrompt(null);
-        
+             setPrompt(null);
+         
             
              }) 
            
@@ -112,8 +114,8 @@ const SavingsDeductions = () =>{
           headers: {"Content-type": "Application/json"},
           body: JSON.stringify(income)
         }).then(()=>{
-            setPrompt(null);
-            //Set individual savings.
+             setPrompt(null);
+             //Set individual savings.
             
             
                   
@@ -135,7 +137,7 @@ const SavingsDeductions = () =>{
     
       
 
-    
+     
     }
     const handleClose = () =>{
       setPrompt(null);
@@ -155,13 +157,13 @@ const SavingsDeductions = () =>{
             <span className = "bar"></span>
 
             </div>
-           <form className = "prompt-dialog">
+           <form className = "prompt-dialog" onSubmit = {handlePrintDeductions}>
             {checkboxError && <p className = "error">Please select one.</p>}
             <p className = "prompt-message">This operation can be hardly reversed. However, quickly contact developer if reversal is needed.</p>
             
-             <div class = "ok-flex">
+             <div className = "ok-flex">
           
-            <button onClick = {handlePrintDeductions}className = "ok">Ok</button>
+            <button className = "ok">Ok</button>
             </div>
             </form>  
         </div>

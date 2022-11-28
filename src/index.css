@@ -771,7 +771,51 @@ th{
 .wider{
   width: 100%;
 }
-
+.show-individual-savings-bg{
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:fixed;
+  background:#333;
+  opacity: 1;
+  overflow: auto;
+}
+.show-is{
+  margin-top: 10%;
+}
+.show-is table{
+  border-collapse: collapse;
+  border: 1px solid #fff;
+  max-width: 1100px;
+  margin: 10% auto;
+}
+.show-is thead{
+  border: 1px solid #fff;
+}
+.show-is th{
+  color: white;
+  border: 1px solid #fff;
+  padding: 0.5em;
+  font-size: 18px;
+}
+.show-is td{
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.5em;
+  font-size: 17px;
+}
+.total-savings{
+  display: flex;
+  justify-content: center;
+  margin-right: 8%;
+}
+.tsa{
+  font-size: 22px;
+}
+.total-savings-title{
+  color: #fff;
+}
   @media screen and (max-width: 786px)
   {
     .nav-bar{
