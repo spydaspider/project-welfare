@@ -7,7 +7,7 @@ import SecondNavigation from '../nav2.js';
 import CreateStepIncomes from '../helpers/createStepIncomes.js';
 import jsPDF from 'jspdf';
 import CreateIndividualSavings from '../helpers/createIndividualSavings.js';
-
+import graLogo from '../images/gra.png';
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [checkboxError,setCheckboxError] = useState(null);
@@ -173,6 +173,8 @@ const SavingsDeductions = () =>{
 
 
       <div className = "savings-deductions">
+      <img className = "gra-logo" src = {graLogo} alt = "gra-icon"/>
+
       <h2 className = "loan-deduction-header">CLEANERS WELFARE ASSOCIATION SAVINGS {date}</h2>
 
           {

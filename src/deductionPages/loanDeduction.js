@@ -5,6 +5,7 @@ import CreateIncomes from "../helpers/createIncomes";
 import SecondNavigation from '../nav2.js';
 import Navigation from '../nav.js';
 import jsPDF from 'jspdf';
+import graLogo from '../images/gra.png';
 const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [newInstallment,setNewInstallment] = useState('');
@@ -186,7 +187,7 @@ setDate(date);
       <button onClick = {handlePrintDeductionsOnly} className = "print-deductions">Generate PDF only</button>
 
       <div className = "savings-deductions">
-      
+         <img className = "gra-logo" src = {graLogo} alt = "gra-icon"/>
           <h2 className = "loan-deduction-header">ALL COST CENTERS LOAN DEDUCTION DETAIL {date}</h2>
      {           members && <table id = "loan-deduction-table">
                 <thead> 

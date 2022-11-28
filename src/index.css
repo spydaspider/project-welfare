@@ -125,15 +125,11 @@ h1{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   
   }
-  .nav-bar h1 {
-    color: #c0ca33;
-    grid-column: 1/6;
-  }
   .links {
     grid-column: 6/13;
     width: 25%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
 
   }
   .links a {
@@ -815,6 +811,15 @@ th{
 }
 .total-savings-title{
   color: #fff;
+}
+.gra-icon{
+  width: 200px;
+  grid-column: 1/6;
+  
+}
+.gra-logo{
+  width: 200px;
+  margin-left: 2.6em;
 }
   @media screen and (max-width: 786px)
   {

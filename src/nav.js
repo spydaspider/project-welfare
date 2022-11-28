@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import graIcon from './images/gra.png';
 const Navigation = () =>{
     
    return(
 
     <div className = "nav-bar">
-        <h1>Project Welfare</h1>
+       <Link to = "/search"> <img className = "gra-icon" src = {graIcon} alt = "gra icon"/></Link>
         <div className = "links">
         <Link to = "/membership">Membership</Link>
         <Link to = "/search">Search</Link>

@@ -89,6 +89,86 @@
       "date": "2022-11-28",
       "time": "00:01:27.066Z",
       "id": 9
+    },
+    {
+      "appName": "Richmond",
+      "staffNumber": "gra3234",
+      "district": "ssdfsdfs",
+      "telephone": "21321321",
+      "pledge": "3232",
+      "date": "2022-11-28",
+      "time": "15:22:00.387Z",
+      "id": 10
+    },
+    {
+      "appName": "Yaa ekua mpota",
+      "staffNumber": "gra12334",
+      "district": "accra",
+      "telephone": "121889133683",
+      "pledge": "100",
+      "date": "2022-11-28",
+      "time": "15:22:00.387Z",
+      "id": 11
+    },
+    {
+      "appName": "Ruth",
+      "staffNumber": "gra234564",
+      "district": "Achimota",
+      "telephone": "0547231966",
+      "pledge": "34",
+      "date": "2022-11-28",
+      "time": "15:22:00.387Z",
+      "id": 12
+    },
+    {
+      "appName": "Gifty",
+      "staffNumber": "gra45354",
+      "district": "Accra",
+      "telephone": "0547231966",
+      "pledge": "2000",
+      "date": "2022-11-28",
+      "time": "15:22:00.387Z",
+      "id": 13
+    },
+    {
+      "appName": "Richmond",
+      "staffNumber": "gra3234",
+      "district": "ssdfsdfs",
+      "telephone": "21321321",
+      "pledge": "3232",
+      "date": "2022-11-28",
+      "time": "18:16:17.735Z",
+      "id": 14
+    },
+    {
+      "appName": "Yaa ekua mpota",
+      "staffNumber": "gra12334",
+      "district": "accra",
+      "telephone": "121889133683",
+      "pledge": "100",
+      "date": "2022-11-28",
+      "time": "18:16:17.735Z",
+      "id": 15
+    },
+    {
+      "appName": "Ruth",
+      "staffNumber": "gra234564",
+      "district": "Achimota",
+      "telephone": "0547231966",
+      "pledge": "34",
+      "date": "2022-11-28",
+      "time": "18:16:17.735Z",
+      "id": 16
+    },
+    {
+      "appName": "Gifty",
+      "staffNumber": "gra45354",
+      "district": "Accra",
+      "telephone": "0547231966",
+      "pledge": "2000",
+      "date": "2022-11-28",
+      "time": "18:16:17.735Z",
+      "id": 17
     }
   ],
   "stepIncomes": [
@@ -211,6 +291,18 @@
       "time": "00:01:27.066Z",
       "income": 5266,
       "id": 20
+    },
+    {
+      "date": "2022-11-28",
+      "time": "15:22:00.387Z",
+      "income": 5366,
+      "id": 21
+    },
+    {
+      "date": "2022-11-28",
+      "time": "18:16:17.735Z",
+      "income": 5366,
+      "id": 22
     }
   ],
   "hirePurchases": [
@@ -273,7 +365,7 @@
   ],
   "incomes": [
     {
-      "income": 122452,
+      "income": 134184,
       "id": 1
     }
   ],
@@ -283,7 +375,7 @@
       "staffNumber": "gra45354",
       "district": "Accra",
       "telephone": "0547231966",
-      "loanAmount": 800,
+      "loanAmount": 0,
       "installment": "4000",
       "duration": "12",
       "date": "2022-11-23",
@@ -301,6 +393,18 @@
       "date": "2022-11-23",
       "time": "2022-12-23",
       "id": 2
+    },
+    {
+      "appName": "Yaa ekua mpota",
+      "staffNumber": "gra12334",
+      "district": "accra",
+      "telephone": "121889133683",
+      "loanAmount": 0,
+      "installment": "500",
+      "duration": "5",
+      "date": "2022-11-28",
+      "time": "2023-4-28",
+      "id": 3
     }
   ],
   "users": [
@@ -375,6 +479,27 @@
       "date": "2022-11-21",
       "time": "15:36:02.397Z",
       "id": 3
+    },
+    {
+      "membershipNumber": 4,
+      "appName": "Yaa ekua mpota",
+      "staffNumber": "gra12334",
+      "district": "accra",
+      "telephone": "121889133683",
+      "monthlySavings": "100",
+      "witnessName": "mr kojo darkwah",
+      "witnessContact": "20298203028323",
+      "nomineeName1": "kwame",
+      "nomineeName2": "adjoa",
+      "nomineeName3": "kwesi",
+      "nRelationship1": "brother",
+      "nRelationship2": "sister",
+      "nRelationship3": "husband",
+      "nPercentage1": "40",
+      "nPercentage3": "30",
+      "date": "2022-11-28",
+      "time": "15:14:56.791Z",
+      "id": 4
     }
   ]
 }
