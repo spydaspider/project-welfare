@@ -99,7 +99,7 @@ if(members && members.length !== 0)
         <div className = "membership-form">
             <SecondNavigation/>
             <Navigation/>
-            <h1>M<span>e</span>mb<span>ers</span>hi<span>p f</span>orm.</h1>
+            <h1>M<span>e</span>mb<span>ers</span>hi<span>p f</span>o<span>r</span>m.</h1>
             {error && <p className = "error">{error}</p>}
             {staffNumberExists&& <p className = "error">Staff number already exists.</p>}
             {negativeNumber&&<p className = "error">Negative number detected.</p>}

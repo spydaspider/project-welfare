@@ -3,15 +3,19 @@
     box-sizing: border-box;
     
 }
+@font-face{
+  font-family: myFont;
+  src:url(gm.ttf);
+}
 body{
-    font-family: Poppins, Arial, Helvetica, sans-serif;
+    font-family: myFont;
     margin:0;
     padding:0;
     color: #4d5666;
 }
 label{
   font-weight: 700;
-  color: #8f9723;
+  color: #03a9f4;
 }
 .membership-form{
     padding-bottom: 5%;
@@ -21,10 +25,10 @@ label{
 
 }
 .membership-form span{
-  color:#a6af29;
+  color: #03a9f4;
 }
 .loans span{
-  color:#a6af29;
+  color: #03a9f4;
 }
 .header-2{
     font-size: 20px;
@@ -45,10 +49,13 @@ input:hover{
     border: 2px solid #42a5f5;
 }
 fieldset{
-    border: 2px solid #e6ee9c;
+    border: 2px solid #eded01;
 }
 table{
     width: 100%;
+}
+.hire-purchase span{
+  color:  #03a9f4;
 }
 .nominee-field{
     margin-top: 1em;
@@ -66,8 +73,8 @@ h1{
     padding: 0.5em;
     font-size: 18px;
     background: #fff;
-    border: 2px solid #c0ca33;
-    color: #a6af29;
+    border: 2px solid  #03a9f4;
+    color:  #03a9f4;
     cursor: pointer;
     
 
@@ -85,19 +92,19 @@ h1{
   background: #fff;
   padding: 1em;
   font-size: 25px;
-  border: 2px solid #a6af29;
+  border: 2px solid  #03a9f4;
   width: 30%;
-  color:#a6af29;
+  color: #03a9f4;
 }
 .file-button:hover{
-  background-color:#c0ca33;
-  color: #333;
+  background-color: #03a9f4;
+  color: #fff;
   transition: background-color 0.5s ease-out;
  
 }
 .register-button:hover{
-    background-color:#c0ca33;
-    color: #333;
+    background-color: #03a9f4;
+    color: #fff;
     transition: background-color 0.5s ease-out;
    
 }
@@ -133,7 +140,7 @@ h1{
 
   }
   .links a {
-    color: #c0ca33;
+    color: #03a9f4;
     text-decoration: none;
     cursor: pointer;
     font-weight: 600;
@@ -142,7 +149,7 @@ h1{
     padding: 0.7em;
   }
   .links a:hover {
-    background: #c0ca33;
+    background: #eded01;
     color: #333;
     transition: background-color 1s ease-out;
     -webkit-transition: background-color 1s ease-out;
@@ -172,7 +179,7 @@ h1{
   }
   .log-style:hover{
     cursor: pointer;
-    color: #c0ca33;
+    color: #eded01;
     border-radius: 7px;
   
 }
@@ -340,7 +347,7 @@ h1{
     padding: 1em;
     border-radius: 12px;
     font-size: 18px;
-    border: 2px solid #a6af29;
+    border: 2px solid #eded01;
     height: 50px;
     border-radius:20px;
     font-size: 20px;
@@ -348,7 +355,7 @@ h1{
     
 }
 .home-content thead{
-  background: #a6af29;
+  background: #eded01;
   color: #333;
   font-size: 18px;
 }
@@ -360,8 +367,8 @@ h1{
     padding: 0.5em;
     font-size: 18px;
     background: #fff;
-    border: 4px solid #a6af29;
-    color: #a6af29;
+    border: 4px solid #eded01;
+    color: #eded01;
     cursor: pointer;
 
   }
@@ -439,12 +446,12 @@ h1{
       padding: 0.5em;
       font-size: 18px;
       font-weight: 550;
-      background:#a6af29;
+      background:#eded01;
       border: none;
       cursor: pointer;
   }
   .new-savings button:hover{
-    background: #8f9723;
+    background: #d7d700;
   }
   .pending-loan{
     max-width: 800px;
@@ -489,7 +496,7 @@ h1{
 }
 .loans table th{
   padding: 1em;
-  background: #a6af29;
+  background: #eded01;
 }
 .loans table td{
   text-align:center;
@@ -504,14 +511,15 @@ h1{
 }
 .print-loans button{
     padding: 0.5em 1em;
-    font-size: 15px;
-    background: #a6af29;
+    font-size: 17px;
+    background: #fff;
     border: none;
+    border: 4px solid #03a9f4;
+    color: #03a9f4;
+    cursor: pointer;
 
 }
-.print-loans button:hover{
-  background: #8e9623;
-}
+
 .print-loan-page table{
   border: 1px solid #333;
   max-width: 1100px;
@@ -538,11 +546,11 @@ td{
   padding: 1em;
   margin-bottom: 1em;
   background: #fff;
-  border: 2px solid #c0ca33;
-  color: #c0ca33;
+  border: 2px solid #eded01;
+  color: #eded01;
 }
 .deduction-buttons button:hover{
-  background: #c0ca33;
+  background: #eded01;
   color: #333;
   transition: background-color 0.5s ease-out;
   -webkit-transition: background-color 0.5s ease-out;
@@ -568,8 +576,8 @@ td{
   font-size: 16px;
   padding: 0.5em;
   background: #fff;
-  color:#c0ca33;
-  border: 4px solid #c0ca33;
+  color:#eded01;
+  border: 4px solid #eded01;
   cursor: pointer;
 }
 .prompt-dialog-background{
@@ -614,7 +622,7 @@ td{
 .ok{
   font-size: 18px;
   padding:0.3em 0.7em;
-  background: #c0ca33;
+  background: #eded01;
   color: #333;
   font-weight: 600;
   border: none;
@@ -624,7 +632,7 @@ td{
 
 }
 .ok:hover{
-  background:#a6af29;
+  background:#eded01;
 }
 .prompt-dialog-close{
   cursor: pointer;
@@ -744,13 +752,22 @@ th{
 .hire-purchase{
   margin-top: 15%;
 }
+.home th{
+  padding: 0.7em;
+  font-size: 18px;
+
+}
+.home td{
+  background: rgb(236, 236, 236);
+  font-size: 18px;
+}
 .hire-purchase table{
   border-collapse: collapse;
   border: 1px solid #333;
 }
 
 .hire-purchase thead{
-  background:#c0ca33;
+  background:#eded01;
 }
 .hire-purchase th{
   border: 1px solid rgb(136, 136, 136);

@@ -29,7 +29,7 @@ const HomePage = () =>{
         <div className = "home-content">
            <SecondNavigation/>
            <Navigation/>
-            <div className = "loans">
+            <div className = "home">
             <input className = "search" type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
             {
                 showMembers &&

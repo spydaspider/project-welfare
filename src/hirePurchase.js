@@ -8,7 +8,7 @@ const HirePurchases = () =>{
             <SecondNavigation/>
             <Navigation/>
             <div className = "hire-purchase">
-               <h1>Purchases</h1>
+               <h1>P<span>u</span>r<span>c</span>h<span>a</span>s<span>e</span>s</h1>
                <table>
                 <thead>
                    <tr>
