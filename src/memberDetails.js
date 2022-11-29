@@ -19,6 +19,7 @@ const MemberDetails = () =>{
     const {data:memberLoan} = useFetch('http://localhost:8050/requestedLoans/'+id);
     const {data:memberLoans} = useFetch('http://localhost:8050/requestedLoans');
     const {data: incomes} = useFetch('http://localhost:8050/incomes'); 
+    const {data: individualSavings} = useFetch('http://localhost:8050/individualSavings');
 
 
     const [applicantName,setApplicantName] = useState('');
@@ -66,6 +67,7 @@ const MemberDetails = () =>{
     const [noIncome,setNoIncome] = useState(null);
     const [lowIncome,setLowIncome] = useState(null);
     const [showIS, setShowIS] = useState(null);
+    const [balance,setBalance] = useState(0);
     useEffect(
         ()=>{
              if(member)
@@ -99,12 +101,46 @@ const MemberDetails = () =>{
     const handlePayLoan = () =>{
         setPayLoanPopup(true);
     }
-    const handleRemove = () =>{
-          fetch('http://localhost:8050/Members/'+id,{
-            method: 'DELETE'
-          }).then(()=>{
-            history.push('/search');
-          })
+    const handleRemove = (e) =>{
+        let totalIS = 0;
+        let balance = 0;
+        e.preventDefault();
+          if(individualSavings)
+          {
+           individualSavings.forEach((is)=>{
+            if(is.staffNumber === staffNumber)
+            {
+                
+            totalIS = totalIS + Number(is.pledge);
+            }
+           })
+           if(totalIS > 300)
+           {
+            balance = totalIS - 300; 
+           }
+           //substract the balance from the income.
+           let income = Number(incomes[0].income);
+           let newBalancedIncome;
+           if(income > balance)
+           {
+             newBalancedIncome = income - balance;
+           }
+           setBalance(balance);
+            fetch('http://localhost:8050/incomes/'+1,{
+            method: "PATCH",
+            headers: {"Content-type":"Application/json"},
+            body: JSON.stringify({
+                income:newBalancedIncome
+            })
+           }).then(()=>{
+            fetch('http://localhost:8050/Members/'+id,{
+                method: 'DELETE'
+              }).then(()=>{
+             // history.push('/search');
+              })
+           })
+          } 
+         
     }
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -479,6 +515,7 @@ const MemberDetails = () =>{
                     <input type = "text" value = {witnessContact} onChange = {(e)=>setWitnessedContact(e.target.value)} required/>
 
                 </fieldset>
+                {balance && <p class = "error">The withdrawing Applicant will receive a balance of {Number(balance).toFixed(2)}cedis</p>}
                 <div className = "button">
                 <button className = "register-button r-b-left">Edit</button>
                 <button className = "register-button" onClick = {handleRemove}>Remove</button>
@@ -490,8 +527,10 @@ const MemberDetails = () =>{
                 <button onClick = {handleNewSavings} className = "file-button">Request Loan</button>
                 <button onClick = {handleHirePurchase} className = "file-button">Hire Purchase</button>
                 <button onClick ={showBeneficiaries} className = "file-button">Beneficiaries</button>
-                <button onClick = {showIndividualSaving} className = "file-button">View Individual Savings</button>
                 </div>
+                <div className = "fbd">
+                <button onClick = {showIndividualSaving} className = "file-button">View Individual Savings</button>
+                 </div>
             </div>
             {pendingLoan && <div className = "pending-loan">
                         

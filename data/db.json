@@ -411,7 +411,7 @@
   ],
   "incomes": [
     {
-      "income": 139550,
+      "income": 108758,
       "id": 1
     }
   ],
@@ -462,27 +462,6 @@
   ],
   "members": [
     {
-      "membershipNumber": 1,
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "monthlySavings": "3232",
-      "witnessName": "ssdfsdf",
-      "witnessContact": "gfdsfsdf",
-      "nomineeName1": "gsdfgdfg",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "fdgdfgfdg",
-      "nRelationship2": "",
-      "nRelationship3": "",
-      "nPercentage1": "234",
-      "nPercentage3": "",
-      "date": "2022-11-03",
-      "time": "11:05:23.875Z",
-      "id": 1
-    },
-    {
       "membershipNumber": 2,
       "appName": "Ruth",
       "staffNumber": "gra234564",
@@ -505,28 +484,6 @@
       "id": 2
     },
     {
-      "membershipNumber": 3,
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "monthlySavings": "2000",
-      "witnessName": "gbnmnbmbn",
-      "witnessContact": "gfngfgf",
-      "nomineeName1": "ghfdgfdg",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "erghgfdg",
-      "nRelationship2": "",
-      "nRelationship3": "",
-      "nPercentage1": "10",
-      "nPercentage2": "",
-      "nPercentage3": "",
-      "date": "2022-11-21",
-      "time": "15:36:02.397Z",
-      "id": 3
-    },
-    {
       "membershipNumber": 4,
       "appName": "Yaa ekua mpota",
       "staffNumber": "gra12334",
@@ -544,7 +501,7 @@
       "nPercentage1": "40",
       "nPercentage3": "30",
       "date": "2022-11-28",
-      "time": "15:14:56.791Z",
+      "time": "23:50:43.217Z",
       "id": 4
     }
   ]
