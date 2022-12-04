@@ -2,7 +2,7 @@ import SecondNavigation from "./nav2";
 import useFetch from "./useFetch";
 import Navigation from "./nav.js";
 const Beneficiaries = () =>{
-    const {data: benefitedMembers,error} = useFetch('http://localhost:8050/beneficiaries');
+    const {data: benefitedMembers,isPending: isLoading, error} = useFetch('http://localhost:8050/beneficiaries');
 
     return(
         <div className = "loan-wrapper">
@@ -10,6 +10,8 @@ const Beneficiaries = () =>{
             <Navigation/>
             <div className = "loans">
                 <h1><span>A</span>l<span>l</span> R<span>e</span>q<span>u</span>e<span>s</span>t<span>e</span>d <span>B</span>e<span>n</span>e<span>f</span>i<span>t</span>s</h1>
+            {isLoading && <p>Loading...</p>}
+            {error && <p className = "error">Database error, please restart the server and reload page.</p>}
             <table>
                 <thead>
                     <tr>

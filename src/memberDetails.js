@@ -208,9 +208,10 @@ const MemberDetails = () =>{
                 if(memberLoans)
                 {
                     memberLoans.forEach((ml)=>{
-                        if(ml.staffNumber===staffNumber)
+                        if(Number(ml.loanAmount)!==0)
                         {
                             mlFound = 1;
+                            
                             
                            
                         }
@@ -224,7 +225,7 @@ const MemberDetails = () =>{
                     }
                     else{
                        setNewSavingsPopup(true);
-                       console.log("No loan");
+                       
                         }
                 }
                 else{

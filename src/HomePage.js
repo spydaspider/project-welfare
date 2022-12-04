@@ -6,7 +6,7 @@ import Navigation from './nav.js';
 
 
 const HomePage = () =>{
-    const {data:members} = useFetch('http://localhost:8050/members');
+    const {data:members,isPending:isLoading, error} = useFetch('http://localhost:8050/members');
     const [searchKey,setSearchKey] = useState('');
     const [showMembers,setShowMembers] = useState(null);
     const [filteredMembers,setFilteredMembers] = useState([]);
@@ -30,9 +30,12 @@ const HomePage = () =>{
            <SecondNavigation/>
            <Navigation/>
             <div className = "home">
+            {error && <p className = "error">Server error, restart database servers.</p>}
+
             <input className = "search" type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
+            {isLoading && <p className = "loading">Loading...</p>}
             {
-                showMembers &&
+             showMembers &&
             <table>
                 <thead>
                     <tr>

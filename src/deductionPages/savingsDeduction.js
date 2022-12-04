@@ -12,6 +12,8 @@ const SavingsDeductions = () =>{
   const [prompt,setPrompt] = useState(null);
   const [checkboxError,setCheckboxError] = useState(null);
   const [date,setDate] = useState('');
+  const [numberSavings,setNumberSavings] = useState('');
+  const [totalSavingsAmount,setTotalSavingsAmount] = useState('');
     const history = useHistory();
     const {data: members} = useFetch('http://localhost:8050/members');
     const {data: incomes} = useFetch('http://localhost:8050/incomes');
@@ -19,6 +21,16 @@ const SavingsDeductions = () =>{
       let dateTime = new Date();
       let time = dateTime.toISOString().split('T')[1];
       let date = dateTime.toISOString().split('T')[0];
+      if(members)
+      {
+      setNumberSavings(members.length);
+let totalSavingsAmount = 0;
+members.forEach((member)=>{
+  totalSavingsAmount = totalSavingsAmount + Number(member.monthlySavings);
+}
+)
+setTotalSavingsAmount(totalSavingsAmount);
+      }
       setDate(date);
      },[members])
      const handlePrompt = () =>{
@@ -199,6 +211,11 @@ const SavingsDeductions = () =>{
                     </tbody>
             </table>
           }
+          <div className = "row-flex-savings">
+          <strong>Total:</strong>
+          <p className = "savers">{numberSavings}</p>
+          <p className = "total-savings-amount">{totalSavingsAmount}cedis</p>
+          </div>
       </div>
       </div>
     )

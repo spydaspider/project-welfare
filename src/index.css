@@ -586,6 +586,7 @@ td{
 }
 .savings-deductions th{
    border-bottom: 2px solid #333;
+   padding: 0.5em;
 }
 .print-deductions{
   float: right;
@@ -742,7 +743,7 @@ th{
 }
 .income{
   font-size: 18px;
-  background:#eef3a2;
+  background:#eded01;
   padding: 0.7em;
 }
 .incomes table{
@@ -750,16 +751,18 @@ th{
   border: 1px solid #333;
 }
 .incomes thead{
-  background: #eef3a2;
+  background: #eded01;
 
 }
 .incomes th{
   border: 1px solid #333;
-  font-size: 18px;
-  padding: 0.3em;
+  font-size: 20px;
+  padding: 0.5em;
 }
 .incomes td{
    border:1px solid rgb(196, 195, 195);
+   padding: 0.5em;
+   font-size: 18px;
 }
 .flex-two-row{
    display: flex;
@@ -854,6 +857,18 @@ th{
 .gra-logo{
   width: 200px;
   margin-left: 2.6em;
+}
+.row-flex-savings{
+   display: flex;
+   justify-content: space-between;
+   width: 41%;
+   align-items: center;
+}
+.row-flex-savings strong{
+  margin-left: 4em;
+}
+.savers{
+  margin-left: 0.5em;
 }
   @media screen and (max-width: 786px)
   {

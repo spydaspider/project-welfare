@@ -50,9 +50,11 @@ const Income = () =>{
             <SecondNavigation/>
             <Navigation/>
             <div className = "incomes">
+                {error && <p className = "error">Database error, please restart the database.</p>}
                 <form onSubmit = {handleSubmit}>
                 <input type = "search"  onChange = {(e)=>setDateKey(e.target.value)} placeholder = "Enter date"/>
                 </form>
+                {isLoading && <p>Loading...</p>}
                 {filteredStepIncomes && showTable && <div className = "flex-two-row">
                     <p className = "income"><span className = "income-label">Gross Income:</span> {Number(totalGrossIncome).toFixed(2)}cedis</p>
                     <p className = "income"><span className = "income-label">Net Income:</span>{Number(netIncome).toFixed(2)}cedis</p>
