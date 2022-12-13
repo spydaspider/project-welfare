@@ -1,456 +1,114 @@
 {
   "individualSavings": [
     {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "pledge": "3232",
-      "date": "2022-11-28",
-      "time": "00:00:46.972Z",
+      "appName": "Tei numo",
+      "staffNumber": "gra1234",
+      "district": "accra",
+      "telephone": "0543123453",
+      "pledge": "50",
+      "date": "2022-12-12",
+      "time": "14:08:59.334Z",
       "id": 1
     },
     {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "34",
-      "date": "2022-11-28",
-      "time": "00:00:46.972Z",
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "pledge": "50",
+      "date": "2022-12-12",
+      "time": "14:43:31.389Z",
       "id": 2
     },
     {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "2000",
-      "date": "2022-11-28",
-      "time": "00:00:46.972Z",
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "pledge": "50",
+      "date": "2022-12-12",
+      "time": "14:43:31.389Z",
       "id": 3
     },
     {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "pledge": "3232",
-      "date": "2022-11-28",
-      "time": "00:01:12.225Z",
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "pledge": "50",
+      "date": "2022-12-12",
+      "time": "14:43:41.540Z",
       "id": 4
     },
     {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "34",
-      "date": "2022-11-28",
-      "time": "00:01:12.225Z",
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "pledge": "50",
+      "date": "2022-12-12",
+      "time": "14:43:41.540Z",
       "id": 5
-    },
-    {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "2000",
-      "date": "2022-11-28",
-      "time": "00:01:12.225Z",
-      "id": 6
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "pledge": "3232",
-      "date": "2022-11-28",
-      "time": "00:01:27.066Z",
-      "id": 7
-    },
-    {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "34",
-      "date": "2022-11-28",
-      "time": "00:01:27.066Z",
-      "id": 8
-    },
-    {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "2000",
-      "date": "2022-11-28",
-      "time": "00:01:27.066Z",
-      "id": 9
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "pledge": "3232",
-      "date": "2022-11-28",
-      "time": "15:22:00.387Z",
-      "id": 10
-    },
-    {
-      "appName": "Yaa ekua mpota",
-      "staffNumber": "gra12334",
-      "district": "accra",
-      "telephone": "121889133683",
-      "pledge": "100",
-      "date": "2022-11-28",
-      "time": "15:22:00.387Z",
-      "id": 11
-    },
-    {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "34",
-      "date": "2022-11-28",
-      "time": "15:22:00.387Z",
-      "id": 12
-    },
-    {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "2000",
-      "date": "2022-11-28",
-      "time": "15:22:00.387Z",
-      "id": 13
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "pledge": "3232",
-      "date": "2022-11-28",
-      "time": "18:16:17.735Z",
-      "id": 14
-    },
-    {
-      "appName": "Yaa ekua mpota",
-      "staffNumber": "gra12334",
-      "district": "accra",
-      "telephone": "121889133683",
-      "pledge": "100",
-      "date": "2022-11-28",
-      "time": "18:16:17.735Z",
-      "id": 15
-    },
-    {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "34",
-      "date": "2022-11-28",
-      "time": "18:16:17.735Z",
-      "id": 16
-    },
-    {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "2000",
-      "date": "2022-11-28",
-      "time": "18:16:17.735Z",
-      "id": 17
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "pledge": "3232",
-      "date": "2022-11-28",
-      "time": "22:34:43.255Z",
-      "id": 18
-    },
-    {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "34",
-      "date": "2022-11-28",
-      "time": "22:34:43.255Z",
-      "id": 19
-    },
-    {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "2000",
-      "date": "2022-11-28",
-      "time": "22:34:43.255Z",
-      "id": 20
-    },
-    {
-      "appName": "Yaa ekua mpota",
-      "staffNumber": "gra12334",
-      "district": "accra",
-      "telephone": "121889133683",
-      "pledge": "100",
-      "date": "2022-11-28",
-      "time": "22:34:43.255Z",
-      "id": 21
     }
   ],
   "stepIncomes": [
     {
-      "date": "2022-11-24",
-      "time": "12:21:56.574Z",
-      "income": 5266,
+      "date": "2022-12-12",
+      "time": "14:08:59.334Z",
+      "income": 50,
       "id": 1
     },
     {
-      "date": "2022-11-24",
-      "time": "14:16:09.014Z",
-      "income": 5266,
+      "date": "2022-12-12",
+      "time": "14:43:31.389Z",
+      "income": 100,
       "id": 2
     },
     {
-      "date": "2022-11-24",
-      "time": "14:19:46.458Z",
-      "income": 5266,
+      "date": "2022-12-12",
+      "time": "14:43:41.540Z",
+      "income": 100,
       "id": 3
-    },
-    {
-      "date": "2022-11-24",
-      "time": "14:20:17.898Z",
-      "income": 5266,
-      "id": 4
-    },
-    {
-      "date": "2022-11-24",
-      "time": "14:22:43.851Z",
-      "income": 5266,
-      "id": 5
-    },
-    {
-      "date": "2022-11-24",
-      "time": "23:43:33.164Z",
-      "income": 5266,
-      "id": 6
-    },
-    {
-      "date": "2022-11-24",
-      "time": "23:51:43.119Z",
-      "income": 5266,
-      "id": 7
-    },
-    {
-      "date": "2022-11-24",
-      "time": "23:52:08.564Z",
-      "income": 5266,
-      "id": 8
-    },
-    {
-      "date": "2022-11-24",
-      "time": "23:53:44.860Z",
-      "income": 5266,
-      "id": 9
-    },
-    {
-      "date": "2022-11-24",
-      "time": "23:54:02.123Z",
-      "income": 5266,
-      "id": 10
-    },
-    {
-      "date": "2022-11-27",
-      "time": "19:33:00.404Z",
-      "income": 5266,
-      "id": 11
-    },
-    {
-      "date": "2022-11-27",
-      "time": "19:35:09.400Z",
-      "income": 5266,
-      "id": 12
-    },
-    {
-      "date": "2022-11-27",
-      "time": "19:57:14.306Z",
-      "income": 5266,
-      "id": 13
-    },
-    {
-      "date": "2022-11-27",
-      "time": "19:58:02.706Z",
-      "income": 5266,
-      "id": 14
-    },
-    {
-      "date": "2022-11-27",
-      "time": "20:07:05.538Z",
-      "income": 5266,
-      "id": 15
-    },
-    {
-      "date": "2022-11-27",
-      "time": "20:07:27.722Z",
-      "income": 5266,
-      "id": 16
-    },
-    {
-      "date": "2022-11-27",
-      "time": "22:33:51.976Z",
-      "income": 5266,
-      "id": 17
-    },
-    {
-      "date": "2022-11-28",
-      "time": "00:00:46.972Z",
-      "income": 5266,
-      "id": 18
-    },
-    {
-      "date": "2022-11-28",
-      "time": "00:01:12.225Z",
-      "income": 5266,
-      "id": 19
-    },
-    {
-      "date": "2022-11-28",
-      "time": "00:01:27.066Z",
-      "income": 5266,
-      "id": 20
-    },
-    {
-      "date": "2022-11-28",
-      "time": "15:22:00.387Z",
-      "income": 5366,
-      "id": 21
-    },
-    {
-      "date": "2022-11-28",
-      "time": "18:16:17.735Z",
-      "income": 5366,
-      "id": 22
-    },
-    {
-      "date": "2022-11-28",
-      "time": "22:34:43.255Z",
-      "income": 5366,
-      "id": 23
     }
   ],
   "hirePurchases": [
     {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "itemName": "dsfsfsd",
-      "itemBrand": "sdfsdfd",
-      "unitPrice": "345",
-      "interest": "10",
-      "totalAmount": "345",
-      "quantity": "5",
-      "duration": "4",
-      "date": "2022-11-25",
-      "time": "12:23:06.574Z",
+      "appName": "standford mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "itemName": "deep freezer",
+      "itemBrand": "nasco",
+      "unitPrice": "1000",
+      "interest": "500",
+      "totalAmount": "1500",
+      "quantity": "1",
+      "duration": "10",
+      "date": "2022-12-12",
+      "time": "14:18:01.399Z",
       "id": 1
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "itemName": "fridge",
-      "itemBrand": "hisense",
-      "unitPrice": "300",
-      "interest": "10",
-      "totalAmount": "3000",
-      "quantity": "10",
-      "duration": "7",
-      "date": "2022-11-27",
-      "time": "12:20:06.988Z",
-      "id": 2
     }
   ],
-  "beneficiaries": [
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "rank": "sdfsdfsdf",
-      "benefit": "marriage of member",
-      "date": "2022-11-17",
-      "time": "13:23:53.426Z",
-      "id": 1
-    },
-    {
-      "appName": "Richmond",
-      "staffNumber": "gra3234",
-      "district": "ssdfsdfs",
-      "telephone": "21321321",
-      "rank": "dsgdfg",
-      "benefit": "death of spouse",
-      "date": "2022-11-18",
-      "time": "01:53:32.693Z",
-      "id": 2
-    }
-  ],
+  "beneficiaries": [],
   "incomes": [
     {
-      "income": 108758,
+      "income": 41,
       "id": 1
     }
   ],
   "requestedLoans": [
     {
-      "appName": "Gifty",
-      "staffNumber": "gra45354",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "loanAmount": 0,
-      "installment": "4000",
-      "duration": "12",
-      "date": "2022-11-23",
-      "time": "2023-11-23",
-      "id": 1
-    },
-    {
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "loanAmount": 0,
-      "installment": "4000",
-      "duration": "1",
-      "date": "2022-11-23",
-      "time": "2022-12-23",
-      "id": 2
-    },
-    {
-      "appName": "Yaa ekua mpota",
-      "staffNumber": "gra12334",
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
       "district": "accra",
-      "telephone": "121889133683",
-      "loanAmount": 0,
-      "installment": "500",
-      "duration": "5",
-      "date": "2022-11-28",
-      "time": "2023-4-28",
-      "id": 3
+      "telephone": "0543123453",
+      "loanAmount": 37.4,
+      "installment": "3",
+      "duration": "3",
+      "transactionId": "dsgf",
+      "date": "2022-12-13",
+      "time": "2023-3-13",
+      "id": 1
     }
   ],
   "users": [
@@ -462,47 +120,47 @@
   ],
   "members": [
     {
-      "membershipNumber": 2,
-      "appName": "Ruth",
-      "staffNumber": "gra234564",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "monthlySavings": "34",
-      "witnessName": "kjhkjhk",
-      "witnessContact": "kjhjkhjkhjkh",
-      "nomineeName1": "kjhsdkfjh",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "kjhjkhkj",
-      "nRelationship2": "",
-      "nRelationship3": "",
-      "nPercentage1": "23",
-      "nPercentage2": "",
+      "membershipNumber": 1,
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "monthlySavings": "50",
+      "witnessName": "richmond neizer",
+      "witnessContact": "0540579680",
+      "nomineeName1": "maa Tei",
+      "nomineeName2": "kofi Tei",
+      "nomineeName3": "Ama Tei",
+      "nRelationship1": "wife",
+      "nRelationship2": "son",
+      "nRelationship3": "daughter",
+      "nPercentage1": "50",
       "nPercentage3": "",
-      "date": "2022-10-27",
-      "time": "00:00:44.017Z",
-      "id": 2
+      "date": "2022-12-12",
+      "time": "14:37:15.702Z",
+      "id": 1
     },
     {
-      "membershipNumber": 4,
-      "appName": "Yaa ekua mpota",
-      "staffNumber": "gra12334",
-      "district": "accra",
-      "telephone": "121889133683",
-      "monthlySavings": "100",
-      "witnessName": "mr kojo darkwah",
-      "witnessContact": "20298203028323",
-      "nomineeName1": "kwame",
-      "nomineeName2": "adjoa",
-      "nomineeName3": "kwesi",
-      "nRelationship1": "brother",
-      "nRelationship2": "sister",
-      "nRelationship3": "husband",
-      "nPercentage1": "40",
-      "nPercentage3": "30",
-      "date": "2022-11-28",
-      "time": "23:50:43.217Z",
-      "id": 4
+      "membershipNumber": 2,
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "monthlySavings": "50",
+      "witnessName": "standford mensah",
+      "witnessContact": "0543456734",
+      "nomineeName1": "becca quacoo",
+      "nomineeName2": "",
+      "nomineeName3": "",
+      "nRelationship1": "sister",
+      "nRelationship2": "",
+      "nRelationship3": "",
+      "nPercentage1": "100",
+      "nPercentage2": "",
+      "nPercentage3": "",
+      "date": "2022-12-12",
+      "time": "14:41:28.713Z",
+      "id": 2
     }
   ]
 }

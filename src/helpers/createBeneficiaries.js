@@ -7,6 +7,7 @@ export default class CreateBeneficiaries{
         this.telephone = telephone;
         this.rank = rank;
         this.benefit = benefit;
+        /* this.benefitAmount = benefitAmount; */
         this.date = date;
         this.time = time;
 

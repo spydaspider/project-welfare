@@ -26,7 +26,7 @@ const Loans = () =>{
         <div className = "print-loans">
             <button onClick = {handlePrintLoan}>print</button>
             </div>
-            <h1>Al<span>l re</span>qu<span>est</span>e<span>d l</span>o<span>an</span>s.</h1>
+            <h1>Al<span>l re</span>qu<span>est</span>e<span>d L</span>o<span>an</span>s</h1>
             
             <table>
                 <thead>

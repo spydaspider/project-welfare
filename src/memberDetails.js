@@ -11,6 +11,9 @@ import CreateIncomes from './helpers/createIncomes.js';
 import Store from './helpers/storage.js';
 import CreateMLLength from './helpers/createMLLength.js';
 import ShowIndividualSavings from './showIndividualSavings.js';
+import graIcon from './images/gra.png';
+import jsPDF from 'jspdf';
+
 const MemberDetails = () =>{
     const {id} = useParams();
     const {data:members} = useFetch('http://localhost:8050/members');
@@ -68,6 +71,8 @@ const MemberDetails = () =>{
     const [lowIncome,setLowIncome] = useState(null);
     const [showIS, setShowIS] = useState(null);
     const [balance,setBalance] = useState(0);
+    const [benefitAmount, setBenefitAmount] = useState(0);
+    const [transactionId,setTransactionId] = useState('');
     useEffect(
         ()=>{
              if(member)
@@ -148,7 +153,6 @@ const MemberDetails = () =>{
         let time = dateTime.toISOString().split('T')[1];
         let date = dateTime.toISOString().split('T')[0];
         let searchCounter = 0;
-        console.log(members.length);
         if(members && members.length !== 0)
         {
           
@@ -204,37 +208,21 @@ const MemberDetails = () =>{
               
             }
             const handleNewSavings = () =>{
-                let mlFound = 0;
-                if(memberLoans)
-                {
-                    memberLoans.forEach((ml)=>{
-                        if(Number(ml.loanAmount)!==0)
-                        {
-                            mlFound = 1;
-                            
-                            
-                           
-                        }
-                    })
-                    if(mlFound === 1)
-                    {
-                        setPendingLoan(true);
-
-                      
-
-                    }
-                    else{
-                       setNewSavingsPopup(true);
-                       
-                        }
-                }
-                else{
+                let mlFound = 0; 
                     setNewSavingsPopup(true);
-                    }
+            
+                
                 
             }
+            const handlePop = (e) =>{
+                e.preventDefault();
+               console.log("Popper");
+            }
             const handleNewSavingsSubmit = (e) =>{
-                let dateTime = new Date();
+                e.preventDefault();
+            
+
+                 let dateTime = new Date();
                 let time = dateTime.toISOString().split('T')[1];
                 let date = dateTime.toISOString().split('T')[0];
                 e.preventDefault();
@@ -293,7 +281,8 @@ const MemberDetails = () =>{
                     else{
                         setLowIncome(null);
                         setNoIncome(null);
-                    const memberLoan = new CreateRequestedLoan(applicantName,staffNumber,district,telephone,Number(savingsAmount)+(Number(savingsAmount)*(10/100)),installment,duration,date,endDate);
+
+                    const memberLoan = new CreateRequestedLoan(applicantName,staffNumber,district,telephone,Number(savingsAmount)+(Number(savingsAmount)*(10/100)),installment,duration,transactionId,date,endDate);
                     fetch(' http://localhost:8050/requestedLoans',{
                         method: 'POST',
                         headers: {'Content-type': 'Application/json'},
@@ -302,7 +291,9 @@ const MemberDetails = () =>{
                          window.location.reload();
                         setSavingsAmount('');
                         setSAError(false);
-                        setNewSavingsPopup(false);
+                       
+                         setNewSavingsPopup(false);
+ 
                         //Send the size to the localStorage
                         if(memberLoans)
    {
@@ -321,8 +312,19 @@ const MemberDetails = () =>{
                     })   
                     }
                   
-                }
+                } 
+                
 
+            }
+            const handlePrintLoanReceipt = (e) =>{
+                e.preventDefault();
+                 const doc = new jsPDF("p","pt","a4");
+                doc.html(document.querySelector('.new-savings-inner'),{
+                  callback: function(pdf){
+                    pdf.save("loan receipt.pdf");
+                  }
+                }
+                )
             }
             const handleBeneficiariesSubmit = (e) =>{
                 e.preventDefault();
@@ -389,7 +391,7 @@ const MemberDetails = () =>{
                     }
 
                 }
-
+           
                 
     let benefitedMember = new CreateBeneficiaries(applicantName,staffNumber,district,telephone,rank,benefit,date,time);
         fetch('http://localhost:8050/beneficiaries',{
@@ -455,7 +457,7 @@ const MemberDetails = () =>{
         <Navigation/>
     <div className = "membership-form">
             
-            <h1>M<span>em</span>be<span>r fi</span>le.</h1>
+            <h1>M<span>em</span>be<span>r Fi</span>le</h1>
             {error && <p className = "error">{error}</p>}
             {negativeNumber&&<p className = "error">Negative number detected.</p>}
             <form onSubmit = {handleSubmit}>                
@@ -555,28 +557,42 @@ const MemberDetails = () =>{
                         <span className = "bar"></span>
                     </div>
                 <div className = "new-savings">
+                    <div className = "new-savings-inner">
+                   <img className = "request-loan-gra-icon" src = {graIcon} alt = "graIcon"/>
                    
-                <h2>Request Loan</h2>
+                <h2>Loan Receipt</h2>
                 {lowIncome && <p className = "error">The loan amount is greater than the income.</p>}
                 {noIncome && <p className = "error">There is no income yet.</p>}
                 {SAError && <p className = "error">Enter valid values for all fields.</p>}
-                <form onSubmit = {handleNewSavingsSubmit}>
+                <form>
                     <label>Applicant Name</label>
-                   <input type = "text" value = {applicantName}/>
+                   <input type = "text" value = {applicantName} />
                    <label>Staff Number</label>
                    <input type = "text" value = {staffNumber}/>
                    <label>District</label>
                    <input type = "text" value = {district}/>
                    <label>Telephone</label>
                    <input type = "text" value = {telephone}/>
-                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)} placeholder = "loan amount"/>
-                   <input type = "number" value = {installment} onChange = {(e)=> setInstallment(e.target.value)} placeholder = "installment amount"/>
-                   <input type = "number" value = {duration} onChange = {(e)=>setDuration(e.target.value)} placeholder = "duration in months"/>
-                   <div className = "new-savings-button">
-                   <button>Save</button>
+                   <label>Loan Amount</label>
+                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)}/>
+                   <label>Installment Amount</label>
+
+                   <input type = "number" value = {installment} onChange = {(e)=> setInstallment(e.target.value)}/>
+                   <label>Duration</label>
+
+                
+                   <input type = "number" value = {duration} onChange = {(e)=>setDuration(e.target.value)}/>
+                  <label>Transaction Id if any</label>
+                  <input type = "text" value = {transactionId} onChange = {(e)=> setTransactionId(e.target.value)}/>
+
+                  
+                </form>
+                </div>
+                <div className = "new-savings-button">
+                     <button onClick = {handlePrintLoanReceipt} className = "loan-print">Print</button>
+                  <button onClick = {handleNewSavingsSubmit}>Save</button>
 
                    </div>
-                </form>
                 </div>
             </div>
             }
@@ -660,6 +676,8 @@ const MemberDetails = () =>{
                    <input type = "text" value = {telephone}/>
                    <label>Rank</label>
                    <input type = "text" value = {rank} onChange = {(e)=>setRank(e.target.value)} required/>
+                   <label>Amount</label>
+                   <input type = "text" value = {benefitAmount} onChange = {(e)=>setBenefitAmount(e.target.value)} required/>
                    <h3>Section B</h3>
                    {tickOne && <p className = "error">Please select one</p>}
                    <p>CATEGORIES OF ENTILMENTS/BENEFITS</p>
