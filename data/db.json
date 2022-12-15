@@ -49,6 +49,26 @@
       "date": "2022-12-12",
       "time": "14:43:41.540Z",
       "id": 5
+    },
+    {
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "pledge": "500",
+      "date": "2022-12-15",
+      "time": "22:56:19.260Z",
+      "id": 6
+    },
+    {
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "pledge": "498",
+      "date": "2022-12-15",
+      "time": "22:56:19.260Z",
+      "id": 7
     }
   ],
   "stepIncomes": [
@@ -69,6 +89,12 @@
       "time": "14:43:41.540Z",
       "income": 100,
       "id": 3
+    },
+    {
+      "date": "2022-12-15",
+      "time": "22:56:19.260Z",
+      "income": 998,
+      "id": 4
     }
   ],
   "hirePurchases": [
@@ -81,7 +107,7 @@
       "itemBrand": "dsfsd",
       "unitPrice": "565",
       "interest": "99",
-      "totalAmount": "664",
+      "totalAmount": 658,
       "quantity": "5",
       "duration": "5",
       "installment": "6",
@@ -99,7 +125,7 @@
       "itemBrand": "dfs",
       "unitPrice": "50",
       "interest": "8",
-      "totalAmount": 58,
+      "totalAmount": 48,
       "quantity": "4",
       "duration": "5",
       "installment": "10",
@@ -137,7 +163,7 @@
   ],
   "incomes": [
     {
-      "income": 146,
+      "income": 1285,
       "id": 1
     }
   ],
@@ -147,7 +173,7 @@
       "staffNumber": "gra12345",
       "district": "accra",
       "telephone": "0543123453",
-      "loanAmount": 37.4,
+      "loanAmount": 22.4,
       "installment": "3",
       "duration": "3",
       "transactionId": "dsgf",
@@ -160,7 +186,7 @@
       "staffNumber": "gra12345",
       "district": "accra",
       "telephone": "0543123453",
-      "loanAmount": 110,
+      "loanAmount": 0,
       "installment": "50",
       "duration": "2",
       "transactionId": "543454",

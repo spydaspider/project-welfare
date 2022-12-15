@@ -30,15 +30,15 @@ setFilteredMembers(filtMembers);
 setNumberLoaners(filtMembers.length);
 let totalLoanAmount = 0;
 members.forEach((member)=>{
-  totalLoanAmount = totalLoanAmount + Number(member.loanAmount);
+  totalLoanAmount = totalLoanAmount + Number(member.totalAmount);
 }
 )
 setTotalLoanAmount(totalLoanAmount);
 setDate(date);
         members.forEach((rl)=>{
-             if(Number(rl.installment) >= Number(rl.loanAmount))
+             if(Number(rl.installment) >= Number(rl.totalAmount))
             {
-              rl.installment = rl.loanAmount;
+              rl.installment = rl.totalAmount;
               setNewInstallment(rl.installment);
             }
             else
@@ -54,7 +54,7 @@ setDate(date);
       const doc = new jsPDF("p","pt","a4");
       doc.html(document.querySelector('.savings-deductions'),{
         callback: function(pdf){
-          pdf.save("loanDeductions.pdf");
+          pdf.save("HirePurchaseDeductions.pdf");
         }
       }
       );
@@ -70,12 +70,12 @@ setDate(date);
           for(let i = 0; i < members.length; i++)         
           {
           
-            members[i].loanAmount = Number(members[i].loanAmount)-Number(members[i].installment);
+            members[i].totalAmount = Number(members[i].totalAmount)-Number(members[i].installment);
             fetch('http://localhost:8050/hirePurchases/'+id,{
             method: "PATCH",
             headers: {"Content-type": "Application/json"},
             body: JSON.stringify({
-              loanAmount: members[i].loanAmount
+              totalAmount: members[i].totalAmount
             })
           })
 

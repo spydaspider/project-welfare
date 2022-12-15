@@ -100,7 +100,8 @@ setDate(date);
                income: newIncome,
                })
             }).then(()=>{
-            
+              setPrompt(null);
+              window.location.reload();
               
             })
           

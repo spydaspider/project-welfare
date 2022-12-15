@@ -36,7 +36,7 @@ const HirePurchases = () =>{
                             <td>{hp.district}</td>
                             <td>{hp.telephone}</td>
                             <td>{hp.itemName}</td>
-                            <td>{Number(hp.unitPrice).toFixed(2)}cedis</td>
+                            <td>{Number(hp.installment).toFixed(2)}cedis</td>
                             <td>{Number(hp.totalAmount).toFixed(2)}cedis</td>
                             <td>{hp.itemBrand}</td>
                             <td>{hp.quantity}</td>
