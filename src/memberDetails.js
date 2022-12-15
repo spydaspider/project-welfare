@@ -13,6 +13,9 @@ import CreateMLLength from './helpers/createMLLength.js';
 import ShowIndividualSavings from './showIndividualSavings.js';
 import graIcon from './images/gra.png';
 import jsPDF from 'jspdf';
+import ShowPurchased from './showPurchased.js';
+import ShowBenefits from './showBenefits.js';
+
 
 const MemberDetails = () =>{
     const {id} = useParams();
@@ -63,7 +66,7 @@ const MemberDetails = () =>{
     const [itemBrand,setItemBrand] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
     const [interest,setInterest] = useState('');
-    const [totalAmount,setTotalAmount] = useState('');
+      const [totalAmount,setTotalAmount] = useState('');
     const [quantity,setQuantity] = useState('');
     const [itemDuration, setItemDuration] = useState('');
     const [lessThanZero,setLessThanZero] = useState('');
@@ -71,8 +74,14 @@ const MemberDetails = () =>{
     const [lowIncome,setLowIncome] = useState(null);
     const [showIS, setShowIS] = useState(null);
     const [balance,setBalance] = useState(0);
-    const [benefitAmount, setBenefitAmount] = useState(0);
+    const [benefitAmount, setBenefitAmount] = useState('');
     const [transactionId,setTransactionId] = useState('');
+    const [showPurchased,setShowPurchased] = useState('');
+    const [showBenefits,setShowBenefits] = useState(null);
+    const [notEnoughFunds,setNotEnoughFunds] = useState(null);
+    const [lowBenefitIncome,setLowBenefitIncome] = useState(null);
+    const [negativeBenefitAmount,setNegativeBenefitAmount] = useState(null);
+    const [itemPaymentInstallment,setItemPaymentInstallment] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -214,10 +223,6 @@ const MemberDetails = () =>{
                 
                 
             }
-            const handlePop = (e) =>{
-                e.preventDefault();
-               console.log("Popper");
-            }
             const handleNewSavingsSubmit = (e) =>{
                 e.preventDefault();
             
@@ -343,12 +348,18 @@ const MemberDetails = () =>{
                 let nat = document.getElementById('nat');
                 let benefit;
               
-                if(!dos.checked && !pi.checked && !dop.checked && !doc.checked && !mom.checked && !hos.checked && !res.checked && !acc.checked && !chb.checked && !nat.checked)
+                if(!dos.checked &&!pi.checked && !dop.checked && !doc.checked && !mom.checked && !hos.checked && !res.checked && !acc.checked && !chb.checked && !nat.checked)
                 {
                         setTickOne(true);
+                        setLowBenefitIncome(null);
+                        setNegativeBenefitAmount(null);
+
                 }
                 else{
                     setTickOne(null);
+                    setLowBenefitIncome(null);
+                    setNegativeBenefitAmount(null);
+
                     if(dos.checked)
                     {
                         benefit = dos.value;
@@ -389,11 +400,33 @@ const MemberDetails = () =>{
                     {
                         benefit = nat.value;
                     }
+ 
+             if(incomes)
+             {               
+             let income = Number(incomes[0].income);
+             if(benefitAmount > income)
+             {
+                setLowBenefitIncome(true);
+                setTickOne(false);
+                setNegativeBenefitAmount(null);
 
-                }
-           
+             }
+             else if(benefitAmount < 0)
+             {
+                setNegativeBenefitAmount(true);
+                setTickOne(false);
+                setLowBenefitIncome(null);
+             }
+             else
+             {
+                setNegativeBenefitAmount(null);
+                setTickOne(null);
+                setLowBenefitIncome(null); 
+                let benefitIncome = income - benefitAmount;
+                let newBenefitIncome = new CreateIncomes(benefitIncome);
                 
-    let benefitedMember = new CreateBeneficiaries(applicantName,staffNumber,district,telephone,rank,benefit,date,time);
+                
+     let benefitedMember = new CreateBeneficiaries(applicantName,staffNumber,district,telephone,rank,benefit,benefitAmount,date,time);
         fetch('http://localhost:8050/beneficiaries',{
             method: "POST",
             headers: {"Content-type": "Application/json"},
@@ -401,13 +434,24 @@ const MemberDetails = () =>{
         }).then(()=>{
             setShowBen(null);
             setRank('');
-        })
+            setBenefitAmount('');
+            fetch('http://localhost:8050/incomes/'+1,{
+                method: 'PUT',
+                headers: {'Content-type': 'Application/json'},
+                body: JSON.stringify(newBenefitIncome)
+            })
+        }) 
+    }
+    }
+    }
             }
             const handleClose = () =>{
                 setNewSavingsPopup(false);
                 setShowBen(false);
                 setShowHirePurchase(false);
                 setShowIS(null);
+                setShowPurchased(null);
+                setShowBenefits(null);
             }
             const showIndividualSaving = () =>{
                 setShowIS(true);
@@ -421,12 +465,27 @@ const MemberDetails = () =>{
             const handleHirePurchase = () =>{
                 setShowHirePurchase(true);
             }
+            const handleRequestedLoans = () =>{
+                setShowHirePurchase(true);
+            }
+            const handleRequestedBenefits = () =>{
+                setShowBenefits(true);
+
+            }
+            const handlePurchased = () =>{
+                setShowPurchased(true);
+
+            }
+         
             const handleHirePurchaseSubmit = (e) =>{
                 e.preventDefault();
-                if(unitPrice < 0 || interest < 0 || quantity < 0 || duration < 0 ||totalAmount < 0)
+                let totalAmountField = document.getElementById('total-amount');
+                let totalAmt = Number(totalAmountField.value);
+             if(unitPrice < 0 || interest < 0 || quantity < 0 || duration < 0 ||totalAmt < 0)
                 {
                     setLessThanZero(true);
-
+                    setNotEnoughFunds(null);
+                  
                 }
                 else
                 {
@@ -434,8 +493,56 @@ const MemberDetails = () =>{
                     let dateTime = new Date();
                     let time = dateTime.toISOString().split('T')[1];
                     let date = dateTime.toISOString().split('T')[0];
-                    let hirePurchase = new CreateHirePurchase(applicantName,staffNumber,district,telephone,nameOfItem,itemBrand,unitPrice,interest,totalAmount,quantity,itemDuration,date,time);
-                    fetch('http://localhost:8050/hirePurchases',{
+                    let yearPurchase;
+                    let monthPurchase;
+                    let dayPurchase;
+                    yearPurchase = Number(date.substring(0,4));
+                    monthPurchase = Number(date.substring(5,7));
+                    dayPurchase = Number(date.substring(8,10));
+                    let purchaseEndDate;
+                    for(let i = 0; i < Number(itemDuration); i++)
+                    {
+                        if(monthPurchase === 12)
+                        {
+                            yearPurchase = yearPurchase+1
+                            monthPurchase = 1;
+                        }
+                        else
+                        {
+                            monthPurchase = monthPurchase+1;
+                        }
+
+                    }
+                    let strMonth;
+                    if((monthPurchase < 10)&&(dayPurchase < 10))
+                    {
+                        purchaseEndDate = yearPurchase+"-"+"0"+monthPurchase+"-"+"0"+dayPurchase;
+                    }
+                    else
+                    {
+                        purchaseEndDate = yearPurchase+"-"+monthPurchase+"-"+dayPurchase;
+                    }
+            
+                    //get the income and do substractions.
+                    if(incomes)
+                    {
+                       let totalIncome = Number(incomes[0].income);
+                       if(totalAmt > totalIncome)
+                       {
+                           setNotEnoughFunds(true);
+                           setLessThanZero(null);
+                         
+
+                       }
+                       else{
+                                     
+                        setNotEnoughFunds(null);
+                        setLessThanZero(null);
+                        let newPurchaseIncome = totalIncome - totalAmt;
+                        let purchaseIncome = new CreateIncomes(newPurchaseIncome);
+                    
+                    let hirePurchase = new CreateHirePurchase(applicantName,staffNumber,district,telephone,nameOfItem,itemBrand,unitPrice,interest,totalAmt,quantity,itemDuration,itemPaymentInstallment,date,purchaseEndDate,time);
+                      fetch('http://localhost:8050/hirePurchases',{
                         method: "POST",
                         headers: {"Content-type": "Application/json"},
                         body: JSON.stringify(hirePurchase)
@@ -447,9 +554,17 @@ const MemberDetails = () =>{
                         setItemDuration('');
                         setInterest('');
                         setUnitPrice('');
-                    })
+                        setItemPaymentInstallment('');
+                        fetch('http://localhost:8050/incomes/'+1,{
+                            method: 'PUT',
+                            headers: {'Content-type':'Application/json'},
+                            body: JSON.stringify(purchaseIncome)
+                        }) 
+                    })  
                 }
-
+            }
+                }  
+ 
             }
    return (
     <div className = "membership-form-wrapper">
@@ -473,7 +588,7 @@ const MemberDetails = () =>{
                     <label className = "label-style">Telephone</label>
                     <input type = "text" value = {telephone} onChange = {(e)=>setTelephone(e.target.value)} required/>
             
-                    <label className = "label-style">Monthly Savings Amount</label>
+                    <label className = "label-style">Monthly Dues</label>
                     <input type = "number" value = {monthlySavings} onChange = {(e)=>setMonthlySavings(e.target.value)}/>
                 </fieldset>
                 <fieldset className = "nominee-field">
@@ -528,12 +643,20 @@ const MemberDetails = () =>{
                 <h1>Tr<span>a</span>ns<span>a</span>ct<span>io</span>ns</h1>
                 <div className = "file-buttons">
                 <button onClick = {handleNewSavings} className = "file-button">Request Loan</button>
-                <button onClick = {handleHirePurchase} className = "file-button">Hire Purchase</button>
+                <button onClick = {handleHirePurchase} className = "file-button">Purchase</button>
                 <button onClick ={showBeneficiaries} className = "file-button">Beneficiaries</button>
                 </div>
+                <div className = "file-buttons">
+                <button onClick = {showIndividualSaving} className = "file-button">Savings</button>
+
+                <button onClick = {handlePurchased} className = "file-button">Purchased</button>
+
+                <button onClick ={handleRequestedBenefits} className = "file-button">Benefits</button>
+                </div>
                 <div className = "fbd">
-                <button onClick = {showIndividualSaving} className = "file-button">View Individual Savings</button>
-                 </div>
+
+                </div>
+
             </div>
             {pendingLoan && <div className = "pending-loan">
                         
@@ -607,7 +730,6 @@ const MemberDetails = () =>{
                       <div className = "new-savings">
                          
                       <h2>Goods Received Form</h2>
-                      {loanPaymentAmountError && <p className = "error">Enter a valid loan amount.</p>}
                       <form onSubmit = {handleHirePurchaseSubmit}>
                           <label>Applicant's Name</label>
                          <input type = "text" value = {applicantName}/>
@@ -626,11 +748,16 @@ const MemberDetails = () =>{
                          <label>Interest On Item</label>
                          <input type = "number" value = {interest} onChange = {(e)=>setInterest(e.target.value)} required/>
                          <label>Total Amount</label>
-                         <input type = "number" value = {totalAmount} onChange = {(e)=>setTotalAmount(e.target.value)} required/>
+                         <input id = "total-amount" type = "number" value = {Number(unitPrice)+Number(interest)}/>
+                        
+
                          <label>Quantity</label>
                          <input type = "number" value = {quantity} onChange = {(e)=>setQuantity(e.target.value)} required/>
                          <label>Duration</label>
                          <input type = "text" value = {itemDuration} onChange = {(e)=>setItemDuration(e.target.value)}required/>
+                         <label>Installment</label>
+                         <input type = "text" value = {itemPaymentInstallment} onChange = {(e)=>setItemPaymentInstallment(e.target.value)}required/>
+                         {notEnoughFunds && <p className = 'error'>Not enough funds to purchase the item.</p> }
 
                          {lessThanZero && <p className = "error">Please enter a valid number in the number fields</p>}
 
@@ -646,13 +773,34 @@ const MemberDetails = () =>{
             {
                 showIS && <div className = "show-individual-savings-bg">
                       <div onClick = {handleClose}className = "close">
-                        <span className = "bar-l"></span>
-                        <span className = "bar-l"></span>
-                        <span className = "bar-l"></span>
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
                      </div>
                     <ShowIndividualSavings staffNumber = {staffNumber}/>
                     </div>
             }
+             {
+                showPurchased && <div className = "show-individual-savings-bg">
+                      <div onClick = {handleClose}className = "close">
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                     </div>
+                    <ShowPurchased staffNumber = {staffNumber}/>
+                    </div>
+            }
+             {
+                showBenefits && <div className = "show-individual-savings-bg">
+                      <div onClick = {handleClose}className = "close">
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                     </div>
+                    <ShowBenefits staffNumber = {staffNumber}/>
+                    </div>
+            }
+            
              {
                 showBen &&
             <div className = "new-savings-bg">
@@ -677,9 +825,11 @@ const MemberDetails = () =>{
                    <label>Rank</label>
                    <input type = "text" value = {rank} onChange = {(e)=>setRank(e.target.value)} required/>
                    <label>Amount</label>
-                   <input type = "text" value = {benefitAmount} onChange = {(e)=>setBenefitAmount(e.target.value)} required/>
+                   <input type = "number" value = {benefitAmount} onChange = {(e)=>setBenefitAmount(e.target.value)} required/>
                    <h3>Section B</h3>
                    {tickOne && <p className = "error">Please select one</p>}
+                   {lowBenefitIncome && <p className = "error">Low on income, cannot proceed with the transaction</p>}
+                   {negativeBenefitAmount && <p className = "error">Negative amount value detected in amount field</p>}
                    <p>CATEGORIES OF ENTILMENTS/BENEFITS</p>
                    <div className = "categories">
                     <div className = "cat">

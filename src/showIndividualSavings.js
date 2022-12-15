@@ -19,7 +19,7 @@ const ShowIndividualSavings = ({staffNumber}) =>{
 return(
        
     <div className = "show-is">
-       {individualSavings && filteredIS && <h1 className = "total-savings-title">Total Savings made</h1>}
+       {individualSavings && filteredIS && <h1 className = "total-savings-title">Total Savings made by applicant</h1>}
          <div className = "total-savings">
                         <span className = "tsa">Total Savings Amount: {Number(totalSavings).toFixed(2)}cedis</span>
                     </div>

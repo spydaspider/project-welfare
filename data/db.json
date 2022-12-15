@@ -73,26 +73,71 @@
   ],
   "hirePurchases": [
     {
-      "appName": "standford mensah",
+      "appName": "standford tei mensah",
       "staffNumber": "gra12345",
       "district": "accra",
       "telephone": "0543123453",
-      "itemName": "deep freezer",
-      "itemBrand": "nasco",
-      "unitPrice": "1000",
-      "interest": "500",
-      "totalAmount": "1500",
-      "quantity": "1",
-      "duration": "10",
-      "date": "2022-12-12",
-      "time": "14:18:01.399Z",
+      "itemName": "fsdfsd",
+      "itemBrand": "dsfsd",
+      "unitPrice": "565",
+      "interest": "99",
+      "totalAmount": "664",
+      "quantity": "5",
+      "duration": "5",
+      "installment": "6",
+      "startDate": "2022-12-15",
+      "endDate": "2023-5-15",
+      "time": "13:20:41.480Z",
       "id": 1
+    },
+    {
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "itemName": "fdf",
+      "itemBrand": "dfs",
+      "unitPrice": "50",
+      "interest": "8",
+      "totalAmount": 58,
+      "quantity": "4",
+      "duration": "5",
+      "installment": "10",
+      "startDate": "2022-12-15",
+      "endDate": "2023-5-15",
+      "time": "13:25:26.471Z",
+      "id": 2
     }
   ],
-  "beneficiaries": [],
+  "beneficiaries": [
+    {
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "rank": "SRO",
+      "benefit": "marriage of member",
+      "benefitAmount": "498",
+      "date": "2022-12-15",
+      "time": "09:44:59.818Z",
+      "id": 1
+    },
+    {
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "rank": "PRO",
+      "benefit": "natural disaster",
+      "benefitAmount": "397",
+      "date": "2022-12-15",
+      "time": "09:45:38.906Z",
+      "id": 2
+    }
+  ],
   "incomes": [
     {
-      "income": 41,
+      "income": 146,
       "id": 1
     }
   ],
@@ -109,6 +154,19 @@
       "date": "2022-12-13",
       "time": "2023-3-13",
       "id": 1
+    },
+    {
+      "appName": "standford tei mensah",
+      "staffNumber": "gra12345",
+      "district": "accra",
+      "telephone": "0543123453",
+      "loanAmount": 110,
+      "installment": "50",
+      "duration": "2",
+      "transactionId": "543454",
+      "date": "2022-12-15",
+      "time": "2023-2-15",
+      "id": 2
     }
   ],
   "users": [
@@ -125,7 +183,7 @@
       "staffNumber": "gra12345",
       "district": "accra",
       "telephone": "0543123453",
-      "monthlySavings": "50",
+      "monthlySavings": "500",
       "witnessName": "richmond neizer",
       "witnessContact": "0540579680",
       "nomineeName1": "maa Tei",
@@ -136,8 +194,8 @@
       "nRelationship3": "daughter",
       "nPercentage1": "50",
       "nPercentage3": "",
-      "date": "2022-12-12",
-      "time": "14:37:15.702Z",
+      "date": "2022-12-15",
+      "time": "09:52:53.017Z",
       "id": 1
     },
     {
@@ -146,7 +204,7 @@
       "staffNumber": "gra4040",
       "district": "suynanni",
       "telephone": "0205678743",
-      "monthlySavings": "50",
+      "monthlySavings": "498",
       "witnessName": "standford mensah",
       "witnessContact": "0543456734",
       "nomineeName1": "becca quacoo",
@@ -156,10 +214,9 @@
       "nRelationship2": "",
       "nRelationship3": "",
       "nPercentage1": "100",
-      "nPercentage2": "",
       "nPercentage3": "",
-      "date": "2022-12-12",
-      "time": "14:41:28.713Z",
+      "date": "2022-12-15",
+      "time": "09:53:04.378Z",
       "id": 2
     }
   ]

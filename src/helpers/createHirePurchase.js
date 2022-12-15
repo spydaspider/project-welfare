@@ -1,5 +1,5 @@
 export default class CreateHirePurchase{
-    constructor(appName,staffNumber,district,telephone,itemName,itemBrand,unitPrice,interest,totalAmount,quantity,duration,date,time)
+    constructor(appName,staffNumber,district,telephone,itemName,itemBrand,unitPrice,interest,totalAmount,quantity,duration,installment,startDate,endDate,time)
     {
         this.appName = appName;
         this.staffNumber = staffNumber;
@@ -12,7 +12,9 @@ export default class CreateHirePurchase{
         this.totalAmount = totalAmount;
         this.quantity = quantity;
         this.duration = duration;
-        this.date = date;
+        this.installment = installment;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.time = time;
       }
 }

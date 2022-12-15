@@ -118,7 +118,7 @@ if(members && members.length !== 0)
                     <label className = "label-style">Telephone</label>
                     <input type = "text" value = {telephone} onChange = {(e)=>setTelephone(e.target.value)} required/>
             
-                    <label className = "label-style">Monthly Savings Amount</label>
+                    <label className = "label-style">Monthly Dues</label>
                     <input type = "number" value = {monthlySavings} onChange = {(e)=>setMonthlySavings(e.target.value)}/>
                 </fieldset>
                 <fieldset className = "nominee-field">

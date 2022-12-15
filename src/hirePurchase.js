@@ -12,17 +12,18 @@ const HirePurchases = () =>{
                <table>
                 <thead>
                    <tr>
-                    <th>Applicant Name</th>
+                    <th>Name</th>
                     <th>Staff Number</th>
                     <th>District</th>
                     <th>Telephone</th>
                     <th>Item</th>
-                    <th>Unit Price</th>
-                    <th>Total Amount</th>
+                    <th>Installment</th>
+                    <th>Total Amt</th>
                     <th>Brand</th>
-                    <th>Quantity</th>
+                    <th>Qty</th>
                     <th>Duration</th>
-                    <th>Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
 
 
                    </tr>
@@ -40,7 +41,8 @@ const HirePurchases = () =>{
                             <td>{hp.itemBrand}</td>
                             <td>{hp.quantity}</td>
                             <td>{hp.duration}</td>
-                            <td>{hp.date}</td>
+                            <td>{hp.startDate}</td>
+                            <td>{hp.endDate}</td>
                          </tr>
                     ))
                     

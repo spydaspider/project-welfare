@@ -19,6 +19,7 @@ import PrintLoanDeductions from './printPages/printLoanDeductions';
 import Beneficiaries from './beneficiaries.js';
 import Income from './helpers/income';
 import HirePurchases from './hirePurchase';
+import HirePurchaseDeduction from './deductionPages/hirePurchaseDeduction';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
 
@@ -106,6 +107,9 @@ function App() {
              </Route>
              <Route path = "/printOnlyLoan">
               {loggedIn && <PrintOnlyLoan/>}
+             </Route>
+             <Route path = "/hirePurchaseDeductions">
+              {loggedIn && <HirePurchaseDeduction/>}
              </Route>
             
         </Switch>
