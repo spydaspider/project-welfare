@@ -69,6 +69,26 @@
       "date": "2022-12-15",
       "time": "22:56:19.260Z",
       "id": 7
+    },
+    {
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "pledge": "498",
+      "date": "2022-12-16",
+      "time": "12:05:05.495Z",
+      "id": 8
+    },
+    {
+      "appName": "Dickson Amankwaah",
+      "staffNumber": "gra234232",
+      "district": "agape",
+      "telephone": "0547231966",
+      "pledge": "400",
+      "date": "2022-12-16",
+      "time": "12:05:05.495Z",
+      "id": 9
     }
   ],
   "stepIncomes": [
@@ -95,6 +115,12 @@
       "time": "22:56:19.260Z",
       "income": 998,
       "id": 4
+    },
+    {
+      "date": "2022-12-16",
+      "time": "12:05:05.495Z",
+      "income": 898,
+      "id": 5
     }
   ],
   "hirePurchases": [
@@ -163,7 +189,7 @@
   ],
   "incomes": [
     {
-      "income": 1285,
+      "income": 2063,
       "id": 1
     }
   ],
@@ -204,27 +230,6 @@
   ],
   "members": [
     {
-      "membershipNumber": 1,
-      "appName": "standford tei mensah",
-      "staffNumber": "gra12345",
-      "district": "accra",
-      "telephone": "0543123453",
-      "monthlySavings": "500",
-      "witnessName": "richmond neizer",
-      "witnessContact": "0540579680",
-      "nomineeName1": "maa Tei",
-      "nomineeName2": "kofi Tei",
-      "nomineeName3": "Ama Tei",
-      "nRelationship1": "wife",
-      "nRelationship2": "son",
-      "nRelationship3": "daughter",
-      "nPercentage1": "50",
-      "nPercentage3": "",
-      "date": "2022-12-15",
-      "time": "09:52:53.017Z",
-      "id": 1
-    },
-    {
       "membershipNumber": 2,
       "appName": "rita quacoo",
       "staffNumber": "gra4040",
@@ -244,6 +249,28 @@
       "date": "2022-12-15",
       "time": "09:53:04.378Z",
       "id": 2
+    },
+    {
+      "membershipNumber": 2,
+      "appName": "Dickson Amankwaah",
+      "staffNumber": "gra234232",
+      "district": "agape",
+      "telephone": "0547231966",
+      "monthlySavings": "400",
+      "witnessName": "Dickson",
+      "witnessContact": "0546745343",
+      "nomineeName1": "Dennis Amankwaah",
+      "nomineeName2": "",
+      "nomineeName3": "",
+      "nRelationship1": "Brother",
+      "nRelationship2": "",
+      "nRelationship3": "",
+      "nPercentage1": "40",
+      "nPercentage2": "",
+      "nPercentage3": "",
+      "date": "2022-12-16",
+      "time": "12:03:14.651Z",
+      "id": 3
     }
   ]
 }

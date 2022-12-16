@@ -658,8 +658,9 @@ td{
 }
 .ok-flex{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 10%;
+  
 }
 .ok{
   font-size: 18px;
@@ -908,6 +909,15 @@ th{
 }
 .request-loan-gra-icon{
   width: 150px;
+}
+.balance-style{
+  border: 2px solid green;
+  padding: 0.5em;
+  text-align: center;
+  color: green;
+  background:rgb(226, 245, 226);
+  font-weight: 580;
+  font-size: 18px;
 }
   @media screen and (max-width: 786px)
   {

@@ -82,6 +82,8 @@ const MemberDetails = () =>{
     const [lowBenefitIncome,setLowBenefitIncome] = useState(null);
     const [negativeBenefitAmount,setNegativeBenefitAmount] = useState(null);
     const [itemPaymentInstallment,setItemPaymentInstallment] = useState(null);
+    const [checkboxError,setCheckboxError] = useState(null);
+    const [prompt,setPrompt] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -112,6 +114,50 @@ const MemberDetails = () =>{
              }
         },[member]
     )
+    const handlePrompt = (e) =>{
+        e.preventDefault();
+        setPrompt(true);
+    }
+    const handleDeferment = (e) =>{
+        let totalIS = 0;
+        let balance = 0;
+        e.preventDefault();
+          if(individualSavings)
+          {
+           individualSavings.forEach((is)=>{
+            if(is.staffNumber === staffNumber)
+            {
+                
+            totalIS = totalIS + Number(is.pledge);
+            }
+           })
+            balance = (20/100)*totalIS; 
+           
+           //substract the balance from the income.
+           let income = Number(incomes[0].income);
+           let newBalancedIncome;
+           if(income > balance)
+           {
+             newBalancedIncome = income - balance;
+           }
+           setBalance(balance);
+         fetch('http://localhost:8050/incomes/'+1,{
+            method: "PATCH",
+            headers: {"Content-type":"Application/json"},
+            body: JSON.stringify({
+                income:newBalancedIncome
+            })
+           }).then(()=>{
+            fetch('http://localhost:8050/Members/'+id,{
+                method: 'DELETE'
+              }).then(()=>{
+                       setPrompt(null);
+              })
+           })  
+           
+          } 
+         
+    }
     const handlePayLoan = () =>{
         setPayLoanPopup(true);
     }
@@ -128,10 +174,8 @@ const MemberDetails = () =>{
             totalIS = totalIS + Number(is.pledge);
             }
            })
-           if(totalIS > 300)
-           {
-            balance = totalIS - 300; 
-           }
+           
+            balance = (60/100)*totalIS; 
            //substract the balance from the income.
            let income = Number(incomes[0].income);
            let newBalancedIncome;
@@ -140,7 +184,8 @@ const MemberDetails = () =>{
              newBalancedIncome = income - balance;
            }
            setBalance(balance);
-            fetch('http://localhost:8050/incomes/'+1,{
+    
+             fetch('http://localhost:8050/incomes/'+1,{
             method: "PATCH",
             headers: {"Content-type":"Application/json"},
             body: JSON.stringify({
@@ -150,9 +195,10 @@ const MemberDetails = () =>{
             fetch('http://localhost:8050/Members/'+id,{
                 method: 'DELETE'
               }).then(()=>{
-             // history.push('/search');
+                  setPrompt(null);
               })
-           })
+           }) 
+           
           } 
          
     }
@@ -452,6 +498,8 @@ const MemberDetails = () =>{
                 setShowIS(null);
                 setShowPurchased(null);
                 setShowBenefits(null);
+                setPrompt(null);
+                
             }
             const showIndividualSaving = () =>{
                 setShowIS(true);
@@ -633,10 +681,10 @@ const MemberDetails = () =>{
                     <input type = "text" value = {witnessContact} onChange = {(e)=>setWitnessedContact(e.target.value)} required/>
 
                 </fieldset>
-                {balance && <p class = "error">The withdrawing Applicant will receive a balance of {Number(balance).toFixed(2)}cedis</p>}
+                {balance && <p class = "balance-style">The withdrawing Applicant will receive a balance of {Number(balance).toFixed(2)}cedis</p>}
                 <div className = "button">
                 <button className = "register-button r-b-left">Edit</button>
-                <button className = "register-button" onClick = {handleRemove}>Remove</button>
+                <button className = "register-button" onClick = {handlePrompt}>Remove</button>
                 </div>
             </form>
             <div className = "transactions">
@@ -887,6 +935,23 @@ const MemberDetails = () =>{
                 </div>
             </div>
             }
+              {prompt && <div className = "prompt-dialog-background">
+          <div onClick = {handleClose} className = "prompt-dialog-close">
+            <span className = "bar"></span>
+            <span className = "bar"></span>
+            <span className = "bar"></span>
+
+            </div>
+              <form onSubmit = {handleSubmit} className = "prompt-dialog">
+            {checkboxError && <p className = "error">Please select one.</p>}
+            <p className = "prompt-message">These operation can hardly be reversed, however contact the developer if reversal is needed.</p>
+             <div class = "ok-flex">
+            <button onClick = {handleDeferment} className = "ok">Deferment from Savings</button>
+            <button onClick = {handleRemove} className = "ok">Retirement</button>
+            </div>
+            </form>
+            </div>
+}
         </div>
         </div>
    )
