@@ -89,6 +89,16 @@
       "date": "2022-12-16",
       "time": "12:05:05.495Z",
       "id": 9
+    },
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra2324",
+      "district": "Achimota",
+      "telephone": "05723421",
+      "pledge": "200",
+      "date": "2022-12-18",
+      "time": "14:10:31.579Z",
+      "id": 10
     }
   ],
   "stepIncomes": [
@@ -121,6 +131,12 @@
       "time": "12:05:05.495Z",
       "income": 898,
       "id": 5
+    },
+    {
+      "date": "2022-12-18",
+      "time": "14:10:31.579Z",
+      "income": 200,
+      "id": 6
     }
   ],
   "hirePurchases": [
@@ -151,7 +167,7 @@
       "itemBrand": "dfs",
       "unitPrice": "50",
       "interest": "8",
-      "totalAmount": 48,
+      "totalAmount": "0",
       "quantity": "4",
       "duration": "5",
       "installment": "10",
@@ -189,7 +205,7 @@
   ],
   "incomes": [
     {
-      "income": 2063,
+      "income": 2213,
       "id": 1
     }
   ],
@@ -212,13 +228,26 @@
       "staffNumber": "gra12345",
       "district": "accra",
       "telephone": "0543123453",
-      "loanAmount": 0,
+      "loanAmount": "0",
       "installment": "50",
       "duration": "2",
       "transactionId": "543454",
       "date": "2022-12-15",
       "time": "2023-2-15",
       "id": 2
+    },
+    {
+      "appName": "rita quacoo",
+      "staffNumber": "gra4040",
+      "district": "suynanni",
+      "telephone": "0205678743",
+      "loanAmount": 55,
+      "installment": "5",
+      "duration": "8",
+      "transactionId": "",
+      "date": "2022-12-16",
+      "time": "2023-8-16",
+      "id": 3
     }
   ],
   "users": [
@@ -230,47 +259,26 @@
   ],
   "members": [
     {
-      "membershipNumber": 2,
-      "appName": "rita quacoo",
-      "staffNumber": "gra4040",
-      "district": "suynanni",
-      "telephone": "0205678743",
-      "monthlySavings": "498",
-      "witnessName": "standford mensah",
-      "witnessContact": "0543456734",
-      "nomineeName1": "becca quacoo",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "sister",
-      "nRelationship2": "",
-      "nRelationship3": "",
-      "nPercentage1": "100",
-      "nPercentage3": "",
-      "date": "2022-12-15",
-      "time": "09:53:04.378Z",
-      "id": 2
-    },
-    {
-      "membershipNumber": 2,
-      "appName": "Dickson Amankwaah",
-      "staffNumber": "gra234232",
-      "district": "agape",
-      "telephone": "0547231966",
-      "monthlySavings": "400",
+      "membershipNumber": 1,
+      "appName": "Dickson",
+      "staffNumber": "gra2324",
+      "district": "Achimota",
+      "telephone": "05723421",
+      "monthlySavings": "200",
       "witnessName": "Dickson",
-      "witnessContact": "0546745343",
-      "nomineeName1": "Dennis Amankwaah",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "Brother",
-      "nRelationship2": "",
-      "nRelationship3": "",
+      "witnessContact": "908787945",
+      "nomineeName1": "Joseph",
+      "nomineeName2": "Dennis",
+      "nomineeName3": "Sammy",
+      "nRelationship1": "uncle",
+      "nRelationship2": "brother",
+      "nRelationship3": "brother",
       "nPercentage1": "40",
-      "nPercentage2": "",
-      "nPercentage3": "",
-      "date": "2022-12-16",
-      "time": "12:03:14.651Z",
-      "id": 3
+      "nPercentage2": "60",
+      "nPercentage3": "31",
+      "date": "2022-12-18",
+      "time": "14:05:05.678Z",
+      "id": 1
     }
   ]
 }

@@ -83,7 +83,12 @@ const MemberDetails = () =>{
     const [negativeBenefitAmount,setNegativeBenefitAmount] = useState(null);
     const [itemPaymentInstallment,setItemPaymentInstallment] = useState(null);
     const [checkboxError,setCheckboxError] = useState(null);
+    const [clearApplicantPrompt,setClearApplicantPrompt] = useState(null);
     const [prompt,setPrompt] = useState(null);
+    const [nomineesCollectionPopup,setNomineesCollectionPopup] = useState(null);
+    const [percentageAmount1,setPercentageAmount1] = useState(null);
+    const [percentageAmount2, setPercentageAmount2] = useState(null);
+    const [percentageAmount3, setPercentageAmount3] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -99,21 +104,42 @@ const MemberDetails = () =>{
                 setNomineeName2(member.nomineeName2);
                 setNomineeName3(member.nomineeName3);
                 setNPercentage1(member.nPercentage1);
-                setNPercentage2(member.nPercentag2);
+                setNPercentage2(member.nPercentage2);
                 setNPercentage3(member.nPercentage3);
                 setNRelationship1(member.nRelationship1);
                 setNRelationship2(member.nRelationship2);
                 setNRelationship3(member.nRelationship3);
                 setMembershipNumber(member.membershipNumber);
- 
+                if(individualSavings)
+                {
+                    let totalSavings = 0;
+                    individualSavings.forEach((is)=>{
+                        if(is.staffNumber === staffNumber)
+                        {
+                               totalSavings = totalSavings + is.pledge;
+                        }
+                        
+                    })
+                    let amount1,amount2,amount3;
+                    amount1 = (Number(nPercentage1)/100)*totalSavings;
+                    amount2 = (Number(nPercentage2)/100)*totalSavings;
+                    amount3 = (Number(nPercentage3)/100)*totalSavings;
+                    setPercentageAmount1(amount1);
+                    setPercentageAmount2(amount2);
+                    setPercentageAmount3(amount3);
 
 
 
-                
-                
-             }
+                }
+                  }
         },[member]
     )
+  
+    const handleClearApplicant = (e) =>{
+        e.preventDefault(e);
+       setClearApplicantPrompt(true);
+
+    }
     const handlePrompt = (e) =>{
         e.preventDefault();
         setPrompt(true);
@@ -499,6 +525,8 @@ const MemberDetails = () =>{
                 setShowPurchased(null);
                 setShowBenefits(null);
                 setPrompt(null);
+                setClearApplicantPrompt(null);
+                setNomineesCollectionPopup(null);
                 
             }
             const showIndividualSaving = () =>{
@@ -524,7 +552,9 @@ const MemberDetails = () =>{
                 setShowPurchased(true);
 
             }
-         
+            const handleNomineeCollection = () =>{
+                 setNomineesCollectionPopup(true);
+            }
             const handleHirePurchaseSubmit = (e) =>{
                 e.preventDefault();
                 let totalAmountField = document.getElementById('total-amount');
@@ -681,27 +711,32 @@ const MemberDetails = () =>{
                     <input type = "text" value = {witnessContact} onChange = {(e)=>setWitnessedContact(e.target.value)} required/>
 
                 </fieldset>
-                {balance && <p class = "balance-style">The withdrawing Applicant will receive a balance of {Number(balance).toFixed(2)}cedis</p>}
-                <div className = "button">
-                <button className = "register-button r-b-left">Edit</button>
-                <button className = "register-button" onClick = {handlePrompt}>Remove</button>
+            
+                {balance && <p className = "balance-style">The withdrawing Applicant will receive a balance of {Number(balance).toFixed(2)}cedis</p>}
+                <div className = "c-e-r">
+                <button className = "r-b-left">Edit</button>
+                <button className = "r-b-right" onClick = {handlePrompt}>Remove</button>
+               
                 </div>
+             
             </form>
             <div className = "transactions">
-                <h1>Tr<span>a</span>ns<span>a</span>ct<span>io</span>ns</h1>
+                <h1>Possible Tr<span>a</span>ns<span>a</span>ct<span>io</span>ns</h1>
                 <div className = "file-buttons">
                 <button onClick = {handleNewSavings} className = "file-button">Request Loan</button>
                 <button onClick = {handleHirePurchase} className = "file-button">Purchase</button>
                 <button onClick ={showBeneficiaries} className = "file-button">Beneficiaries</button>
                 </div>
                 <div className = "file-buttons">
-                <button onClick = {showIndividualSaving} className = "file-button">Savings</button>
+                <button onClick = {showIndividualSaving} className = "file-button">Saved</button>
 
                 <button onClick = {handlePurchased} className = "file-button">Purchased</button>
 
-                <button onClick ={handleRequestedBenefits} className = "file-button">Benefits</button>
+                <button onClick ={handleRequestedBenefits} className = "file-button">Benefited</button>
                 </div>
                 <div className = "fbd">
+                       <button onClick = {handleNomineeCollection}className = "file-button f-w">Nominees Collection</button>
+                       <button className = "file-button f-w">Nominees Collected</button>
 
                 </div>
 
@@ -766,7 +801,91 @@ const MemberDetails = () =>{
                    </div>
                 </div>
             </div>
-            }
+            } 
+            
+            {
+                 nomineesCollectionPopup &&
+            <div className = "new-savings-bg">
+            <div onClick = {handleClose} className = "close">
+                        <span className = "bar"></span>
+                        <span className = "bar"></span>
+                        <span className = "bar"></span>
+                    </div>
+                <div className = "new-savings">
+                    <div className = "new-savings-inner">
+                   
+                <h2>Nominees Collection</h2>
+                {lowIncome && <p className = "error">The loan amount is greater than the income.</p>}
+                {noIncome && <p className = "error">There is no income yet.</p>}
+                {SAError && <p className = "error">Enter valid values for all fields.</p>}
+                <form>
+                    <label>Applicant Name</label>
+                   <input type = "text" value = {applicantName} />
+                   <label>Staff Number</label>
+                   <input type = "text" value = {staffNumber}/>
+                   <label>District</label>
+                   <input type = "text" value = {district}/>
+                   <label>Telephone</label>
+                   <input type = "text" value = {telephone}/>
+                   <label>List of Nominees</label>
+                   <table>
+                    <thead>
+                        <tr>
+                            <th>Nominee Name</th>
+                            <th>Percentage</th>
+                            <th>Amount</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            percentageAmount1 &&
+                        <tr>
+                            <td><input type = "text" value = {nomineeName1}/></td>
+                            <td><input type = "text" value = {nPercentage1}/></td>
+                            <td><input type = "text" value = {Number(percentageAmount1).toFixed(2)+"cedis"}/></td>
+                        </tr>
+                          }
+                          {
+                            percentageAmount2 &&
+                        <tr>
+                            <td><input type = "text" value = {nomineeName2}/></td>
+                            <td><input type = "text" value = {nPercentage2}/></td>
+                            <td><input type = "text" value = {Number(percentageAmount2).toFixed(2)+"cedis"}/></td>
+                        </tr>
+                            }
+                              {
+                            percentageAmount3 &&
+                        <tr>
+                            <td><input type = "text" value = {nomineeName3}/></td>
+                            <td><input type = "text" value = {nPercentage3}/></td>
+                            <td><input type = "text" value = {Number(percentageAmount3).toFixed(2)+"cedis"}/></td>
+                        </tr>
+                            }
+                    </tbody>
+                   </table>
+                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)}/>
+                   <label>Installment Amount</label>
+
+                   <input type = "number" value = {installment} onChange = {(e)=> setInstallment(e.target.value)}/>
+                   <label>Duration</label>
+
+                
+                   <input type = "number" value = {duration} onChange = {(e)=>setDuration(e.target.value)}/>
+                  <label>Transaction Id if any</label>
+                  <input type = "text" value = {transactionId} onChange = {(e)=> setTransactionId(e.target.value)}/>
+
+                  
+                </form>
+                </div>
+                <div className = "new-savings-button">
+                  <button onClick = {handleNewSavingsSubmit}>Save</button>
+
+                   </div>
+                </div>
+            </div>
+            } 
+
             {
                   showHirePurchase &&
                   <div className = "new-savings-bg">
@@ -942,16 +1061,18 @@ const MemberDetails = () =>{
             <span className = "bar"></span>
 
             </div>
-              <form onSubmit = {handleSubmit} className = "prompt-dialog">
+              <form className = "prompt-dialog">
             {checkboxError && <p className = "error">Please select one.</p>}
             <p className = "prompt-message">These operation can hardly be reversed, however contact the developer if reversal is needed.</p>
-             <div class = "ok-flex">
+             <div class = "ok-flex-around">
             <button onClick = {handleDeferment} className = "ok">Deferment from Savings</button>
             <button onClick = {handleRemove} className = "ok">Retirement</button>
             </div>
             </form>
             </div>
-}
+            }
+
+
         </div>
         </div>
    )
