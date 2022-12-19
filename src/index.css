@@ -987,6 +987,10 @@ th{
   border-radius: 15px;
  
 }
+  .n-c{
+    cursor: pointer;
+    
+  }
   @media screen and (max-width: 786px)
   {
     .nav-bar{

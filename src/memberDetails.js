@@ -15,6 +15,8 @@ import graIcon from './images/gra.png';
 import jsPDF from 'jspdf';
 import ShowPurchased from './showPurchased.js';
 import ShowBenefits from './showBenefits.js';
+import CreateNominee from './helpers/createNominee.js';
+import ShowNomineeCollected from './nomineeCollected.js';
 
 
 const MemberDetails = () =>{
@@ -89,6 +91,11 @@ const MemberDetails = () =>{
     const [percentageAmount1,setPercentageAmount1] = useState(null);
     const [percentageAmount2, setPercentageAmount2] = useState(null);
     const [percentageAmount3, setPercentageAmount3] = useState(null);
+    const [nomineeAmountGiven,setNomineeAmountGiven] = useState(null);
+    const [nomineeName,setNomineeName] = useState(null);
+    const [nomineeNotFound, setNomineeNotFound] = useState(null);
+    const [percentageAmountNotFound,setPercentageAmountNotFound] = useState(null);
+    const [showNomineeCollected,setShowNomineeCollected] = useState(null);
     useEffect(
         ()=>{
              if(member)
@@ -116,7 +123,7 @@ const MemberDetails = () =>{
                     individualSavings.forEach((is)=>{
                         if(is.staffNumber === staffNumber)
                         {
-                               totalSavings = totalSavings + is.pledge;
+                               totalSavings = totalSavings + Number(is.pledge);
                         }
                         
                     })
@@ -134,7 +141,47 @@ const MemberDetails = () =>{
                   }
         },[member]
     )
-  
+    const handleNomineeCollected = () =>{
+        setShowNomineeCollected(true);
+    }
+    const handleNomineeCollectionSubmit = (e) =>{
+        e.preventDefault();
+        let dateTime = new Date();
+        let time = dateTime.toISOString().split('T')[1];
+        let date = dateTime.toISOString().split('T')[0];
+        if(nomineeName)
+        {
+            if((nomineeName !== nomineeName1)&&(nomineeName !== nomineeName2)&&(nomineeName !== nomineeName3))
+            {
+                setNomineeNotFound(true);
+                setPercentageAmountNotFound(null);
+
+            } 
+            else if((Number(nomineeAmountGiven) !== Number(percentageAmount1) )&&(Number(nomineeAmountGiven) !== Number(percentageAmount2))&&(Number(nomineeAmountGiven) !== Number(percentageAmount3)))
+            {
+                setPercentageAmountNotFound(true);
+                setNomineeNotFound(null);
+
+            }
+            else{
+                   setPercentageAmountNotFound(null);
+                   setNomineeNotFound(null);
+                   //send to database.
+                   let nominee = new CreateNominee(applicantName,staffNumber,district,telephone,nomineeName,nomineeAmountGiven,date,time);
+                    fetch('http://localhost:8050/nomineesCollection',{
+                    method: "POST",
+                     headers: {"Content-type": "Application/json"},
+                   body: JSON.stringify(nominee)
+                   }).then(()=>{
+                      setNomineeAmountGiven('');
+                      setNomineeName('');
+                      setNomineesCollectionPopup(null);
+                   }) 
+                   
+                }
+        }
+        
+    }
     const handleClearApplicant = (e) =>{
         e.preventDefault(e);
        setClearApplicantPrompt(true);
@@ -527,7 +574,7 @@ const MemberDetails = () =>{
                 setPrompt(null);
                 setClearApplicantPrompt(null);
                 setNomineesCollectionPopup(null);
-                
+                setShowNomineeCollected(null);
             }
             const showIndividualSaving = () =>{
                 setShowIS(true);
@@ -735,8 +782,8 @@ const MemberDetails = () =>{
                 <button onClick ={handleRequestedBenefits} className = "file-button">Benefited</button>
                 </div>
                 <div className = "fbd">
-                       <button onClick = {handleNomineeCollection}className = "file-button f-w">Nominees Collection</button>
-                       <button className = "file-button f-w">Nominees Collected</button>
+                       <button onClick = {handleNomineeCollection} className = "file-button f-w">Nominees Collection</button>
+                       <button onClick = {handleNomineeCollected} className = "file-button f-w">Nominees Collected</button>
 
                 </div>
 
@@ -815,10 +862,10 @@ const MemberDetails = () =>{
                     <div className = "new-savings-inner">
                    
                 <h2>Nominees Collection</h2>
-                {lowIncome && <p className = "error">The loan amount is greater than the income.</p>}
-                {noIncome && <p className = "error">There is no income yet.</p>}
+                {percentageAmountNotFound && <p className = "error">Enter the correct amount for the nominee.</p>}
+                {nomineeNotFound && <p className = "error">Enter the correct nominee.</p>}
                 {SAError && <p className = "error">Enter valid values for all fields.</p>}
-                <form>
+                <form className = "nominees-collection">
                     <label>Applicant Name</label>
                    <input type = "text" value = {applicantName} />
                    <label>Staff Number</label>
@@ -854,7 +901,7 @@ const MemberDetails = () =>{
                             <td><input type = "text" value = {Number(percentageAmount2).toFixed(2)+"cedis"}/></td>
                         </tr>
                             }
-                              {
+                            {
                             percentageAmount3 &&
                         <tr>
                             <td><input type = "text" value = {nomineeName3}/></td>
@@ -864,24 +911,29 @@ const MemberDetails = () =>{
                             }
                     </tbody>
                    </table>
-                   <input type = "number" value = {savingsAmount} onChange = {(e)=>setSavingsAmount(e.target.value)}/>
-                   <label>Installment Amount</label>
+                   <label>Nominee Name</label> 
 
-                   <input type = "number" value = {installment} onChange = {(e)=> setInstallment(e.target.value)}/>
+                  <input type = "text" value = {nomineeName} onChange = {(e)=>setNomineeName(e.target.value)} required/>
+                  <label>Amount given to Nominee</label> 
+
+<input type = "number" value = {nomineeAmountGiven} onChange = {(e)=>setNomineeAmountGiven(e.target.value)} required/>
+                     <div className = "new-savings-button">
+                     <button onClick = {handleNomineeCollectionSubmit}>Save</button>
+
+                     </div>
+
+                {/*    <input type = "number" value = {installment} onChange = {(e)=> setInstallment(e.target.value)}/>
                    <label>Duration</label>
 
                 
                    <input type = "number" value = {duration} onChange = {(e)=>setDuration(e.target.value)}/>
                   <label>Transaction Id if any</label>
                   <input type = "text" value = {transactionId} onChange = {(e)=> setTransactionId(e.target.value)}/>
-
+ */}
                   
                 </form>
                 </div>
-                <div className = "new-savings-button">
-                  <button onClick = {handleNewSavingsSubmit}>Save</button>
-
-                   </div>
+              
                 </div>
             </div>
             } 
@@ -965,6 +1017,16 @@ const MemberDetails = () =>{
                         <span className = "bar-w"></span>
                      </div>
                     <ShowBenefits staffNumber = {staffNumber}/>
+                    </div>
+            }
+             {
+                showNomineeCollected && <div className = "show-individual-savings-bg">
+                      <div onClick = {handleClose}className = "close">
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                        <span className = "bar-w"></span>
+                     </div>
+                    <ShowNomineeCollected staffNumber = {staffNumber}/>
                     </div>
             }
             

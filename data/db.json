@@ -99,6 +99,26 @@
       "date": "2022-12-18",
       "time": "14:10:31.579Z",
       "id": 10
+    },
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra2324",
+      "district": "Achimota",
+      "telephone": "05723421",
+      "pledge": "200",
+      "date": "2022-12-19",
+      "time": "15:23:20.254Z",
+      "id": 11
+    },
+    {
+      "appName": "Amanda",
+      "staffNumber": "gra7864",
+      "district": "head office",
+      "telephone": "054678675",
+      "pledge": "300",
+      "date": "2022-12-19",
+      "time": "15:23:20.254Z",
+      "id": 12
     }
   ],
   "stepIncomes": [
@@ -137,6 +157,12 @@
       "time": "14:10:31.579Z",
       "income": 200,
       "id": 6
+    },
+    {
+      "date": "2022-12-19",
+      "time": "15:23:20.254Z",
+      "income": 500,
+      "id": 7
     }
   ],
   "hirePurchases": [
@@ -205,7 +231,7 @@
   ],
   "incomes": [
     {
-      "income": 2213,
+      "income": 2713,
       "id": 1
     }
   ],
@@ -279,6 +305,63 @@
       "date": "2022-12-18",
       "time": "14:05:05.678Z",
       "id": 1
+    },
+    {
+      "membershipNumber": 2,
+      "appName": "Amanda",
+      "staffNumber": "gra7864",
+      "district": "head office",
+      "telephone": "054678675",
+      "monthlySavings": "300",
+      "witnessName": "Dickson Amankwaah",
+      "witnessContact": "0547231966",
+      "nomineeName1": "Dorah",
+      "nomineeName2": "",
+      "nomineeName3": "",
+      "nRelationship1": "mother",
+      "nRelationship2": "",
+      "nRelationship3": "",
+      "nPercentage1": "30",
+      "nPercentage2": "",
+      "nPercentage3": "",
+      "date": "2022-12-19",
+      "time": "15:21:39.643Z",
+      "id": 2
+    }
+  ],
+  "nomineesCollection": [
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra2324",
+      "district": "Achimota",
+      "telephone": "05723421",
+      "nomineeName": "Dennis",
+      "amount": "240",
+      "date": "2022-12-19",
+      "time": "17:49:02.624Z",
+      "id": 1
+    },
+    {
+      "appName": "Amanda",
+      "staffNumber": "gra7864",
+      "district": "head office",
+      "telephone": "054678675",
+      "nomineeName": "Dorah",
+      "amount": "90",
+      "date": "2022-12-19",
+      "time": "17:51:01.904Z",
+      "id": 2
+    },
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra2324",
+      "district": "Achimota",
+      "telephone": "05723421",
+      "nomineeName": "Sammy",
+      "amount": "124",
+      "date": "2022-12-19",
+      "time": "17:52:30.352Z",
+      "id": 3
     }
   ]
 }
