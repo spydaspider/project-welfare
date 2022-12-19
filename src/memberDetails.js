@@ -155,17 +155,39 @@ const MemberDetails = () =>{
             {
                 setNomineeNotFound(true);
                 setPercentageAmountNotFound(null);
+                setLowIncome(null);
+                setNoIncome(null);
 
             } 
             else if((Number(nomineeAmountGiven) !== Number(percentageAmount1) )&&(Number(nomineeAmountGiven) !== Number(percentageAmount2))&&(Number(nomineeAmountGiven) !== Number(percentageAmount3)))
             {
                 setPercentageAmountNotFound(true);
                 setNomineeNotFound(null);
+                setLowIncome(null);
+                setNoIncome(null);
 
             }
             else{
                    setPercentageAmountNotFound(null);
                    setNomineeNotFound(null);
+                   setLowIncome(null);
+                   setNoIncome(null);
+                   if(incomes && incomes.length === 0)
+                   {
+                       setNoIncome(true);
+                       setLowIncome(null);
+                       setPercentageAmountNotFound(null);
+                       setNomineeNotFound(null);
+
+                   }
+                   else if(Number(incomes[0].income) < Number(savingsAmount))
+                   {
+                       setLowIncome(true);
+                       setNoIncome(null);
+                       setPercentageAmountNotFound(null);
+                       setNomineeNotFound(null);
+                   }
+                   else{
                    //send to database.
                    let nominee = new CreateNominee(applicantName,staffNumber,district,telephone,nomineeName,nomineeAmountGiven,date,time);
                     fetch('http://localhost:8050/nomineesCollection',{
@@ -176,7 +198,16 @@ const MemberDetails = () =>{
                       setNomineeAmountGiven('');
                       setNomineeName('');
                       setNomineesCollectionPopup(null);
-                   }) 
+                   })
+                   let newIncome = Number(incomes[0].income) - Number(nomineeAmountGiven);
+                        
+                   let income = new CreateIncomes(newIncome);
+                  fetch('http://localhost:8050/incomes/'+1,{
+                      method: "PUT",
+                      headers: {"Content-type": "Application/json"},
+                      body: JSON.stringify(income)
+                  })  
+                }
                    
                 }
         }
@@ -862,6 +893,9 @@ const MemberDetails = () =>{
                     <div className = "new-savings-inner">
                    
                 <h2>Nominees Collection</h2>
+                {lowIncome && <p className = "error">Low income, cannot proceed with this action.</p>}
+                {noIncome && <p className = "error">No income yet.</p>}
+
                 {percentageAmountNotFound && <p className = "error">Enter the correct amount for the nominee.</p>}
                 {nomineeNotFound && <p className = "error">Enter the correct nominee.</p>}
                 {SAError && <p className = "error">Enter valid values for all fields.</p>}

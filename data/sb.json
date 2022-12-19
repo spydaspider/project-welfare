@@ -1,19 +1,29 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
+  "individualSavings": [
+   
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
+  "stepIncomes": [
+  
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "hirePurchases": [
+    
+  ],
+  "beneficiaries": [
+   
+  ],
+  "incomes": [
+   
+  ],
+  "requestedLoans": [
+   
+  ],
+  "users": [
+    
+  ],
+  "members": [
+   
+  ],
+  "nomineesCollection": [
+  
+  ]
 }

@@ -1,11 +1,18 @@
 To start the Project Welfare server.
 Copy the program folder unto the desktop
 run the following commands on the command line. 
+
+Open the command prompt, copy and paste the following command to start the
+Database server.
+###########################################
+
 cd Desktop\project-welfare  
 npx json-server --watch data/db.json --port 8050
 
+##############################################
+
 Now open another command prompt and copy and paste the following command to start up the 
-database server.
+application server.
 cd Desktop\project-welfare    
 npm run start
 
