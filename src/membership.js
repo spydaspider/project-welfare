@@ -96,9 +96,10 @@ if(members && members.length !== 0)
       
     }
     return(
-        <div className = "membership-form">
+            <div className = "membership-form-wrapper">
             <SecondNavigation/>
             <Navigation/>
+            <div className = "membership-form">
             <h1>M<span>e</span>mb<span>ers</span>hi<span>p F</span>o<span>r</span>m</h1>
             {error && <p className = "error">{error}</p>}
             {staffNumberExists&& <p className = "error">Staff number already exists.</p>}
@@ -167,6 +168,7 @@ if(members && members.length !== 0)
                 <button className = "register-button">Register Member</button>
                 </div>
             </form>
+        </div>
         </div>
     )
 }

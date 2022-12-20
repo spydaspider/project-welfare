@@ -12,6 +12,15 @@ body{
     margin:0;
     padding:0;
     color: #4d5666;
+    background: url(/public/images/money-silver.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    background-color: #fcfcfc;
+
+}
+html{
+  min-height: 100%;
 }
 label{
   font-weight: 700;
@@ -19,9 +28,13 @@ label{
 }
 .membership-form{
     padding-bottom: 5%;
-    padding-top: 13%;
     max-width: 900px;
-    margin: 0 auto;
+    margin-left:  auto;
+    margin-right: auto;
+    padding-top: 10%;
+    background: #fff;
+    padding-right: 1em;
+    padding-left: 1em;
 
 }
 /* .membership-form span{
@@ -403,11 +416,15 @@ h1{
     padding: 0.5em;
     
 }
+.home-content table{
+  border-collapse: collapse;
+}
 .home-content thead{
   background: #eded01;
   color: #333;
   font-size: 18px;
 }
+
 
   .details{
     margin-top: 20%;
@@ -633,6 +650,8 @@ td{
     
 .savings-deductions{
   margin-top: 15%;
+  background: #fff;
+  padding-top: 1em;
 }
 .savings-deductions table{
   width: 45%;
@@ -646,6 +665,7 @@ td{
 .print-deductions{
   float: right;
   margin-right: 3em;
+  margin-top: 1em;
   font-size: 16px;
   padding: 0.5em;
   background: #fff;
@@ -678,6 +698,12 @@ td{
   width: 50%;
   font-size: 17px;
 
+}
+h1,h2,h3{
+  color:#03a9f4;
+}
+td{
+  background: white;
 }
 .c-box input{
   width: 20px;
@@ -841,12 +867,14 @@ th{
   padding: 0.7em;
   font-size: 18px;
   color:#4f60f4;
+  border: 1px solid rgb(177, 176, 176);
 
 
 }
 .home td{
-  background: rgb(236, 236, 236);
+  background: #fff;
   font-size: 18px;
+  border: 1px solid rgb(189, 188, 188);
 }
 .hire-purchase table{
   border-collapse: collapse;

@@ -19,6 +19,26 @@
       "date": "2022-12-19",
       "time": "22:49:54.912Z",
       "id": 2
+    },
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra3452",
+      "district": "Accra",
+      "telephone": "0547231966",
+      "pledge": "300",
+      "date": "2022-12-20",
+      "time": "00:01:57.193Z",
+      "id": 3
+    },
+    {
+      "appName": "Sandra",
+      "staffNumber": "GRA54634",
+      "district": "Achimota",
+      "telephone": "0547231966",
+      "pledge": "200",
+      "date": "2022-12-20",
+      "time": "00:01:57.193Z",
+      "id": 4
     }
   ],
   "stepIncomes": [
@@ -27,13 +47,19 @@
       "time": "22:49:54.912Z",
       "income": 500,
       "id": 1
+    },
+    {
+      "date": "2022-12-20",
+      "time": "00:01:57.193Z",
+      "income": 500,
+      "id": 2
     }
   ],
   "hirePurchases": [],
   "beneficiaries": [],
   "incomes": [
     {
-      "income": 380,
+      "income": 880,
       "id": 1
     }
   ],
