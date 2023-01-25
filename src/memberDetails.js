@@ -253,7 +253,11 @@ const MemberDetails = () =>{
             })
            }).then(()=>{
             fetch('http://localhost:8050/Members/'+id,{
-                method: 'DELETE'
+                method: "PATCH",
+                headers: {"Content-type":"Application/json"},
+                body: JSON.stringify({
+                    dropout: true
+                })
               }).then(()=>{
                        setPrompt(null);
               })
@@ -297,8 +301,12 @@ const MemberDetails = () =>{
             })
            }).then(()=>{
             fetch('http://localhost:8050/Members/'+id,{
-                method: 'DELETE'
-              }).then(()=>{
+            method: "PATCH",
+            headers: {"Content-type": "Application/json"},    
+            body: JSON.stringify({
+                    dropout: true
+                })
+            }).then(()=>{
                   setPrompt(null);
               })
            }) 

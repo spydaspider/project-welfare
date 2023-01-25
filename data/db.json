@@ -2,56 +2,56 @@
   "individualSavings": [
     {
       "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
+      "staffNumber": "gra234",
+      "district": "head office",
       "telephone": "0547231966",
-      "pledge": "300",
-      "date": "2022-12-19",
-      "time": "22:49:54.912Z",
+      "pledge": "50",
+      "date": "2023-01-25",
+      "time": "21:02:59.708Z",
       "id": 1
     },
     {
-      "appName": "Sandra",
-      "staffNumber": "GRA54634",
+      "appName": "Derick",
+      "staffNumber": "gra4567",
       "district": "Achimota",
-      "telephone": "0547231966",
+      "telephone": "0547123423",
       "pledge": "200",
-      "date": "2022-12-19",
-      "time": "22:49:54.912Z",
+      "date": "2023-01-25",
+      "time": "21:02:59.708Z",
       "id": 2
     },
     {
       "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
+      "staffNumber": "gra234",
+      "district": "Achimota",
       "telephone": "0547231966",
-      "pledge": "300",
-      "date": "2022-12-20",
-      "time": "00:01:57.193Z",
+      "pledge": "50",
+      "date": "2023-01-25",
+      "time": "21:28:11.197Z",
       "id": 3
     },
     {
-      "appName": "Sandra",
-      "staffNumber": "GRA54634",
+      "appName": "Emmanuella",
+      "staffNumber": "gra1234",
       "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "200",
-      "date": "2022-12-20",
-      "time": "00:01:57.193Z",
+      "telephone": "05476321234",
+      "pledge": "50",
+      "date": "2023-01-25",
+      "time": "21:28:11.197Z",
       "id": 4
     }
   ],
   "stepIncomes": [
     {
-      "date": "2022-12-19",
-      "time": "22:49:54.912Z",
-      "income": 500,
+      "date": "2023-01-25",
+      "time": "21:02:59.708Z",
+      "income": 250,
       "id": 1
     },
     {
-      "date": "2022-12-20",
-      "time": "00:01:57.193Z",
-      "income": 500,
+      "date": "2023-01-25",
+      "time": "21:28:11.197Z",
+      "income": 100,
       "id": 2
     }
   ],
@@ -59,7 +59,7 @@
   "beneficiaries": [],
   "incomes": [
     {
-      "income": 880,
+      "income": 330,
       "id": 1
     }
   ],
@@ -75,70 +75,49 @@
     {
       "membershipNumber": 1,
       "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
+      "staffNumber": "gra234",
+      "district": "Achimota",
       "telephone": "0547231966",
-      "monthlySavings": "300",
+      "monthlySavings": "78",
       "witnessName": "Dickson",
-      "witnessContact": "054678324",
-      "nomineeName1": "Derick",
-      "nomineeName2": "Samuel",
+      "witnessContact": "0547231966",
+      "nomineeName1": "Dickson",
+      "nomineeName2": "",
       "nomineeName3": "",
-      "nRelationship1": "Brother",
-      "nRelationship2": "Nephew",
+      "nRelationship1": "Me",
+      "nRelationship2": "",
       "nRelationship3": "",
-      "nPercentage1": "20",
-      "nPercentage2": "40",
+      "nPercentage1": "12",
+      "nPercentage2": "",
       "nPercentage3": "",
-      "date": "2022-12-19",
-      "time": "22:48:26.753Z",
+      "dropout": true,
+      "date": "2023-01-25",
+      "time": "21:25:10.996Z",
       "id": 1
     },
     {
       "membershipNumber": 2,
-      "appName": "Sandra",
-      "staffNumber": "GRA54634",
+      "appName": "Emmanuella",
+      "staffNumber": "gra1234",
       "district": "Achimota",
-      "telephone": "0547231966",
-      "monthlySavings": "200",
+      "telephone": "05476321234",
+      "monthlySavings": "78",
       "witnessName": "Dickson",
-      "witnessContact": "0547231966",
-      "nomineeName1": "Sammy",
+      "witnessContact": "0543728394",
+      "nomineeName1": "Dickson",
       "nomineeName2": "",
       "nomineeName3": "",
-      "nRelationship1": "Child",
+      "nRelationship1": "husband",
       "nRelationship2": "",
       "nRelationship3": "",
-      "nPercentage1": "30",
+      "nPercentage1": "12",
       "nPercentage2": "",
       "nPercentage3": "",
-      "date": "2022-12-19",
-      "time": "22:49:40.163Z",
+      "dropout": false,
+      "date": "2023-01-25",
+      "time": "21:27:28.410Z",
       "id": 2
     }
   ],
-  "nomineesCollection": [
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "nomineeName": "Derick",
-      "amount": "60",
-      "date": "2022-12-19",
-      "time": "23:03:19.316Z",
-      "id": 1
-    },
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "nomineeName": "Samuel",
-      "amount": "120",
-      "date": "2022-12-19",
-      "time": "23:06:40.348Z",
-      "id": 2
-    }
-  ]
+  "nomineesCollection": []
 }

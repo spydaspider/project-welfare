@@ -1,5 +1,5 @@
 export default class CreateMember{
-    constructor(membershipNumber,appName,staffNumber,district,telephone,monthlySavings,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,date,time)
+    constructor(membershipNumber,appName,staffNumber,district,telephone,monthlySavings,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,dropout,date,time)
     {
         this.membershipNumber = membershipNumber;
         this.appName = appName;
@@ -18,6 +18,7 @@ export default class CreateMember{
         this.nPercentage1 = nPercentage1;
         this.nPercentage2 = nPercentage2;
         this.nPercentage3 = nPercentage3;
+        this.dropout = dropout;
         this.date = date;
         this.time = time;
 

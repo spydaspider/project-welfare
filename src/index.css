@@ -252,7 +252,11 @@ h1{
     
   }
   .login-container{
-    background: rgb(227, 225, 225);
+    background: url(/public/images/money-silver.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    background-color: #fcfcfc;
     top:0;
     left:0;
     right:0;
@@ -332,7 +336,11 @@ h1{
    text-align: center;
   }
   .create-account-wrapper{
-    background: rgb(226, 226, 226);
+    background: url(/public/images/money-silver.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    background-color: #fcfcfc;
     position: absolute;
     top:0;
     left:0;
@@ -578,19 +586,24 @@ transform: translateY(-7px) rotate(-45deg);
   margin-top: 15%;
 }
 .loans table{
-  max-width: 1100px;
+  max-width: 1200px;
   margin: auto;
+  border-collapse: collapse;
   
 
 }
 .loans table th{
   padding: 1em;
   background: #eded01;
+  border: 1px solid rgb(117, 117, 117);
+  color: #42a5f5;
 }
 .loans table td{
   text-align:center;
   padding: 0.5em;
-  background: rgb(228, 225, 225);
+  background: #fff;
+  font-size: 18px;
+  border:1px solid rgb(207, 206, 206);
 }
 .print-loans{
   display: flex;
@@ -756,6 +769,15 @@ td{
   height: 300px;
   position: fixed;
 
+
+}
+.success-sc{
+  color: rgb(12, 161, 12);
+  background:rgb(173, 240, 173);
+  text-align: center;
+  padding: 0.6em;
+  font-size: 18px;
+  border: 2px solid rgb(12, 161, 12);
 
 }
 .success{
@@ -1018,6 +1040,46 @@ th{
   .n-c{
     cursor: pointer;
     
+  }
+  .edit-welfare-wrapper{
+    margin-top: 15%;
+    background: #fff;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 350px;
+  }
+  .old-new{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+     padding-top: 10%;
+     padding-left: 1em;
+     padding-right: 1em;
+  }
+  .old-new input{
+    margin-top: 3%;
+  }
+  .old{
+    font-size: 22px;
+    background: #eded01;
+    padding: 1em;
+
+  }
+  .old-new button{
+    padding: 1em;
+    font-size: 18px;
+    background: #eded01;
+    border:none;
+    margin-top: 1em;
+    font-weight: 600;
+    cursor: pointer;
+
+  }
+  .old-new-but{
+    display: flex;
+    align-self: center;
   }
   @media screen and (max-width: 786px)
   {

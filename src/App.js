@@ -20,6 +20,7 @@ import Beneficiaries from './beneficiaries.js';
 import Income from './helpers/income';
 import HirePurchases from './hirePurchase';
 import HirePurchaseDeduction from './deductionPages/hirePurchaseDeduction';
+import EditWelfareAmount from './editWelfareAmount';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
 
@@ -111,7 +112,10 @@ function App() {
              <Route path = "/hirePurchaseDeductions">
               {loggedIn && <HirePurchaseDeduction/>}
              </Route>
-            
+            <Route path = "/generalEdit">
+            {loggedIn && <EditWelfareAmount/>}
+
+            </Route>
         </Switch>
     </div>
     

@@ -13,7 +13,9 @@ const HomePage = () =>{
     const handleKeyUp = (keyChar) =>{
         if(members)
         {
-    let filteredMembers = members.filter((member)=> member.staffNumber.toLowerCase().indexOf(keyChar.toLowerCase()) !== -1);
+            let filterOnSavings = members.filter((member)=>member.dropout !== true);
+
+    let filteredMembers = filterOnSavings.filter((member)=> member.staffNumber.toLowerCase().indexOf(keyChar.toLowerCase()) !== -1);
     setShowMembers(true);
     setFilteredMembers(filteredMembers);
     if(keyChar === '')
