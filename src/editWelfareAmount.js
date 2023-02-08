@@ -11,7 +11,15 @@ const EditWelfareAmount = ()=>{
     useEffect(()=>{
           if(members)
           {
+            if(members.length === 0)
+            {
+                console.log("member monthly savings not found.");
+                setOldSavingsAmount(0);
+            }
+            else
+            {
           setOldSavingsAmount(members[0].monthlySavings);
+            }
           }
     },[members])
     const handleNewSavingsAmount = () =>{

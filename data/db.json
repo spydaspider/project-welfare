@@ -1,68 +1,9 @@
 {
-  "individualSavings": [
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra234",
-      "district": "head office",
-      "telephone": "0547231966",
-      "pledge": "50",
-      "date": "2023-01-25",
-      "time": "21:02:59.708Z",
-      "id": 1
-    },
-    {
-      "appName": "Derick",
-      "staffNumber": "gra4567",
-      "district": "Achimota",
-      "telephone": "0547123423",
-      "pledge": "200",
-      "date": "2023-01-25",
-      "time": "21:02:59.708Z",
-      "id": 2
-    },
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra234",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "50",
-      "date": "2023-01-25",
-      "time": "21:28:11.197Z",
-      "id": 3
-    },
-    {
-      "appName": "Emmanuella",
-      "staffNumber": "gra1234",
-      "district": "Achimota",
-      "telephone": "05476321234",
-      "pledge": "50",
-      "date": "2023-01-25",
-      "time": "21:28:11.197Z",
-      "id": 4
-    }
-  ],
-  "stepIncomes": [
-    {
-      "date": "2023-01-25",
-      "time": "21:02:59.708Z",
-      "income": 250,
-      "id": 1
-    },
-    {
-      "date": "2023-01-25",
-      "time": "21:28:11.197Z",
-      "income": 100,
-      "id": 2
-    }
-  ],
+  "individualSavings": [],
+  "stepIncomes": [],
   "hirePurchases": [],
   "beneficiaries": [],
-  "incomes": [
-    {
-      "income": 330,
-      "id": 1
-    }
-  ],
+  "incomes": [],
   "requestedLoans": [],
   "users": [
     {
@@ -71,53 +12,6 @@
       "id": 1
     }
   ],
-  "members": [
-    {
-      "membershipNumber": 1,
-      "appName": "Dickson",
-      "staffNumber": "gra234",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "monthlySavings": "78",
-      "witnessName": "Dickson",
-      "witnessContact": "0547231966",
-      "nomineeName1": "Dickson",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "Me",
-      "nRelationship2": "",
-      "nRelationship3": "",
-      "nPercentage1": "12",
-      "nPercentage2": "",
-      "nPercentage3": "",
-      "dropout": true,
-      "date": "2023-01-25",
-      "time": "21:25:10.996Z",
-      "id": 1
-    },
-    {
-      "membershipNumber": 2,
-      "appName": "Emmanuella",
-      "staffNumber": "gra1234",
-      "district": "Achimota",
-      "telephone": "05476321234",
-      "monthlySavings": "78",
-      "witnessName": "Dickson",
-      "witnessContact": "0543728394",
-      "nomineeName1": "Dickson",
-      "nomineeName2": "",
-      "nomineeName3": "",
-      "nRelationship1": "husband",
-      "nRelationship2": "",
-      "nRelationship3": "",
-      "nPercentage1": "12",
-      "nPercentage2": "",
-      "nPercentage3": "",
-      "dropout": false,
-      "date": "2023-01-25",
-      "time": "21:27:28.410Z",
-      "id": 2
-    }
-  ],
+  "members": [],
   "nomineesCollection": []
 }

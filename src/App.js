@@ -23,6 +23,7 @@ import HirePurchaseDeduction from './deductionPages/hirePurchaseDeduction';
 import EditWelfareAmount from './editWelfareAmount';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
+  const {data: members} = useFetch(' http://localhost:8050/members');
 
   
  
@@ -113,6 +114,7 @@ function App() {
               {loggedIn && <HirePurchaseDeduction/>}
              </Route>
             <Route path = "/generalEdit">
+          
             {loggedIn && <EditWelfareAmount/>}
 
             </Route>
