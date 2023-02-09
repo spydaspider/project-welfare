@@ -1,9 +1,32 @@
 {
-  "individualSavings": [],
-  "stepIncomes": [],
+  "individualSavings": [
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra123456",
+      "district": "Headoffice",
+      "telephone": "0547231966",
+      "pledge": "50",
+      "date": "2023-02-09",
+      "time": "10:23:44.812Z",
+      "id": 1
+    }
+  ],
+  "stepIncomes": [
+    {
+      "date": "2023-02-09",
+      "time": "10:23:44.812Z",
+      "income": 50,
+      "id": 1
+    }
+  ],
   "hirePurchases": [],
   "beneficiaries": [],
-  "incomes": [],
+  "incomes": [
+    {
+      "income": 50,
+      "id": 1
+    }
+  ],
   "requestedLoans": [],
   "users": [
     {

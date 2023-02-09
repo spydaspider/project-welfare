@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import CreateLog from './helpers/createLog';
 import { BrowserRouter as Router,Route,Switch} from 'react-router-dom'; 
 import Store from './helpers/storage';
+import TopPrompt from './helpers/topPrompt';
 const Login = () =>{
   const history = useHistory();
   const [userExists,setUserExists] = useState(true);
@@ -53,7 +54,9 @@ const Login = () =>{
   }
    return (
     <div className = "login-container">
+
     <div className = "login-form">
+
       <h2 className = "login-title">Login</h2>
       {!userExists && <p className = "not-exist">Invalid username or password</p>}
      <form onSubmit = {handleSubmit}>

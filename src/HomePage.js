@@ -32,8 +32,10 @@ const HomePage = () =>{
         <div className = "home-content">
            <SecondNavigation/>
            <Navigation/>
+
             <div className = "home">
             <TopPrompt/>
+
             {error && <p className = "error">Server error, restart database servers.</p>}
 
             <input className = "search" type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
