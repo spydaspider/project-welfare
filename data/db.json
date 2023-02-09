@@ -12,6 +12,29 @@
       "id": 1
     }
   ],
-  "members": [],
+  "members": [
+    {
+      "membershipNumber": 1,
+      "appName": "Dickson",
+      "staffNumber": "gra123456",
+      "district": "Headoffice",
+      "telephone": "0547231966",
+      "monthlySavings": "50",
+      "witnessName": "Dickson",
+      "witnessContact": "0547231966",
+      "nomineeName1": "Derick",
+      "nomineeName2": "",
+      "nomineeName3": "",
+      "nRelationship1": "Brother",
+      "nRelationship2": "",
+      "nRelationship3": "",
+      "nPercentage1": "3",
+      "nPercentage2": "",
+      "nPercentage3": "",
+      "dropout": "2023-02-08",
+      "date": "13:36:03.220Z",
+      "id": 1
+    }
+  ],
   "nomineesCollection": []
 }

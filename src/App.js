@@ -21,6 +21,7 @@ import Income from './helpers/income';
 import HirePurchases from './hirePurchase';
 import HirePurchaseDeduction from './deductionPages/hirePurchaseDeduction';
 import EditWelfareAmount from './editWelfareAmount';
+import TopPrompt from './helpers/topPrompt';
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
   const {data: members} = useFetch(' http://localhost:8050/members');
@@ -53,7 +54,7 @@ function App() {
     <Router>
     <div className="App">
     <div className = "content">
-    
+      
         <Switch>
           <Route exact path = "/">
             <Login />

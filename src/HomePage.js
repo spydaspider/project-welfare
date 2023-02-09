@@ -3,6 +3,7 @@ import useFetch from './useFetch.js';
 import {Link} from 'react-router-dom';
 import SecondNavigation from './nav2.js';
 import Navigation from './nav.js';
+import TopPrompt from './helpers/topPrompt.js';
 
 
 const HomePage = () =>{
@@ -32,6 +33,7 @@ const HomePage = () =>{
            <SecondNavigation/>
            <Navigation/>
             <div className = "home">
+            <TopPrompt/>
             {error && <p className = "error">Server error, restart database servers.</p>}
 
             <input className = "search" type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
@@ -69,6 +71,8 @@ const HomePage = () =>{
 }
 
             </div>
+           
+
         </div>
     )
 }

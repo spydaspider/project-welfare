@@ -403,15 +403,12 @@ h1{
     padding: 0.5em;
    text-align: center;
   }
-  .home-content{
-
-    margin-top: 25%;
+  
+  .home{
+    margin-top: 13%;
     margin-left: auto;
     margin-right: auto;
     max-width: 1100px;
-    
-    
-    
   }
   .search{
     padding: 1em;
@@ -1077,6 +1074,33 @@ th{
     cursor: pointer;
 
   }
+  .top-prompt{
+    padding: 0.5em;
+    animation-name: prompt;
+    animation-duration: 5s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    
+    padding-bottom: 10%;
+
+  }
+  .top-prompt-message{
+  
+    font-size: 18px;
+    margin-left: 3.5em;
+    color: #3094e6;
+    background: #eded01;
+    padding: 0.2em;
+    opacity: 0.9;
+    
+   
+    
+  }
+  @keyframes prompt{
+    from{ transform:translateX(-100px); -webkit-transform:translateX(-100px); -moz-transform:translateX(-100px); -ms-transform:translateX(-100px); -o-transform:translateX(-100px); }
+    to{ transform: translateX(80px); -webkit-transform: translateX(80px); -moz-transform: translateX(80px); -ms-transform: translateX(80px); -o-transform: translateX(80px); }
+  }
+
   .old-new-but{
     display: flex;
     align-self: center;
