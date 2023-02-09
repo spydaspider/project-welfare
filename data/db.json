@@ -2,7 +2,7 @@
   "individualSavings": [
     {
       "appName": "Dickson",
-      "staffNumber": "gra123456",
+      "staffNumber": "gra123489",
       "district": "Headoffice",
       "telephone": "0547231966",
       "pledge": "50",
@@ -23,11 +23,25 @@
   "beneficiaries": [],
   "incomes": [
     {
-      "income": 50,
+      "income": 40,
       "id": 1
     }
   ],
-  "requestedLoans": [],
+  "requestedLoans": [
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra123489",
+      "district": "Headoffice",
+      "telephone": "0547231966",
+      "loanAmount": 11,
+      "installment": "2",
+      "duration": "2",
+      "transactionId": "sdfsdf",
+      "date": "2023-02-09",
+      "time": "2023-04-09",
+      "id": 1
+    }
+  ],
   "users": [
     {
       "username": "Dickson",
@@ -39,7 +53,7 @@
     {
       "membershipNumber": 1,
       "appName": "Dickson",
-      "staffNumber": "gra123456",
+      "staffNumber": "gra123489",
       "district": "Headoffice",
       "telephone": "0547231966",
       "monthlySavings": "50",
@@ -54,8 +68,8 @@
       "nPercentage1": "3",
       "nPercentage2": "",
       "nPercentage3": "",
-      "dropout": "2023-02-08",
-      "date": "13:36:03.220Z",
+      "dropout": "2023-02-09",
+      "date": "10:53:09.989Z",
       "id": 1
     }
   ],

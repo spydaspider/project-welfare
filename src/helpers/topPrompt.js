@@ -2,7 +2,7 @@ const TopPrompt = () =>{
    return(
     <div className = "top-prompt">
         <div className = "top-prompt-message">
-Please ensure that your system date and time is set correctly, do not forget to backup you data. Have a nice day.
+Please ensure that your system date and time is set correctly, do not forget to backup your data. Have a nice day.
         </div>
 
     </div>
