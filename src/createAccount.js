@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import useFetch from './useFetch.js';
 import {useHistory} from 'react-router-dom';
-import { scryRenderedComponentsWithType } from 'react-dom/test-utils';
 const CreateAccount = () =>{
    const [username,setUsername] = useState('');
    const [password, setPassword] = useState('');
@@ -13,6 +12,9 @@ const CreateAccount = () =>{
    const handleSubmit = (e) =>{
       let count = 0;
       e.preventDefault();
+      if(users)
+   {
+   
       users.forEach((user)=>{
          if(user.username.toLowerCase() === username.toLowerCase())
          {
@@ -21,6 +23,9 @@ const CreateAccount = () =>{
          }
        
       })
+   }
+
+   
       if(count !== 0)
       {
          setNameTaken(true);

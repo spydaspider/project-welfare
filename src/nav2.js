@@ -9,7 +9,7 @@ const SecondNavigation = () =>{
         let log = Store.getLocalStorage('log');
         if(log.logged === 'true')
         {
-        
+           
         }
         else
         {

@@ -28,6 +28,9 @@ const MemberDetails = () =>{
     const {data:memberLoans} = useFetch('http://localhost:8050/requestedLoans');
     const {data: incomes} = useFetch('http://localhost:8050/incomes'); 
     const {data: individualSavings} = useFetch('http://localhost:8050/individualSavings');
+    const {data: beneficiaries} = useFetch('http://localhost:8050/beneficiaries');
+    const {data: hirePurchases} = useFetch('http://localhost:8050/hirePurchases');
+    const {data: nomineesCollection} = useFetch('http://localhost:8050/nomineesCollection');
 
 
     const [applicantName,setApplicantName] = useState('');
@@ -253,7 +256,11 @@ const MemberDetails = () =>{
             })
            }).then(()=>{
             fetch('http://localhost:8050/Members/'+id,{
-                method: 'DELETE'
+                method: "PATCH",
+                headers: {"Content-type":"Application/json"},
+                body: JSON.stringify({
+                    dropout: true
+                })
               }).then(()=>{
                        setPrompt(null);
               })
@@ -297,8 +304,12 @@ const MemberDetails = () =>{
             })
            }).then(()=>{
             fetch('http://localhost:8050/Members/'+id,{
-                method: 'DELETE'
-              }).then(()=>{
+            method: "PATCH",
+            headers: {"Content-type": "Application/json"},    
+            body: JSON.stringify({
+                    dropout: true
+                })
+            }).then(()=>{
                   setPrompt(null);
               })
            }) 
@@ -332,6 +343,61 @@ const MemberDetails = () =>{
                     headers: {"Content-type": "Application/json"},
                     body: JSON.stringify(member)
                 }).then(()=>{
+                    if(memberLoans && memberLoans.length !== 0)
+                    {
+                    fetch('http://localhost:8050/requestedLoans/'+id,{
+                        method: 'PATCH',
+                        headers: {"Content-type": "Application/json"},
+                        body: JSON.stringify({
+                            staffNumber: staffNumber
+                        })
+                    })
+
+                    }
+                    if(individualSavings && individualSavings.length !== 0)
+                    {
+                    fetch('http://localhost:8050/individualSavings/'+id,{
+                        method: 'PATCH',
+                        headers: {"Content-type": "Application/json"},
+                        body: JSON.stringify({
+                            staffNumber: staffNumber
+                        })
+                    })
+
+                    }
+                    if(beneficiaries && beneficiaries.length !== 0)
+                    {
+                    fetch('http://localhost:8050/beneficiaries/'+id,{
+                        method: 'PATCH',
+                        headers: {"Content-type": "Application/json"},
+                        body: JSON.stringify({
+                            staffNumber: staffNumber
+                        })
+                    })
+
+                    }
+                    if(hirePurchases && hirePurchases.length !== 0)
+                    {
+                    fetch('http://localhost:8050/hirePurchases/'+id,{
+                        method: 'PATCH',
+                        headers: {"Content-type": "Application/json"},
+                        body: JSON.stringify({
+                            staffNumber: staffNumber
+                        })
+                    })
+
+                    }
+                    if(nomineesCollection && nomineesCollection.length !== 0)
+                    {
+                    fetch('http://localhost:8050/nomineesCollection/'+id,{
+                        method: 'PATCH',
+                        headers: {"Content-type": "Application/json"},
+                        body: JSON.stringify({
+                            staffNumber: staffNumber
+                        })
+                    })
+
+                    }
                     window.location.reload();
                 }).catch((err)=>{
                     setError(err.message);
@@ -356,6 +422,61 @@ const MemberDetails = () =>{
                         headers: {"Content-type": "Application/json"},
                         body: JSON.stringify(member)
                     }).then(()=>{
+                        if(memberLoans && memberLoans.length !== 0)
+                        {
+                        fetch('http://localhost:8060/requestedLoans/'+id,{
+                            method: 'PATCH',
+                            headers: {"Content-type": "Application/json"},
+                            body: JSON.stringify({
+                                staffNumber: staffNumber
+                            })
+                        })
+    
+                        }
+                        if(individualSavings && individualSavings.length !== 0)
+                        {
+                        fetch('http://localhost:8060/individualSavings/'+id,{
+                            method: 'PATCH',
+                            headers: {"Content-type": "Application/json"},
+                            body: JSON.stringify({
+                                staffNumber: staffNumber
+                            })
+                        })
+    
+                        }
+                        if(beneficiaries && beneficiaries.length !== 0)
+                        {
+                        fetch('http://localhost:8060/beneficiaries/'+id,{
+                            method: 'PATCH',
+                            headers: {"Content-type": "Application/json"},
+                            body: JSON.stringify({
+                                staffNumber: staffNumber
+                            })
+                        })
+    
+                        }
+                        if(hirePurchases && hirePurchases.length !== 0)
+                        {
+                        fetch('http://localhost:8060/hirePurchases/'+id,{
+                            method: 'PATCH',
+                            headers: {"Content-type": "Application/json"},
+                            body: JSON.stringify({
+                                staffNumber: staffNumber
+                            })
+                        })
+    
+                        }
+                        if(nomineesCollection && nomineesCollection.length !== 0)
+                        {
+                        fetch('http://localhost:8060/nomineesCollection/'+id,{
+                            method: 'PATCH',
+                            headers: {"Content-type": "Application/json"},
+                            body: JSON.stringify({
+                                staffNumber: staffNumber
+                            })
+                        })
+    
+                        }
                         window.location.reload();
                     }).catch((err)=>{
                         setError(err.message);

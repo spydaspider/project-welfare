@@ -20,6 +20,7 @@ const Navigation = () =>{
         <NavLink style = {navLinkStyles} to = "/income">Income</NavLink>
         <NavLink style = {navLinkStyles} to = "/deductions">Deductions</NavLink>
         <NavLink style = {navLinkStyles} to = "/hirePurchase">Purchase</NavLink>
+        <NavLink style = { navLinkStyles } to = "/generalEdit" className = "general-edit"> ESA</NavLink>
         </div>
         </div>
         

@@ -3,6 +3,7 @@ import useFetch from './useFetch.js';
 import {Link} from 'react-router-dom';
 import SecondNavigation from './nav2.js';
 import Navigation from './nav.js';
+import TopPrompt from './helpers/topPrompt.js';
 
 
 const HomePage = () =>{
@@ -13,7 +14,9 @@ const HomePage = () =>{
     const handleKeyUp = (keyChar) =>{
         if(members)
         {
-    let filteredMembers = members.filter((member)=> member.staffNumber.toLowerCase().indexOf(keyChar.toLowerCase()) !== -1);
+            let filterOnSavings = members.filter((member)=>member.dropout !== true);
+
+    let filteredMembers = filterOnSavings.filter((member)=> member.staffNumber.toLowerCase().indexOf(keyChar.toLowerCase()) !== -1);
     setShowMembers(true);
     setFilteredMembers(filteredMembers);
     if(keyChar === '')
@@ -27,9 +30,15 @@ const HomePage = () =>{
     
     return(
         <div className = "home-content">
+
            <SecondNavigation/>
+           
+
+
            <Navigation/>
+
             <div className = "home">
+
             {error && <p className = "error">Server error, restart database servers.</p>}
 
             <input className = "search" type = "search" onKeyUp = {(e)=>handleKeyUp(e.target.value)} placeholder = "Enter staff id"/>
@@ -67,6 +76,8 @@ const HomePage = () =>{
 }
 
             </div>
+           
+
         </div>
     )
 }

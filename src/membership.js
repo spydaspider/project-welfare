@@ -48,7 +48,7 @@ if(members && members.length !== 0)
         //save member
         setNegativeNumber(null);
         setError(null);
-        const member = new CreateMember(members.length+1,applicantName,staffNumber,district,telephone,monthlySavings,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,date,time);
+        const member = new CreateMember(members.length+1,applicantName,staffNumber,district,telephone,monthlySavings,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,false,date,time);
 
         //send to the database.
         fetch('http://localhost:8050/Members',{
@@ -78,7 +78,7 @@ if(members && members.length !== 0)
         {
             setNegativeNumber(null);
             setError(null);
-            const member = new CreateMember(1,applicantName,staffNumber,district,telephone,monthlySavings,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,date,time);
+            const member = new CreateMember(1,applicantName,staffNumber,district,telephone,monthlySavings,witnessName,witnessContact,nomineeName1,nomineeName2,nomineeName3,nRelationship1,nRelationship2,nRelationship3,nPercentage1,nPercentage2,nPercentage3,false,date,time);
 
             fetch('http://localhost:8050/Members',{
                 method: 'POST',

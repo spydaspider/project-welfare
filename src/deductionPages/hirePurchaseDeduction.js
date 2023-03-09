@@ -100,7 +100,7 @@ setDate(date);
                income: newIncome,
                })
             }).then(()=>{
-            
+                setPrompt(null);
               
             })
           

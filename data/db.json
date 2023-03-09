@@ -2,68 +2,46 @@
   "individualSavings": [
     {
       "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
+      "staffNumber": "gra123489",
+      "district": "Headoffice",
       "telephone": "0547231966",
-      "pledge": "300",
-      "date": "2022-12-19",
-      "time": "22:49:54.912Z",
+      "pledge": "50",
+      "date": "2023-02-09",
+      "time": "10:23:44.812Z",
       "id": 1
-    },
-    {
-      "appName": "Sandra",
-      "staffNumber": "GRA54634",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "200",
-      "date": "2022-12-19",
-      "time": "22:49:54.912Z",
-      "id": 2
-    },
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "pledge": "300",
-      "date": "2022-12-20",
-      "time": "00:01:57.193Z",
-      "id": 3
-    },
-    {
-      "appName": "Sandra",
-      "staffNumber": "GRA54634",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "pledge": "200",
-      "date": "2022-12-20",
-      "time": "00:01:57.193Z",
-      "id": 4
     }
   ],
   "stepIncomes": [
     {
-      "date": "2022-12-19",
-      "time": "22:49:54.912Z",
-      "income": 500,
+      "date": "2023-02-09",
+      "time": "10:23:44.812Z",
+      "income": 50,
       "id": 1
-    },
-    {
-      "date": "2022-12-20",
-      "time": "00:01:57.193Z",
-      "income": 500,
-      "id": 2
     }
   ],
   "hirePurchases": [],
   "beneficiaries": [],
   "incomes": [
     {
-      "income": 880,
+      "income": 40,
       "id": 1
     }
   ],
-  "requestedLoans": [],
+  "requestedLoans": [
+    {
+      "appName": "Dickson",
+      "staffNumber": "gra123489",
+      "district": "Headoffice",
+      "telephone": "0547231966",
+      "loanAmount": 11,
+      "installment": "2",
+      "duration": "2",
+      "transactionId": "sdfsdf",
+      "date": "2023-02-09",
+      "time": "2023-04-09",
+      "id": 1
+    }
+  ],
   "users": [
     {
       "username": "Dickson",
@@ -75,70 +53,25 @@
     {
       "membershipNumber": 1,
       "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
+      "staffNumber": "gra123489",
+      "district": "Headoffice",
       "telephone": "0547231966",
-      "monthlySavings": "300",
-      "witnessName": "Dickson",
-      "witnessContact": "054678324",
-      "nomineeName1": "Derick",
-      "nomineeName2": "Samuel",
-      "nomineeName3": "",
-      "nRelationship1": "Brother",
-      "nRelationship2": "Nephew",
-      "nRelationship3": "",
-      "nPercentage1": "20",
-      "nPercentage2": "40",
-      "nPercentage3": "",
-      "date": "2022-12-19",
-      "time": "22:48:26.753Z",
-      "id": 1
-    },
-    {
-      "membershipNumber": 2,
-      "appName": "Sandra",
-      "staffNumber": "GRA54634",
-      "district": "Achimota",
-      "telephone": "0547231966",
-      "monthlySavings": "200",
+      "monthlySavings": "50",
       "witnessName": "Dickson",
       "witnessContact": "0547231966",
-      "nomineeName1": "Sammy",
+      "nomineeName1": "Derick",
       "nomineeName2": "",
       "nomineeName3": "",
-      "nRelationship1": "Child",
+      "nRelationship1": "Brother",
       "nRelationship2": "",
       "nRelationship3": "",
-      "nPercentage1": "30",
+      "nPercentage1": "3",
       "nPercentage2": "",
       "nPercentage3": "",
-      "date": "2022-12-19",
-      "time": "22:49:40.163Z",
-      "id": 2
+      "dropout": "2023-02-09",
+      "date": "10:53:09.989Z",
+      "id": 1
     }
   ],
-  "nomineesCollection": [
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "nomineeName": "Derick",
-      "amount": "60",
-      "date": "2022-12-19",
-      "time": "23:03:19.316Z",
-      "id": 1
-    },
-    {
-      "appName": "Dickson",
-      "staffNumber": "gra3452",
-      "district": "Accra",
-      "telephone": "0547231966",
-      "nomineeName": "Samuel",
-      "amount": "120",
-      "date": "2022-12-19",
-      "time": "23:06:40.348Z",
-      "id": 2
-    }
-  ]
+  "nomineesCollection": []
 }
