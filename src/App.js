@@ -54,7 +54,7 @@ function App() {
     <Router>
     <div className="App">
     <div className = "content">
-      
+      <TopPrompt/>
         <Switch>
           <Route exact path = "/">
             <Login />

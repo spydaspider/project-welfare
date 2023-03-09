@@ -180,7 +180,7 @@ h1{
     height: auto;
     
     position: fixed;
-    top:28px;
+    top:56px;
     right:0;
     left:0;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -224,16 +224,16 @@ h1{
     justify-content: flex-end;
     height: auto;
     position: fixed;
-    top:0;
+    top:28px;
     right:0;
     left:0;
-    background: #333;
+    background: #03a9f4;
   }
   .second-links{
     display: flex;
     width: 20%;
     justify-content: space-around;
-    color: #fff;
+    color: #eded01;
 
   }
   .log-style{
@@ -405,7 +405,7 @@ h1{
   }
   
   .home{
-    margin-top: 13%;
+    margin-top: 20%;
     margin-left: auto;
     margin-right: auto;
     max-width: 1100px;
@@ -1076,28 +1076,35 @@ th{
   }
   .top-prompt{
    
-   padding-bottom: 10%;
+   width: 100%;
+
   }
   .top-prompt-message{
     background: #eded01;
-    font-size: 18px;
+    position: fixed;
+    top:0;
+    right:0;
+    left: 0;
+ 
+  }
+  .msg-prompt{
+    font-size: 17px;
     margin-left: 3.5em;
     color: #3094e6;
-    padding: 0.2em;
     opacity: 0.9;
-     padding: 0.5em;
+     padding: 0.3em ;
     animation-name: prompt;
-    animation-duration: 5s;
+    animation-duration: 20s;
     animation-fill-mode: both;
     animation-iteration-count: infinite;
-    
+    width: 100%;
     
    
     
   }
   @keyframes prompt{
-    from{ transform:translateX(-120px); -webkit-transform:translateX(-120px); -moz-transform:translateX(-120px); -ms-transform:translateX(-120px); -o-transform:translateX(-120px); }
-    to{ transform: translateX(78px); -webkit-transform: translateX(78px); -moz-transform: translateX(78px); -ms-transform: translateX(78px); -o-transform: translateX(78px); }
+    from{ transform:translateX(1300px); -webkit-transform:translateX(1300px); -moz-transform:translateX(1300px); -ms-transform:translateX(1300px); -o-transform:translateX(1300px); }
+    to{ transform: translateX(-1300px); -webkit-transform: translateX(-1300px); -moz-transform: translateX(-1300px); -ms-transform: translateX(-1300px); -o-transform: translateX(-1300px); }
   }
 
   .old-new-but{
@@ -1108,6 +1115,9 @@ th{
   {
     .nav-bar{
         display: none;
+    }
+    .second-navigation{
+      display: none;
     }
     .file-buttons{
       display:flex;

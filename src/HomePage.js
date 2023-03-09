@@ -30,11 +30,14 @@ const HomePage = () =>{
     
     return(
         <div className = "home-content">
+
            <SecondNavigation/>
+           
+
+
            <Navigation/>
 
             <div className = "home">
-            <TopPrompt/>
 
             {error && <p className = "error">Server error, restart database servers.</p>}
 
